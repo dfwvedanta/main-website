@@ -746,3 +746,49 @@ function throttle(func, limit) {
         }
     };
 }
+
+// ================================
+// Newsletter Archive Accordion
+// ================================
+
+class NewsletterArchive {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        const yearCards = document.querySelectorAll('.newsletter-year-card');
+        
+        yearCards.forEach((card, index) => {
+            const header = card.querySelector('.newsletter-year-header');
+            const expandIcon = card.querySelector('.expand-icon');
+            
+            // Skip if it's the "earlier years" card
+            if (!expandIcon) return;
+            
+            // Open first card by default
+            if (index === 0) {
+                card.classList.add('active');
+            }
+            
+            header.addEventListener('click', () => {
+                const isActive = card.classList.contains('active');
+                
+                // Close all cards
+                yearCards.forEach(c => c.classList.remove('active'));
+                
+                // Toggle clicked card
+                if (!isActive) {
+                    card.classList.add('active');
+                }
+            });
+        });
+    }
+}
+
+// Initialize newsletter archive when DOM is ready
+if (document.querySelector('.newsletter-archive')) {
+    document.addEventListener('DOMContentLoaded', () => {
+        new NewsletterArchive();
+    });
+}
