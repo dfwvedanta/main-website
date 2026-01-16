@@ -131,13 +131,52 @@
     <section class="content-section">
         <div class="container">
             <h2 class="section-title">Past Newsletters</h2>
-            <div class="content-card">
-                <div class="content-text-full">
-                    <p>Browse our past newsletters to catch up on recent events and teachings:</p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
+                Browse our past newsletters to catch up on recent events, teachings, and community updates. Click on any year to expand and view available newsletters.
+            </p>
 
-                    <div style="margin-top: var(--spacing-md);">
-                        <h3 style="margin-bottom: var(--spacing-sm); color: var(--color-primary);">2025</h3>
-                        <ul style="margin-left: var(--spacing-md); margin-bottom: var(--spacing-md);">
+            <!-- Search and Filter Controls -->
+            <div class="newsletter-controls">
+                <div class="search-box">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="newsletter-search" placeholder="Search newsletters by month or year..." class="search-input">
+                </div>
+
+                <div class="filter-sort-group">
+                    <select id="year-filter" class="filter-select">
+                        <option value="all">All Years</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+
+                    <select id="sort-select" class="filter-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="newsletter-archive">
+                <!-- 2025 -->
+                <div class="newsletter-year-card">
+                    <div class="newsletter-year-header">
+                        <div class="year-info">
+                            <h3 class="year-title">2025</h3>
+                            <span class="newsletter-count">11 Newsletters</span>
+                        </div>
+                        <svg class="expand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="newsletter-content">
+                        <div class="newsletter-grid">
                             <li style="margin-bottom: 8px;"><a href="https://www.vedantadfw.org/vedantacms/ktmllite/files/uploads/2025/Newsletters/DecNewsletter.pdf" target="_blank" class="text-link">December Newsletter</a></li>
                             <li style="margin-bottom: 8px;"><a href="https://www.vedantadfw.org/vedantacms/ktmllite/files/uploads/2025/Newsletters/NovNewsletter.pdf" target="_blank" class="text-link">November Newsletter</a></li>
                             <li style="margin-bottom: 8px;"><a href="https://www.vedantadfw.org/vedantacms/ktmllite/files/uploads/2025/Newsletters/OctNewsletter.pdf" target="_blank" class="text-link">October Newsletter</a></li>

@@ -792,3 +792,130 @@ if (document.querySelector('.newsletter-archive')) {
         new NewsletterArchive();
     });
 }
+
+// ================================
+// Newsletter Search, Filter & Sort
+// ================================
+
+class NewsletterFilter {
+    constructor() {
+        this.searchInput = document.getElementById('newsletter-search');
+        this.yearFilter = document.getElementById('year-filter');
+        this.sortSelect = document.getElementById('sort-select');
+        this.yearCards = Array.from(document.querySelectorAll('.newsletter-year-card'));
+        
+        if (!this.searchInput || !this.yearFilter || !this.sortSelect) return;
+        
+        this.init();
+    }
+
+    init() {
+        // Search functionality
+        this.searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            this.filterNewsletters(searchTerm);
+        });
+
+        // Year filter
+        this.yearFilter.addEventListener('change', (e) => {
+            const selectedYear = e.target.value;
+            this.filterByYear(selectedYear);
+        });
+
+        // Sort functionality
+        this.sortSelect.addEventListener('change', (e) => {
+            const sortOrder = e.target.value;
+            this.sortYears(sortOrder);
+        });
+    }
+
+    filterNewsletters(searchTerm) {
+        let visibleCount = 0;
+
+        this.yearCards.forEach(card => {
+            const yearTitle = card.querySelector('.year-title')?.textContent.toLowerCase() || '';
+            const newsletterItems = card.querySelectorAll('.newsletter-item');
+            let cardHasVisible = false;
+
+            newsletterItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const isVisible = text.includes(searchTerm);
+                
+                if (isVisible) {
+                    item.classList.remove('hidden');
+                    cardHasVisible = true;
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Show/hide year card based on whether it has visible items
+            if (cardHasVisible || yearTitle.includes(searchTerm)) {
+                card.classList.remove('hidden');
+                if (searchTerm && cardHasVisible) {
+                    card.classList.add('active'); // Auto-expand if search matches
+                }
+            } else {
+                card.classList.remove('hidden');
+                card.classList.remove('active');
+            }
+        });
+
+        this.showNoResults(visibleCount === 0 && searchTerm !== '');
+    }
+
+    filterByYear(year) {
+        this.yearCards.forEach(card => {
+            const yearTitle = card.querySelector('.year-title')?.textContent || '';
+            
+            if (year === 'all' || yearTitle === year) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+                card.classList.remove('active');
+            }
+        });
+    }
+
+    sortYears(order) {
+        const archive = document.querySelector('.newsletter-archive');
+        if (!archive) return;
+
+        const sortedCards = this.yearCards.sort((a, b) => {
+            const yearA = parseInt(a.querySelector('.year-title')?.textContent || '0');
+            const yearB = parseInt(b.querySelector('.year-title')?.textContent || '0');
+            
+            return order === 'newest' ? yearB - yearA : yearA - yearB;
+        });
+
+        // Re-append cards in sorted order
+        sortedCards.forEach(card => archive.appendChild(card));
+    }
+
+    showNoResults(show) {
+        let noResultsMsg = document.querySelector('.no-results');
+        
+        if (show && !noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.className = 'no-results';
+            noResultsMsg.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <p>No newsletters found matching your search.</p>
+            `;
+            document.querySelector('.newsletter-archive').appendChild(noResultsMsg);
+        } else if (!show && noResultsMsg) {
+            noResultsMsg.remove();
+        }
+    }
+}
+
+// Initialize newsletter filter when DOM is ready
+if (document.querySelector('.newsletter-controls')) {
+    document.addEventListener('DOMContentLoaded', () => {
+        new NewsletterFilter();
+    });
+}
