@@ -297,9 +297,11 @@ class CanvasParticles {
 class Navigation {
     constructor() {
         this.nav = document.querySelector('.main-nav');
-        this.navToggle = document.querySelector('.nav-toggle');
+        this.header = document.querySelector('.header');
+        this.mobileToggle = document.querySelector('.mobile-toggle');
         this.mobileMenu = document.querySelector('.mobile-menu');
-        this.navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+        this.mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        this.mobileLinks = document.querySelectorAll('.mobile-link:not(.mobile-dropdown-toggle)');
 
         this.init();
     }
@@ -311,41 +313,61 @@ class Navigation {
             const currentScroll = window.pageYOffset;
 
             if (currentScroll > 100) {
-                this.nav.classList.add('scrolled');
+                this.header?.classList.add('scrolled');
             } else {
-                this.nav.classList.remove('scrolled');
+                this.header?.classList.remove('scrolled');
             }
 
             lastScroll = currentScroll;
         });
 
-        // Mobile menu toggle
-        this.navToggle?.addEventListener('click', () => {
-            this.mobileMenu.classList.toggle('active');
-            this.navToggle.classList.toggle('active');
+        // Mobile burger menu toggle
+        this.mobileToggle?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.mobileToggle.classList.toggle('active');
+            this.mobileMenu?.classList.toggle('active');
         });
 
-        // Close mobile menu on link click
-        this.navLinks.forEach(link => {
+        // Mobile dropdown toggles
+        this.mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = toggle.parentElement;
+                dropdown.classList.toggle('active');
+            });
+        });
+
+        // Close mobile menu when clicking a link
+        this.mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                this.mobileMenu.classList.remove('active');
-                this.navToggle?.classList.remove('active');
+                this.mobileMenu?.classList.remove('active');
+                this.mobileToggle?.classList.remove('active');
+                // Close all dropdowns
+                document.querySelectorAll('.mobile-dropdown.active').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             });
         });
 
         // Close mobile menu on outside click
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.main-nav') && !e.target.closest('.mobile-menu')) {
-                this.mobileMenu.classList.remove('active');
-                this.navToggle?.classList.remove('active');
+            if (!e.target.closest('.header') && !e.target.closest('.mobile-menu')) {
+                this.mobileMenu?.classList.remove('active');
+                this.mobileToggle?.classList.remove('active');
+                // Close all dropdowns
+                document.querySelectorAll('.mobile-dropdown.active').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
 
         // Smooth scroll for anchor links
-        this.navLinks.forEach(link => {
+        const allLinks = document.querySelectorAll('.nav-link, .mobile-link, .mobile-sublink');
+        allLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
-                if (href.startsWith('#')) {
+                if (href && href.startsWith('#')) {
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
