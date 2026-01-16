@@ -355,6 +355,16 @@ body {
     animation: slideInLeft 1s ease-out;
 }
 
+.hero-subtitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: var(--spacing-sm);
+    animation: fadeIn 0.6s ease-out;
+}
+
 .hero-title {
     font-family: var(--font-body);
     font-size: 3.5rem;
@@ -1924,6 +1934,11 @@ section {
 
     .hero-image img {
         max-width: 280px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
     }
 
     .hero-title {
