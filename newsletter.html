@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter - Ramakrishna Vedanta Society of North Texas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Ramakrishna Vedanta Society of North Texas">
+            </a>
+
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">About ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="aboutus.html" class="dropdown-item">About Us</a>
+                        <a href="vedanta.html" class="dropdown-item">Vedanta Philosophy</a>
+                        <a href="ramakrishna.html" class="dropdown-item">Sri Ramakrishna</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Programs ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="meditation.html" class="dropdown-item">Meditation</a>
+                        <a href="lectures.html" class="dropdown-item">Online Lectures</a>
+                        <a href="childrensprogram.html" class="dropdown-item">Children's Program</a>
+                        <a href="https://vedanta.org/student-program/" target="_blank" class="dropdown-item">Student Program</a>
+                    </div>
+                </div>
+                <a href="calendar.html" class="nav-link">Calendar</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link active">Resources ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="readings.html" class="dropdown-item">Library & Readings</a>
+                        <a href="newsletter.html" class="dropdown-item">Newsletter</a>
+                    </div>
+                </div>
+                <a href="contactus.html" class="nav-link">Contact Us</a>
+            </nav>
+
+            <a href="donate.html" class="donate-btn">Donate us</a>
+
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero-section">
+        <div class="container">
+            <h1 class="page-hero-title">Newsletter</h1>
+            <p class="page-hero-subtitle">Stay connected with our community</p>
+        </div>
+    </section>
+
+    <!-- Newsletter Info -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="content-title">Stay Updated</h2>
+                <div class="content-text-full">
+                    <p>Subscribe to our newsletter to receive regular updates about upcoming events, programs, spiritual teachings, and community news. Our newsletter is sent monthly and includes:</p>
+
+                    <ul style="margin-left: var(--spacing-md); margin-top: var(--spacing-sm);">
+                        <li>Announcements of special events and guest speakers</li>
+                        <li>Spiritual insights and teachings</li>
+                        <li>Updates on our community service activities</li>
+                        <li>Links to recent lectures and talks</li>
+                        <li>Important dates and calendar updates</li>
+                        <li>News from the Ramakrishna Order worldwide</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Form -->
+    <section class="content-section alt-bg">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="content-title">Subscribe to Our Newsletter</h2>
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                            <input type="checkbox" name="interests" value="events" style="width: auto; margin: 0;">
+                            I'm interested in upcoming events and retreats
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                            <input type="checkbox" name="interests" value="volunteer" style="width: auto; margin: 0;">
+                            I'm interested in volunteer opportunities
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+
+                <p style="margin-top: var(--spacing-md); font-size: 0.875rem; color: var(--color-text-light);">
+                    We respect your privacy. Your email will only be used for newsletter purposes and will never be shared with third parties. You can unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Newsletters -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Past Newsletters</h2>
+            <div class="content-card">
+                <div class="content-text-full">
+                    <p>Browse our past newsletters to catch up on recent events and teachings:</p>
+
+                    <div style="margin-top: var(--spacing-md);">
+                        <div class="schedule-card" style="margin-bottom: var(--spacing-sm);">
+                            <h3>Winter 2026 Newsletter</h3>
+                            <p class="schedule-time">January 2026</p>
+                            <p>Swami Ishtananda's retreat, Vivekananda Food Drive updates, and reflections on spiritual practice.</p>
+                        </div>
+
+                        <div class="schedule-card" style="margin-bottom: var(--spacing-sm);">
+                            <h3>Fall 2025 Newsletter</h3>
+                            <p class="schedule-time">October 2025</p>
+                            <p>Durga Puja celebrations, new library additions, and teachings on meditation.</p>
+                        </div>
+
+                        <div class="schedule-card" style="margin-bottom: var(--spacing-sm);">
+                            <h3>Summer 2025 Newsletter</h3>
+                            <p class="schedule-time">July 2025</p>
+                            <p>Children's summer program highlights, Guru Purnima celebration, and community service updates.</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: var(--spacing-md);">
+                        To request copies of past newsletters, please <a href="contactus.html" class="text-link">contact us</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Ways to Stay Connected -->
+    <section class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Other Ways to Stay Connected</h2>
+            <div class="program-cards">
+                <div class="program-card">
+                    <h3>Social Media</h3>
+                    <p>Follow us on Facebook and Twitter for daily inspiration and event updates.</p>
+                    <div style="display: flex; gap: var(--spacing-sm); justify-content: center; margin-top: var(--spacing-sm);">
+                        <a href="https://www.facebook.com/vedantadfw" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;">Facebook</a>
+                        <a href="https://twitter.com/thakurdallas" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;">Twitter</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <h3>YouTube Channel</h3>
+                    <p>Subscribe to our YouTube channel for spiritual lectures and talks.</p>
+                    <div style="text-align: center; margin-top: var(--spacing-sm);">
+                        <a href="https://www.youtube.com/channel/UCHEVy53o_mseCT6s75GWNlg" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;">Visit Channel</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <h3>Email Updates</h3>
+                    <p>Contact us directly for immediate questions or to receive urgent announcements.</p>
+                    <div style="text-align: center; margin-top: var(--spacing-sm);">
+                        <a href="mailto:dfwvedanta@gmail.com" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;">Email Us</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <h3>Visit Us</h3>
+                    <p>The best way to stay connected is to join us for our weekly Sunday services!</p>
+                    <div style="text-align: center; margin-top: var(--spacing-sm);">
+                        <a href="calendar.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;">View Calendar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Never Miss an Update</h2>
+                <p>Subscribe to our newsletter and stay connected with our spiritual community</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Subscribe Now</a>
+                    <a href="contactus.html" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Ramakrishna Vedanta Society</h4>
+                    <p>of North Texas</p>
+                    <p class="footer-address">
+                        119 W. Scotland Drive<br>
+                        Irving, TX 75063
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="vedanta.html">Vedanta</a></li>
+                        <li><a href="ramakrishna.html">Sri Ramakrishna</a></li>
+                        <li><a href="meditation.html">Meditation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="calendar.html">Calendar</a></li>
+                        <li><a href="lectures.html">Online Lectures</a></li>
+                        <li><a href="childrensprogram.html">Children's Program</a></li>
+                        <li><a href="readings.html">Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="directions.html">Directions</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/vedantadfw" target="_blank">
+                            <img src="images/fb.png" alt="Facebook" width="24" height="24">
+                        </a>
+                        <a href="https://twitter.com/thakurdallas" target="_blank">
+                            <img src="images/tw.png" alt="Twitter" width="24" height="24">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ramakrishna Vedanta Society of North Texas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
