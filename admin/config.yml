@@ -1,0 +1,224 @@
+# For Vercel deployment, we use test-repo backend for local testing
+# You'll need to set up GitHub OAuth for production
+backend:
+  name: test-repo
+
+# For production with GitHub (after OAuth setup):
+# backend:
+#   name: github
+#   repo: vinaysolapurkar/vedanta-dfw-website
+#   branch: master
+
+media_folder: "images/uploads" # Media files will be stored in the repo under images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+
+# Enable local backend for development (run: npx decap-server)
+local_backend: true
+
+# Publish mode
+publish_mode: editorial_workflow # Enable draft/publish workflow
+
+# Site URL
+site_url: https://newdesign-phi.vercel.app
+display_url: https://newdesign-phi.vercel.app
+
+# Logo
+logo_url: https://newdesign-phi.vercel.app/images/logo.png
+
+# Collections define the structure for different content types
+collections:
+  # =====================
+  # EVENTS / CALENDAR
+  # =====================
+  - name: "events"
+    label: "Events & Calendar"
+    label_singular: "Event"
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Event Type", name: "eventType", widget: "select", options: ["Sunday Service", "Retreat", "Lecture", "Puja", "Workshop", "Special Event", "Children's Program"], default: "Sunday Service"}
+      - {label: "Start Date & Time", name: "startDate", widget: "datetime", required: true, date_format: "YYYY-MM-DD", time_format: "HH:mm", format: "YYYY-MM-DD HH:mm"}
+      - {label: "End Date & Time", name: "endDate", widget: "datetime", required: true, date_format: "YYYY-MM-DD", time_format: "HH:mm", format: "YYYY-MM-DD HH:mm"}
+      - {label: "Location Type", name: "locationType", widget: "select", options: ["In-Person", "Online", "Hybrid"], default: "In-Person"}
+      - {label: "Venue Name", name: "venueName", widget: "string", required: false, hint: "E.g., Ramakrishna Vedanta Society"}
+      - {label: "Address", name: "address", widget: "text", required: false, hint: "Full address for in-person events"}
+      - {label: "Zoom/Online Link", name: "onlineLink", widget: "string", required: false, hint: "For online or hybrid events"}
+      - {label: "Description", name: "description", widget: "markdown", required: true, hint: "Event details, what to expect, etc."}
+      - {label: "Speaker/Leader", name: "speaker", widget: "string", required: false}
+      - {label: "Speaker Bio", name: "speakerBio", widget: "text", required: false}
+      - {label: "Featured Image", name: "image", widget: "image", required: false, hint: "Event poster or photo"}
+      - {label: "Registration Required?", name: "requiresRegistration", widget: "boolean", default: false}
+      - {label: "Max Attendees", name: "maxAttendees", widget: "number", required: false, value_type: "int"}
+      - {label: "Registration Deadline", name: "registrationDeadline", widget: "datetime", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false, hint: "E.g., meditation, bhagavad-gita, family-friendly"}
+      - {label: "Featured Event?", name: "featured", widget: "boolean", default: false, hint: "Show prominently on homepage"}
+      - {label: "Published", name: "published", widget: "boolean", default: true}
+
+  # =====================
+  # NEWSLETTERS
+  # =====================
+  - name: "newsletters"
+    label: "Newsletters"
+    label_singular: "Newsletter"
+    folder: "content/newsletters"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true, hint: "E.g., January Newsletter, Spring 2025"}
+      - {label: "Year", name: "year", widget: "number", required: true, value_type: "int", min: 2020, max: 2030}
+      - {label: "Month", name: "month", widget: "select", options: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Combined"], required: true}
+      - {label: "PDF File", name: "pdfFile", widget: "file", required: true, media_folder: "/newsletters", public_folder: "/newsletters", hint: "Upload newsletter PDF"}
+      - {label: "Cover Image", name: "coverImage", widget: "image", required: false, hint: "Thumbnail for the newsletter"}
+      - {label: "Description", name: "description", widget: "text", required: false, hint: "Brief summary of contents"}
+      - {label: "Publish Date", name: "publishDate", widget: "date", format: "YYYY-MM-DD", required: true}
+      - {label: "Published", name: "published", widget: "boolean", default: true}
+
+  # =====================
+  # PAGES (All Website Pages)
+  # =====================
+  - name: "pages"
+    label: "Website Pages"
+    label_singular: "Page"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "URL Slug", name: "slug", widget: "string", required: true, hint: "E.g., 'about-us' for /about-us.html"}
+      - {label: "Page Type", name: "pageType", widget: "select", options: ["Standard Page", "Hero Page", "Landing Page"], default: "Standard Page"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false, hint: "For SEO, 150-160 characters"}
+      - {label: "Hero Title", name: "heroTitle", widget: "string", required: false, hint: "Large title at top of page"}
+      - {label: "Hero Subtitle", name: "heroSubtitle", widget: "string", required: false}
+      - {label: "Hero Image", name: "heroImage", widget: "image", required: false}
+      - {label: "Page Content", name: "body", widget: "markdown", required: true, hint: "Main page content"}
+      - label: "Content Sections"
+        name: "sections"
+        widget: "list"
+        required: false
+        hint: "Add multiple sections to the page"
+        fields:
+          - {label: "Section Title", name: "sectionTitle", widget: "string", required: false}
+          - {label: "Section Content", name: "sectionContent", widget: "markdown", required: true}
+          - {label: "Section Image", name: "sectionImage", widget: "image", required: false}
+          - {label: "Background Color", name: "bgColor", widget: "select", options: ["White", "Cream", "Light Orange"], default: "White"}
+      - {label: "Call to Action Text", name: "ctaText", widget: "string", required: false, hint: "E.g., Join Us Sunday"}
+      - {label: "Call to Action Link", name: "ctaLink", widget: "string", required: false}
+      - {label: "Show in Menu?", name: "showInMenu", widget: "boolean", default: false}
+      - {label: "Menu Parent", name: "menuParent", widget: "select", options: ["None", "About", "Programs", "Resources"], default: "None", required: false}
+      - {label: "Menu Order", name: "menuOrder", widget: "number", required: false, value_type: "int", hint: "Lower numbers appear first"}
+      - {label: "Published", name: "published", widget: "boolean", default: true}
+
+  # =====================
+  # NAVIGATION MENU
+  # =====================
+  - name: "navigation"
+    label: "Navigation Menu"
+    files:
+      - label: "Main Menu"
+        name: "mainMenu"
+        file: "content/settings/navigation.yml"
+        fields:
+          - label: "Menu Items"
+            name: "menuItems"
+            widget: "list"
+            fields:
+              - {label: "Label", name: "label", widget: "string", required: true}
+              - {label: "Link", name: "link", widget: "string", required: true, hint: "E.g., index.html or #"}
+              - {label: "Open in New Tab?", name: "newTab", widget: "boolean", default: false}
+              - label: "Dropdown Items"
+                name: "dropdown"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Label", name: "label", widget: "string", required: true}
+                  - {label: "Link", name: "link", widget: "string", required: true}
+                  - {label: "Open in New Tab?", name: "newTab", widget: "boolean", default: false}
+
+  # =====================
+  # SITE SETTINGS
+  # =====================
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      # Contact Information
+      - label: "Contact Information"
+        name: "contact"
+        file: "content/settings/contact.yml"
+        fields:
+          - {label: "Organization Name", name: "orgName", widget: "string", default: "Ramakrishna Vedanta Society of North Texas"}
+          - {label: "Address Line 1", name: "addressLine1", widget: "string"}
+          - {label: "Address Line 2", name: "addressLine2", widget: "string", required: false}
+          - {label: "City", name: "city", widget: "string"}
+          - {label: "State", name: "state", widget: "string"}
+          - {label: "Zip Code", name: "zip", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string", required: false}
+          - {label: "Email", name: "email", widget: "string", required: true}
+          - {label: "Google Maps Link", name: "googleMapsLink", widget: "string", required: false}
+
+      # Footer Settings
+      - label: "Footer"
+        name: "footer"
+        file: "content/settings/footer.yml"
+        fields:
+          - label: "Footer Columns"
+            name: "footerColumns"
+            widget: "list"
+            fields:
+              - {label: "Column Title", name: "title", widget: "string"}
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - {label: "Label", name: "label", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string"}
+          - {label: "Copyright Text", name: "copyright", widget: "string", hint: "Year will be added automatically"}
+          - label: "Social Media"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+              - {label: "Twitter URL", name: "twitter", widget: "string", required: false}
+              - {label: "YouTube URL", name: "youtube", widget: "string", required: false}
+              - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+
+      # Homepage Settings
+      - label: "Homepage"
+        name: "homepage"
+        file: "content/settings/homepage.yml"
+        fields:
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Subtitle", name: "heroSubtitle", widget: "string"}
+          - {label: "Hero Description", name: "heroDescription", widget: "text"}
+          - {label: "Hero Image", name: "heroImage", widget: "image"}
+          - {label: "Primary CTA Text", name: "primaryCTA", widget: "string"}
+          - {label: "Primary CTA Link", name: "primaryCTALink", widget: "string"}
+          - {label: "Secondary CTA Text", name: "secondaryCTA", widget: "string"}
+          - {label: "Secondary CTA Link", name: "secondaryCTALink", widget: "string"}
+          - label: "Hero Stats"
+            name: "heroStats"
+            widget: "list"
+            fields:
+              - {label: "Number", name: "number", widget: "string"}
+              - {label: "Label", name: "label", widget: "string"}
+
+      # General Settings
+      - label: "General Settings"
+        name: "general"
+        file: "content/settings/general.yml"
+        fields:
+          - {label: "Site Title", name: "siteTitle", widget: "string"}
+          - {label: "Site Description", name: "siteDescription", widget: "text"}
+          - {label: "Site Logo", name: "siteLogo", widget: "image"}
+          - {label: "Favicon", name: "favicon", widget: "image", required: false}
+          - {label: "Primary Color", name: "primaryColor", widget: "color", default: "#FF9933"}
+          - {label: "Enable Announcements?", name: "enableAnnouncements", widget: "boolean", default: false}
+          - {label: "Announcement Text", name: "announcementText", widget: "string", required: false}
+          - {label: "Announcement Link", name: "announcementLink", widget: "string", required: false}

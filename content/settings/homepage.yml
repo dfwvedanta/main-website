@@ -1,0 +1,16 @@
+heroTitle: Arise, Awake, And Stop Not Till The Goal Is Reached
+heroSubtitle: Ramakrishna Vedanta Society of North Texas
+heroDescription: Experience the living tradition of Vedanta as brought to America by Swami Vivekananda. Discover your true divine nature through meditation, study, and service to humanity.
+heroImage: images/vivekananda-standing.png
+primaryCTA: Our Story
+primaryCTALink: aboutus.html
+secondaryCTA: Join Us Sunday
+secondaryCTALink: calendar.html
+
+heroStats:
+  - number: "1893"
+    label: Vedanta in America
+  - number: "2007"
+    label: Serving North Texas
+  - number: "Weekly"
+    label: Sunday Services
