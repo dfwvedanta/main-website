@@ -1,29 +1,31 @@
-# For Vercel deployment, we use test-repo backend for local testing
-# You'll need to set up GitHub OAuth for production
+# Backend configuration
+# GitHub repository for CMS
 backend:
-  name: test-repo
-
-# For production with GitHub (after OAuth setup):
-# backend:
-#   name: github
-#   repo: vinaysolapurkar/vedanta-dfw-website
-#   branch: master
+  name: github
+  repo: vinaysolapurkar/vedantadfw
+  branch: master
 
 media_folder: "images/uploads" # Media files will be stored in the repo under images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
-# Enable local backend for development (run: npx decap-server)
+# Enable local backend for development
+# This allows editing locally even with GitHub backend
 local_backend: true
+
+# Alternative: Use test-repo for local-only development
+# Uncomment these lines and comment out the github backend above if you want local-only:
+# backend:
+#   name: test-repo
 
 # Publish mode
 publish_mode: editorial_workflow # Enable draft/publish workflow
 
-# Site URL
-site_url: https://newdesign-phi.vercel.app
-display_url: https://newdesign-phi.vercel.app
+# Site URL (update this with your production URL after deployment)
+site_url: https://vedantadfw.vercel.app
+display_url: https://vedantadfw.vercel.app
 
 # Logo
-logo_url: https://newdesign-phi.vercel.app/images/logo.png
+logo_url: https://vedantadfw.vercel.app/images/logo.png
 
 # Collections define the structure for different content types
 collections:

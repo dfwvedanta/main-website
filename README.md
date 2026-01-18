@@ -1,150 +1,146 @@
-# Vedanta DFW - Spiritual Website
+# Vedanta DFW Website - New Design with CMS
 
-A mesmerizing spiritual website featuring cutting-edge web technologies and a cosmic aesthetic design.
+## 🎯 Two Ways to Use Admin Panel
 
-## Features
+### **Option 1: Local Only (Windows) - Works Now!**
+✅ Edit on your computer
+✅ Auto-sync to frontend
+✅ Test before deploying
+✅ **No setup needed - works immediately!**
 
-### Visual Design
-- **Cosmic Theme**: Deep space-inspired color palette with blues, purples, and gold accents
-- **Sacred Geometry**: Animated SVG patterns and mandala designs
-- **Particle System**: Canvas-based cosmic particle effect with 400+ interactive stars
-- **Glass Morphism**: Modern frosted glass effects throughout the UI
-- **Smooth Animations**: CSS and JavaScript animations for seamless user experience
+**Quick Start:**
+1. Double-click `start_all_servers.bat`
+2. Go to http://localhost:8080/admin
+3. Login with GitHub
+4. Edit and save - auto-syncs!
 
-### Technologies Used
+---
 
-#### Modern Web Stack
-- **HTML5**: Semantic markup with accessibility features
-- **CSS3**: Advanced features including:
-  - CSS Grid & Flexbox layouts
-  - CSS Variables for theming
-  - CSS Animations & Transitions
-  - Backdrop filters for glass effects
-  - Custom gradients and shadows
-- **JavaScript ES6+**: Modern vanilla JavaScript with:
-  - Canvas API for particle effects
-  - Intersection Observer for scroll animations
-  - Event handling and DOM manipulation
-  - Object-oriented programming patterns
+### **Option 2: Production Admin (Cloud) - 15 Min Setup**
+✅ Edit from anywhere
+✅ Edit on any device
+✅ Auto-deploys to live site
+✅ Team members can edit
+⚙️ **Requires GitHub + OAuth setup**
 
-#### Typography
-- **Cinzel**: Elegant serif font for headings and display text
-- **Outfit**: Clean, modern sans-serif for body text
+**Setup Guide:** See `PRODUCTION_QUICKSTART.md` (15 minutes)
 
-#### Visual Effects
-- Animated particle background with mouse interaction
-- Parallax scrolling effects
-- Scroll-triggered fade-in animations
-- Rotating sacred geometry overlay
-- Pulsing and glowing elements
-- Smooth page transitions
+---
 
-### Sections
+---
 
-1. **Hero**: Full-screen introduction with animated title and call-to-action
-2. **Philosophy**: About Vedanta with three pillars and animated mandala
-3. **Teachings**: Four core teaching cards with Sanskrit text
-4. **Practice**: Meditation techniques and guided session interface
-5. **Events**: Upcoming events calendar with featured event
-6. **Community**: Features and benefits of joining the sangha
-7. **Contact**: Contact information and functional form
-8. **Footer**: Site navigation and branding
+## 📚 Documentation
 
-### Interactive Features
+### For Users:
+- **Quick Reference**: `QUICK_REFERENCE.md` - Daily workflow
+- **Admin Guide**: `ADMIN_GUIDE.md` - How to edit content
 
-#### Particle System
-- 400 animated particles creating a cosmic atmosphere
-- Mouse-responsive particles that react to cursor movement
-- Twinkling stars with varying sizes and colors
-- Connected particle network for depth
-- Smooth 60 FPS animation
+### For Setup:
+- **Production Setup**: `PRODUCTION_QUICKSTART.md` ⭐ **Start here for cloud admin**
+- **Detailed Setup**: `SETUP_GITHUB_PRODUCTION.md` - Step-by-step guide
 
-#### Navigation
-- Fixed header with scroll-triggered styling
-- Mobile-responsive hamburger menu
-- Smooth scroll to section anchors
-- Active state indicators
+### For Developers:
+- **Technical Details**: `CMS_README.md`
+- **Implementation**: `IMPLEMENTATION_COMPLETE.md`
+- **Verification**: `VERIFICATION_RESULTS.md`
 
-#### Scroll Animations
-- Intersection Observer for performance
-- Staggered fade-in effects
-- Parallax movement for hero and mandala
-- Dynamic geometry rotation
+---
 
-#### Form Handling
-- Client-side form validation
-- Animated success feedback
-- Styled inputs with focus states
+## 🎯 What You Can Edit
 
-#### Meditation Session
-- Interactive play/pause button
-- Animated breath circle visualization
-- Ready for audio integration
+- ✅ **All website pages** (About, Vedanta, Meditation, etc.)
+- ✅ **Events & Calendar**
+- ✅ **Newsletter uploads**
+- ✅ **Contact information**
+- ✅ **Navigation menu**
+- ✅ **Footer links**
+- ✅ **Homepage settings**
+- ✅ **Create new pages**
 
-### Responsive Design
-- Mobile-first approach
-- Breakpoints at 768px and 1024px
-- Touch-friendly navigation
-- Optimized layouts for all screen sizes
+---
 
-### Performance Optimizations
-- Debounced and throttled scroll handlers
-- RequestAnimationFrame for smooth animations
-- Efficient particle rendering
-- CSS-only animations where possible
-- Minimal DOM manipulation
+## 💡 Two Ways to Work
 
-### Browser Support
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Graceful degradation for older browsers
-- Canvas API fallback support
+### **Option 1: Auto-Sync (Recommended)**
+- Double-click `start_all_servers.bat`
+- Edit in admin
+- Changes sync automatically!
 
-## File Structure
+### **Option 2: Manual Sync**
+- Start servers manually
+- Edit in admin
+- Run `sync_cms.bat` after each change
+
+---
+
+## 🌐 URLs
+
+- **Admin Panel**: http://localhost:8080/admin
+- **Website**: http://localhost:8080
+- **Live Site**: https://newdesign-phi.vercel.app
+
+---
+
+## ⚡ Daily Workflow
 
 ```
-newdesign/
-├── index.html          # Main HTML structure
-├── styles.css          # All CSS styles and animations
-├── script.js           # JavaScript functionality
-└── README.md           # This file
+1. Double-click start_all_servers.bat
+2. Edit at http://localhost:8080/admin
+3. Save changes
+4. Changes auto-sync!
+5. Test at http://localhost:8080
+6. Deploy: vercel --prod
 ```
 
-## Getting Started
+---
 
-1. Open `index.html` in a modern web browser
-2. No build process or dependencies required
-3. Works offline - all assets are self-contained
+## 📁 Key Files
 
-## Customization
+- `start_all_servers.bat` - **START HERE!** (one-click setup)
+- `start_auto_sync.bat` - Just the auto-sync watcher
+- `sync_cms.bat` - Manual sync (if needed)
+- `content/` - Your content (pages, events, etc.)
+- `api/` - Generated data files
+- `admin/` - Admin panel files
 
-### Colors
-Edit CSS variables in `styles.css`:
-```css
-:root {
-    --color-deep-space: #0a0e27;
-    --color-gold: #d4af37;
-    /* ... more colors */
-}
-```
+---
 
-### Particle Count
-Adjust in `script.js`:
-```javascript
-this.particleCount = 400; // Increase or decrease
-```
+## 🆘 Troubleshooting
 
-### Animation Speed
-Modify transition durations in CSS:
-```css
---transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-```
+### Servers won't start?
+- Make sure ports 8080 and 8081 are available
+- Close any existing server windows
+- Try restarting
 
-## Credits
+### Changes don't appear?
+- Check that auto-sync watcher is running
+- Look for sync messages in the watcher window
+- Try manual sync: `sync_cms.bat`
 
-Design & Development: Created with Claude Code
-Fonts: Google Fonts (Cinzel & Outfit)
-Inspiration: Vedantic philosophy and cosmic aesthetics
+### Admin won't load?
+- Make sure Decap CMS backend is running
+- Check browser console for errors
+- Try clearing browser cache
 
-## License
+---
 
-© 2026 Vedanta DFW. All rights reserved.
+## 📞 Need Help?
+
+1. **Quick answers**: See `QUICK_REFERENCE.md`
+2. **Detailed guide**: See `ADMIN_GUIDE.md`
+3. **Technical info**: See `CMS_README.md`
+
+---
+
+## 🎉 Features
+
+- ✅ **No coding required** - Visual editor
+- ✅ **Auto-sync** - No manual steps
+- ✅ **Version controlled** - All changes tracked
+- ✅ **Zero design changes** - Layout 100% preserved
+- ✅ **Easy deployment** - One command to deploy
+- ✅ **Free hosting** - Works on Vercel free tier
+
+---
+
+**Made with ❤️ for Ramakrishna Vedanta Society of North Texas**

@@ -1158,11 +1158,16 @@ class CMSLoader {
 // Create global CMS loader instance
 window.cmsLoader = new CMSLoader();
 
-// Auto-initialize on page load
+// DISABLED: Auto-loading to preserve existing website exactly as-is
+// To enable CMS for a page, add data-cms-enabled="true" to <body>
+// Or manually call: window.cmsLoader.renderCurrentPage()
+
+// Auto-initialize only if page explicitly opts in
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', async () => {
-        // Only initialize if not on admin page
-        if (!window.location.pathname.includes('/admin')) {
+        const body = document.body;
+        // Only load CMS if page explicitly enables it
+        if (body && body.dataset.cmsEnabled === 'true' && !window.location.pathname.includes('/admin')) {
             await window.cmsLoader.renderCurrentPage();
             await window.cmsLoader.updateNavigation();
             await window.cmsLoader.updateFooter();
@@ -1170,7 +1175,8 @@ if (document.readyState === 'loading') {
     });
 } else {
     // DOM already loaded
-    if (!window.location.pathname.includes('/admin')) {
+    const body = document.body;
+    if (body && body.dataset.cmsEnabled === 'true' && !window.location.pathname.includes('/admin')) {
         window.cmsLoader.renderCurrentPage();
         window.cmsLoader.updateNavigation();
         window.cmsLoader.updateFooter();
