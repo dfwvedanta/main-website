@@ -2512,3 +2512,86 @@ section {
         width: 100%;
     }
 }
+
+/* ================================
+   Add to Calendar Dropdown
+   ================================ */
+.add-to-calendar-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.add-to-calendar-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.add-to-calendar-btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+}
+
+.add-to-calendar-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 200px;
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.add-to-calendar-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.add-to-calendar-item {
+    display: block;
+    padding: 0.875rem 1.25rem;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.add-to-calendar-item:last-child {
+    border-bottom: none;
+}
+
+.add-to-calendar-item:hover {
+    background: var(--color-bg);
+    color: var(--color-primary);
+    padding-left: 1.5rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .add-to-calendar-btn {
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .add-to-calendar-menu {
+        left: auto;
+        right: 0;
+    }
+}

@@ -243,7 +243,54 @@
   <!-- Footer loaded from includes/footer.html -->
   <div id="footer-placeholder">
   </div>
-  <script src="script.js">
+  <script src="script.js"></script>
+  <script src="add-to-calendar.js"></script>
+  <script>
+    // Initialize Add to Calendar buttons for each event
+    document.addEventListener('DOMContentLoaded', function() {
+      // Event 1: Swami Ishtananda's Retreat
+      const event1 = new AddToCalendar({
+        title: "Swami Ishtananda's Retreat",
+        description: "Join us for a transformative weekend retreat with inspiring talks on Vedantic philosophy, guided meditation sessions, and opportunities for personal spiritual guidance.",
+        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
+        startDate: new Date('2026-01-16T19:00:00'),
+        endDate: new Date('2026-01-17T20:00:00')
+      });
+
+      // Event 2: Vivekananda Food Drive
+      const event2 = new AddToCalendar({
+        title: "Vivekananda Food Drive 2026",
+        description: "Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week.",
+        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
+        startDate: new Date('2026-01-18T09:00:00'),
+        endDate: new Date('2026-01-25T17:00:00')
+      });
+
+      // Event 3: Shiva Ratri Puja
+      const event3 = new AddToCalendar({
+        title: "Shiva Ratri Puja Program",
+        description: "Special worship program celebrating Maha Shivaratri with traditional rituals, meditation, and spiritual discourse on Lord Shiva's significance in Vedanta.",
+        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
+        startDate: new Date('2026-02-26T18:00:00'),
+        endDate: new Date('2026-02-26T21:00:00')
+      });
+
+      // Event 4: Sri Ramakrishna Puja
+      const event4 = new AddToCalendar({
+        title: "Sri Ramakrishna Puja Program",
+        description: "Celebration of Sri Ramakrishna's birth anniversary with special puja, devotional singing, and talks on his life and teachings.",
+        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
+        startDate: new Date('2026-03-15T10:00:00'),
+        endDate: new Date('2026-03-15T12:00:00')
+      });
+
+      // Add buttons to event items
+      const eventContents = document.querySelectorAll('.event-content');
+      if (eventContents[0]) eventContents[0].appendChild(event1.createDropdown());
+      if (eventContents[1]) eventContents[1].appendChild(event2.createDropdown());
+      if (eventContents[2]) eventContents[2].appendChild(event3.createDropdown());
+      if (eventContents[3]) eventContents[3].appendChild(event4.createDropdown());
+    });
   </script>
  </body>
 </html>
