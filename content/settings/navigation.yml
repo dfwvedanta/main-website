@@ -50,6 +50,9 @@ menuItems:
       - label: Newsletter
         link: newsletter.html
         newTab: false
+      - label: Ask a Question
+        link: ask-question.html
+        newTab: false
 
   - label: Contact Us
     link: contactus.html

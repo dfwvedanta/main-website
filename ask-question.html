@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Ask a Question - Ramakrishna Vedanta Society of North Texas
+  </title>
+  <meta content="Have a question about Vedanta philosophy, meditation, or our programs? Ask us anything and we'll get back to you." name="description"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- Header loaded from includes/header.html -->
+  <div id="header-placeholder">
+  </div>
+  <!-- Page Hero -->
+  <section class="page-hero-section">
+   <div class="container">
+    <h1 class="page-hero-title">
+     Ask a Question
+    </h1>
+    <p class="page-hero-subtitle">
+     We're here to help answer your questions about Vedanta
+    </p>
+   </div>
+  </section>
+  <!-- Introduction -->
+  <section class="content-section">
+   <div class="container">
+    <div class="content-card">
+     <h2 class="content-title">
+      Have a Question?
+     </h2>
+     <div class="content-text">
+      <p>
+       Whether you're curious about Vedanta philosophy, meditation practices, our programs, or spiritual life in general, we welcome your questions. Our community members and teachers are here to help guide you on your spiritual journey.
+      </p>
+      <p>
+       Please fill out the form below with your email address and your question. We'll respond as soon as possible.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Question Form -->
+  <section class="content-section alt-bg">
+   <div class="container">
+    <div class="content-card">
+     <h2 class="content-title">
+      Submit Your Question
+     </h2>
+     <form class="contact-form" data-netlify="true" id="questionForm" method="POST" name="question" netlify-honeypot="bot-field">
+      <!-- Hidden fields for Netlify form handling -->
+      <input name="form-name" type="hidden" value="question"/>
+      <p style="display: none;">
+       <label>
+        Don't fill this out if you're human:
+        <input name="bot-field"/>
+       </label>
+      </p>
+      <div class="form-group">
+       <label for="email">
+        Your Email Address *
+       </label>
+       <input id="email" name="email" placeholder="your.email@example.com" required="" type="email"/>
+      </div>
+      <div class="form-group">
+       <label for="name">
+        Your Name (Optional)
+       </label>
+       <input id="name" name="name" placeholder="Your name" type="text"/>
+      </div>
+      <div class="form-group">
+       <label for="question">
+        Your Question *
+       </label>
+       <textarea id="question" name="question" placeholder="Please type your question here..." required="" rows="8"></textarea>
+      </div>
+      <div class="form-group">
+       <label for="category">
+        Question Category (Optional)
+       </label>
+       <select id="category" name="category">
+        <option value="">
+         Select a category...
+        </option>
+        <option value="vedanta-philosophy">
+         Vedanta Philosophy
+        </option>
+        <option value="meditation">
+         Meditation &amp; Practice
+        </option>
+        <option value="programs">
+         Programs &amp; Classes
+        </option>
+        <option value="events">
+         Events &amp; Schedule
+        </option>
+        <option value="membership">
+         Membership
+        </option>
+        <option value="general">
+         General Inquiry
+        </option>
+        <option value="other">
+         Other
+        </option>
+       </select>
+      </div>
+      <button class="cta-button" type="submit">
+       Submit Question
+      </button>
+      <div class="form-success" id="formSuccess" style="display: none;">
+       <p>
+        ✓ Thank you! Your question has been submitted. We'll respond to your email address soon.
+       </p>
+      </div>
+     </form>
+    </div>
+   </div>
+  </section>
+  <!-- Common Questions -->
+  <section class="content-section">
+   <div class="container">
+    <div class="content-card">
+     <h2 class="content-title">
+      Common Questions
+     </h2>
+     <div class="content-text">
+      <h3>
+       What is Vedanta?
+      </h3>
+      <p>
+       Vedanta is the philosophical foundation of Hinduism, based on the ancient Upanishads. It teaches the ultimate unity of individual soul with the Universal Soul.
+       <a class="text-link" href="vedanta.html">
+        Learn more about Vedanta
+       </a>
+       .
+      </p>
+      <h3>
+       Do I need to be Hindu to attend your programs?
+      </h3>
+      <p>
+       Not at all! Vedanta is universal in its approach and welcomes people of all faiths, backgrounds, and beliefs. Our doors are open to anyone seeking spiritual growth and understanding.
+      </p>
+      <h3>
+       Are your programs suitable for beginners?
+      </h3>
+      <p>
+       Yes! We offer programs for all levels, from complete beginners to advanced practitioners. Our
+       <a class="text-link" href="meditation.html">
+        meditation classes
+       </a>
+       and
+       <a class="text-link" href="lectures.html">
+        lectures
+       </a>
+       are accessible to everyone.
+      </p>
+      <h3>
+       How can I support your organization?
+      </h3>
+      <p>
+       We appreciate your support! You can
+       <a class="text-link" href="donate.html">
+        donate online
+       </a>
+       , volunteer at our events, or simply attend our programs and spread the word about Vedanta.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Footer loaded from includes/footer.html -->
+  <div id="footer-placeholder">
+  </div>
+  <script src="script.js">
+  </script>
+  <script>
+   // Handle form submission
+        document.getElementById('questionForm').addEventListener('submit', function(e) {
+            // Let Netlify handle the submission
+            // Show success message after a brief delay
+            setTimeout(function() {
+                document.getElementById('formSuccess').style.display = 'block';
+                document.getElementById('questionForm').reset();
+            }, 100);
+        });
+  </script>
+ </body>
+</html>
