@@ -968,3 +968,211 @@ if (document.querySelector('.newsletter-controls')) {
         new NewsletterFilter();
     });
 }
+/**
+ * CMS Data Loader
+ * Loads content from CMS JSON files and renders to frontend
+ */
+
+class CMSLoader {
+    constructor() {
+        this.baseURL = '/api';
+        this.cache = {};
+    }
+
+    /**
+     * Fetch JSON data
+     */
+    async fetchJSON(endpoint) {
+        if (this.cache[endpoint]) {
+            return this.cache[endpoint];
+        }
+
+        try {
+            const response = await fetch(`${this.baseURL}/${endpoint}.json`);
+            if (!response.ok) throw new Error(`Failed to load ${endpoint}`);
+            const data = await response.json();
+            this.cache[endpoint] = data;
+            return data;
+        } catch (error) {
+            console.error(`Error loading ${endpoint}:`, error);
+            return null;
+        }
+    }
+
+    /**
+     * Load all CMS data
+     */
+    async loadAll() {
+        const [pages, events, newsletters, settings] = await Promise.all([
+            this.fetchJSON('pages'),
+            this.fetchJSON('events'),
+            this.fetchJSON('newsletters'),
+            this.fetchJSON('settings')
+        ]);
+
+        return { pages, events, newsletters, settings };
+    }
+
+    /**
+     * Get page by slug
+     */
+    async getPage(slug) {
+        const pageIndex = await this.fetchJSON('page-index');
+        return pageIndex ? pageIndex[slug] : null;
+    }
+
+    /**
+     * Get all events
+     */
+    async getEvents() {
+        return await this.fetchJSON('events');
+    }
+
+    /**
+     * Get all newsletters
+     */
+    async getNewsletters() {
+        return await this.fetchJSON('newsletters');
+    }
+
+    /**
+     * Get settings
+     */
+    async getSettings() {
+        return await this.fetchJSON('settings');
+    }
+
+    /**
+     * Render markdown to HTML (simple version)
+     */
+    renderMarkdown(markdown) {
+        if (!markdown) return '';
+
+        let html = markdown;
+
+        // Headers
+        html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+        html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+        html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+        // Bold and italic
+        html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+        // Links
+        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+        // Lists
+        html = html.replace(/^\* (.+)$/gim, '<li>$1</li>');
+        html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+        html = html.replace(/^- (.+)$/gim, '<li>$1</li>');
+
+        // Paragraphs
+        html = html.split('\n\n').map(para => {
+            para = para.trim();
+            if (para && !para.startsWith('<')) {
+                return `<p>${para}</p>`;
+            }
+            return para;
+        }).join('\n');
+
+        return html;
+    }
+
+    /**
+     * Load and render current page content
+     */
+    async renderCurrentPage() {
+        // Get current page slug from URL
+        const path = window.location.pathname;
+        const slug = path.replace(/\.html$/, '').replace(/^\//, '') || 'index';
+
+        const page = await this.getPage(slug);
+
+        if (page) {
+            // Update page title
+            if (page.title) {
+                document.title = `${page.title} - Ramakrishna Vedanta Society of North Texas`;
+            }
+
+            // Update hero section if exists
+            const heroTitle = document.querySelector('.page-hero-title');
+            const heroSubtitle = document.querySelector('.page-hero-subtitle');
+
+            if (heroTitle && page.heroTitle) {
+                heroTitle.textContent = page.heroTitle;
+            }
+            if (heroSubtitle && page.heroSubtitle) {
+                heroSubtitle.textContent = page.heroSubtitle;
+            }
+
+            // Update main content
+            const mainContent = document.querySelector('.content-section .content-text');
+            if (mainContent && page.body) {
+                mainContent.innerHTML = this.renderMarkdown(page.body);
+            }
+
+            console.log('Page loaded from CMS:', page.title);
+        }
+    }
+
+    /**
+     * Update header navigation from CMS
+     */
+    async updateNavigation() {
+        const settings = await this.getSettings();
+        if (!settings || !settings.navigation) return;
+
+        const { menuItems } = settings.navigation;
+
+        // Update desktop nav
+        const desktopNav = document.querySelector('.nav');
+        if (desktopNav && menuItems) {
+            // Clear existing (except logo)
+            // Then rebuild from CMS data
+            // (Simplified for now - full implementation would rebuild menu)
+            console.log('Navigation loaded from CMS');
+        }
+    }
+
+    /**
+     * Update footer from CMS
+     */
+    async updateFooter() {
+        const settings = await this.getSettings();
+        if (!settings || !settings.footer) return;
+
+        const { footerColumns, copyright, social } = settings.footer;
+
+        // Update copyright
+        const copyrightEl = document.querySelector('.footer-bottom p');
+        if (copyrightEl && copyright) {
+            const year = new Date().getFullYear();
+            copyrightEl.textContent = `© ${year} ${copyright}`;
+        }
+
+        console.log('Footer loaded from CMS');
+    }
+}
+
+// Create global CMS loader instance
+window.cmsLoader = new CMSLoader();
+
+// Auto-initialize on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Only initialize if not on admin page
+        if (!window.location.pathname.includes('/admin')) {
+            await window.cmsLoader.renderCurrentPage();
+            await window.cmsLoader.updateNavigation();
+            await window.cmsLoader.updateFooter();
+        }
+    });
+} else {
+    // DOM already loaded
+    if (!window.location.pathname.includes('/admin')) {
+        window.cmsLoader.renderCurrentPage();
+        window.cmsLoader.updateNavigation();
+        window.cmsLoader.updateFooter();
+    }
+}

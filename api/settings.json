@@ -1,0 +1,209 @@
+{
+  "contact": {
+    "orgName": "Ramakrishna Vedanta Society of North Texas",
+    "addressLine1": "119 W. Scotland Drive",
+    "addressLine2": "",
+    "city": "Irving",
+    "state": "TX",
+    "zip": "75063",
+    "phone": "",
+    "email": "contact@vedantadfw.org",
+    "googleMapsLink": "https://maps.google.com/?q=119+W+Scotland+Drive+Irving+TX+75063"
+  },
+  "footer": {
+    "footerColumns": [
+      {
+        "title": "Quick Links",
+        "links": [
+          {
+            "label": "About Us",
+            "url": "aboutus.html"
+          },
+          {
+            "label": "Vedanta",
+            "url": "vedanta.html"
+          },
+          {
+            "label": "Sri Ramakrishna",
+            "url": "ramakrishna.html"
+          },
+          {
+            "label": "Meditation",
+            "url": "meditation.html"
+          }
+        ]
+      },
+      {
+        "title": "Programs",
+        "links": [
+          {
+            "label": "Calendar",
+            "url": "calendar.html"
+          },
+          {
+            "label": "Online Lectures",
+            "url": "lectures.html"
+          },
+          {
+            "label": "Children's Program",
+            "url": "childrensprogram.html"
+          },
+          {
+            "label": "Library",
+            "url": "readings.html"
+          }
+        ]
+      },
+      {
+        "title": "Connect",
+        "links": [
+          {
+            "label": "Contact Us",
+            "url": "contactus.html"
+          },
+          {
+            "label": "Directions",
+            "url": "directions.html"
+          },
+          {
+            "label": "Newsletter",
+            "url": "newsletter.html"
+          },
+          {
+            "label": "Donate",
+            "url": "donate.html"
+          }
+        ]
+      }
+    ],
+    "copyright": "Ramakrishna Vedanta Society of North Texas. All rights reserved.",
+    "social": {
+      "facebook": "https://www.facebook.com/vedantadfw",
+      "twitter": "https://twitter.com/thakurdallas",
+      "youtube": "",
+      "instagram": ""
+    }
+  },
+  "navigation": {
+    "menuItems": [
+      {
+        "label": "Home",
+        "link": "index.html",
+        "newTab": false,
+        "dropdown": []
+      },
+      {
+        "label": "About",
+        "link": "#",
+        "newTab": false,
+        "dropdown": [
+          {
+            "label": "About Us",
+            "link": "aboutus.html",
+            "newTab": false
+          },
+          {
+            "label": "Vedanta Philosophy",
+            "link": "vedanta.html",
+            "newTab": false
+          },
+          {
+            "label": "Sri Ramakrishna",
+            "link": "ramakrishna.html",
+            "newTab": false
+          }
+        ]
+      },
+      {
+        "label": "Programs",
+        "link": "#",
+        "newTab": false,
+        "dropdown": [
+          {
+            "label": "Meditation",
+            "link": "meditation.html",
+            "newTab": false
+          },
+          {
+            "label": "Online Lectures",
+            "link": "lectures.html",
+            "newTab": false
+          },
+          {
+            "label": "Children's Program",
+            "link": "childrensprogram.html",
+            "newTab": false
+          },
+          {
+            "label": "Student Program",
+            "link": "https://vedanta.org/student-program/",
+            "newTab": true
+          }
+        ]
+      },
+      {
+        "label": "Calendar",
+        "link": "calendar.html",
+        "newTab": false,
+        "dropdown": []
+      },
+      {
+        "label": "Resources",
+        "link": "#",
+        "newTab": false,
+        "dropdown": [
+          {
+            "label": "Library & Readings",
+            "link": "readings.html",
+            "newTab": false
+          },
+          {
+            "label": "Newsletter",
+            "link": "newsletter.html",
+            "newTab": false
+          }
+        ]
+      },
+      {
+        "label": "Contact Us",
+        "link": "contactus.html",
+        "newTab": false,
+        "dropdown": []
+      }
+    ]
+  },
+  "homepage": {
+    "heroTitle": "Arise, Awake, And Stop Not Till The Goal Is Reached",
+    "heroSubtitle": "Ramakrishna Vedanta Society of North Texas",
+    "heroDescription": "Experience the living tradition of Vedanta as brought to America by Swami Vivekananda. Discover your true divine nature through meditation, study, and service to humanity.",
+    "heroImage": "images/vivekananda-standing.png",
+    "primaryCTA": "Our Story",
+    "primaryCTALink": "aboutus.html",
+    "secondaryCTA": "Join Us Sunday",
+    "secondaryCTALink": "calendar.html",
+    "heroStats": [
+      {
+        "number": "1893",
+        "label": "Vedanta in America"
+      },
+      {
+        "number": "2007",
+        "label": "Serving North Texas"
+      },
+      {
+        "number": "Weekly",
+        "label": "Sunday Services"
+      }
+    ]
+  },
+  "general": {
+    "siteTitle": "Ramakrishna Vedanta Society of North Texas",
+    "siteDescription": "Experience the living tradition of Vedanta in the Dallas-Fort Worth area. Join us for meditation, lectures, study groups, and spiritual community.",
+    "siteLogo": "images/logo.png",
+    "favicon": "images/logo.png",
+    "primaryColor": "#FF9933",
+    "enableAnnouncements": false,
+    "announcementText": "",
+    "announcementLink": ""
+  }
+}
