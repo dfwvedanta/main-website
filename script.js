@@ -1,4 +1,55 @@
 // ================================
+// Header & Footer Include Loader
+// ================================
+
+class IncludeLoader {
+    constructor() {
+        this.loadIncludes();
+    }
+
+    async loadIncludes() {
+        await Promise.all([
+            this.loadHeader(),
+            this.loadFooter()
+        ]);
+
+        // Update current year in footer
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    }
+
+    async loadHeader() {
+        const headerPlaceholder = document.getElementById('header-placeholder');
+        if (!headerPlaceholder) return;
+
+        try {
+            const response = await fetch('includes/header.html');
+            if (!response.ok) throw new Error('Failed to load header');
+            const html = await response.text();
+            headerPlaceholder.innerHTML = html;
+        } catch (error) {
+            console.error('Error loading header:', error);
+        }
+    }
+
+    async loadFooter() {
+        const footerPlaceholder = document.getElementById('footer-placeholder');
+        if (!footerPlaceholder) return;
+
+        try {
+            const response = await fetch('includes/footer.html');
+            if (!response.ok) throw new Error('Failed to load footer');
+            const html = await response.text();
+            footerPlaceholder.innerHTML = html;
+        } catch (error) {
+            console.error('Error loading footer:', error);
+        }
+    }
+}
+
+// ================================
 // WebGL Particle System
 // ================================
 
@@ -698,8 +749,12 @@ class DropdownHandler {
 // Initialize Everything
 // ================================
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all components
+document.addEventListener('DOMContentLoaded', async () => {
+    // Load header and footer first
+    const includeLoader = new IncludeLoader();
+    await includeLoader.loadIncludes();
+
+    // Initialize all components after header/footer are loaded
     new Navigation();
     new ScrollAnimations();
     new ParallaxEffects();
@@ -710,12 +765,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Optional: Custom cursor (uncomment to enable)
     // new CustomCursor();
-
-    // Add dynamic copyright year
-    const copyrightYear = document.querySelector('.footer-bottom p');
-    if (copyrightYear) {
-        copyrightYear.textContent = `© ${new Date().getFullYear()} Ramakrishna Vedanta Society of North Texas. All rights reserved.`;
-    }
 });
 
 // ================================
