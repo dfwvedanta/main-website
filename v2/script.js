@@ -776,7 +776,15 @@ class LibrarySearch {
         this.searchInput.addEventListener('input', () => this.handleSearch());
         this.clearBtn.addEventListener('click', () => this.clearSearch());
 
-        // Handle Enter key
+        // Click anywhere on search box to focus input
+        const searchBox = document.querySelector('.library-search-box');
+        if (searchBox) {
+            searchBox.addEventListener('click', () => {
+                this.searchInput.focus();
+            });
+        }
+
+        // Handle Escape key
         this.searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.clearSearch();

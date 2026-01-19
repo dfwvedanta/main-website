@@ -2203,6 +2203,7 @@ section {
     padding: 0.75rem 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    cursor: text;
 }
 
 .library-search-box:focus-within {
@@ -2214,6 +2215,7 @@ section {
     color: var(--color-text-light);
     margin-right: 0.75rem;
     flex-shrink: 0;
+    pointer-events: none;
 }
 
 #library-search-input {
@@ -2224,6 +2226,7 @@ section {
     font-family: var(--font-body);
     color: var(--color-text);
     background: transparent;
+    padding-left: 0;
 }
 
 #library-search-input::placeholder {
