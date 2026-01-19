@@ -3703,8 +3703,7 @@ section {
 }
 
 .emblem-element {
-    display: flex;
-    gap: var(--spacing-md);
+    display: block;
     padding: var(--spacing-md);
     background: white;
     border: 2px solid #e9ecef;
@@ -3717,19 +3716,7 @@ section {
 .emblem-element:hover {
     border-color: var(--color-primary);
     box-shadow: 0 5px 20px rgba(230, 126, 34, 0.1);
-    transform: translateX(5px) !important;
-}
-
-.element-icon {
-    font-size: 2.5rem;
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #fff8f0 0%, #ffe8d0 100%);
-    border-radius: 12px;
+    transform: translateY(-2px) !important;
 }
 
 .element-content h3 {
@@ -3870,15 +3857,6 @@ section {
 
     .emblem-large {
         max-width: 250px;
-    }
-
-    .emblem-element {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .element-icon {
-        margin: 0 auto;
     }
 
     .element-content h3 {
@@ -4058,11 +4036,6 @@ section {
     transform: translateY(-2px) !important;
 }
 
-.teaching-icon {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-sm);
-}
-
 .teaching-card h4 {
     font-size: 1.3rem;
     color: var(--color-primary);
@@ -4159,10 +4132,6 @@ section {
 
     .vivekananda-section h3 {
         font-size: 1.5rem;
-    }
-
-    .teaching-icon {
-        font-size: 2rem;
     }
 
     .teaching-card h4 {
