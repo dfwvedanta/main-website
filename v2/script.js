@@ -749,6 +749,132 @@ class DropdownHandler {
 // Initialize Everything
 // ================================
 
+// ================================
+// Library Search
+// ================================
+
+class LibrarySearch {
+    constructor() {
+        this.searchInput = document.getElementById('library-search-input');
+        this.clearBtn = document.getElementById('library-search-clear');
+        this.resultsInfo = document.getElementById('library-search-results');
+
+        if (!this.searchInput) return;
+
+        this.allCards = [];
+        this.allSections = [];
+
+        this.init();
+    }
+
+    init() {
+        // Collect all searchable cards and their parent sections
+        this.allCards = Array.from(document.querySelectorAll('.resource-card, .support-card'));
+        this.allSections = Array.from(document.querySelectorAll('.content-section'));
+
+        // Add event listeners
+        this.searchInput.addEventListener('input', () => this.handleSearch());
+        this.clearBtn.addEventListener('click', () => this.clearSearch());
+
+        // Handle Enter key
+        this.searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.clearSearch();
+            }
+        });
+    }
+
+    handleSearch() {
+        const query = this.searchInput.value.trim().toLowerCase();
+
+        // Show/hide clear button
+        if (query) {
+            this.clearBtn.style.display = 'flex';
+        } else {
+            this.clearBtn.style.display = 'none';
+            this.showAll();
+            this.resultsInfo.style.display = 'none';
+            return;
+        }
+
+        let visibleCount = 0;
+
+        // Search through all cards
+        this.allCards.forEach(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+            const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+            const link = card.querySelector('a')?.textContent.toLowerCase() || '';
+
+            // Get section title
+            const section = card.closest('.content-section');
+            const sectionTitle = section?.querySelector('.section-title')?.textContent.toLowerCase() || '';
+
+            // Check if query matches
+            const matches = title.includes(query) ||
+                          description.includes(query) ||
+                          link.includes(query) ||
+                          sectionTitle.includes(query);
+
+            if (matches) {
+                card.classList.remove('search-hidden');
+                card.classList.add('search-highlight');
+                visibleCount++;
+            } else {
+                card.classList.add('search-hidden');
+                card.classList.remove('search-highlight');
+            }
+        });
+
+        // Hide sections that have no visible cards
+        this.allSections.forEach(section => {
+            const visibleCards = section.querySelectorAll('.resource-card:not(.search-hidden), .support-card:not(.search-hidden)');
+            if (visibleCards.length === 0 && section.querySelector('.resource-card, .support-card')) {
+                section.style.display = 'none';
+            } else {
+                section.style.display = '';
+            }
+        });
+
+        // Show results info
+        this.showResultsInfo(visibleCount, query);
+    }
+
+    showResultsInfo(count, query) {
+        this.resultsInfo.style.display = 'block';
+
+        if (count === 0) {
+            this.resultsInfo.className = 'search-results-info no-results';
+            this.resultsInfo.textContent = `No results found for "${query}". Try different keywords.`;
+        } else if (count === 1) {
+            this.resultsInfo.className = 'search-results-info';
+            this.resultsInfo.textContent = `Found 1 result for "${query}"`;
+        } else {
+            this.resultsInfo.className = 'search-results-info';
+            this.resultsInfo.textContent = `Found ${count} results for "${query}"`;
+        }
+    }
+
+    showAll() {
+        // Show all cards and sections
+        this.allCards.forEach(card => {
+            card.classList.remove('search-hidden');
+            card.classList.remove('search-highlight');
+        });
+
+        this.allSections.forEach(section => {
+            section.style.display = '';
+        });
+    }
+
+    clearSearch() {
+        this.searchInput.value = '';
+        this.clearBtn.style.display = 'none';
+        this.resultsInfo.style.display = 'none';
+        this.showAll();
+        this.searchInput.focus();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Load header and footer first
     const includeLoader = new IncludeLoader();
@@ -766,6 +892,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     new MeditationSession();
     new LoadingAnimation();
     new DropdownHandler();
+    new LibrarySearch();
 
     // Optional: Custom cursor (uncomment to enable)
     // new CustomCursor();
