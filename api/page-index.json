@@ -199,12 +199,6 @@
         "sectionContent": "The Ramakrishna Vedanta Society of North Texas is a non-profit organization dedicated to spreading the timeless teachings of Vedanta and serving the community through spiritual education and charitable activities.\n\n\nAll our programs and services are offered free of charge. We rely entirely on the generous donations of our members and well-wishers to sustain our activities and maintain our center.\n\n\nAll donations are tax-deductible under Section 501(c)(3) of the IRS code.",
         "sectionImage": "",
         "bgColor": "White"
-      },
-      {
-        "sectionTitle": "Vivekananda Hall Project",
-        "sectionContent": "We are currently working towards expanding our facilities with the construction of Vivekananda Hall, a dedicated space for larger gatherings, retreats, and community programs.\n\n\nThis new hall will enable us to serve more people and offer enhanced programs for spiritual growth and community engagement.\n\n\nFor more information about contributing to this special project, please contact us.",
-        "sectionImage": "",
-        "bgColor": "White"
       }
     ],
     "ctaText": "",
@@ -213,7 +207,7 @@
     "menuParent": "None",
     "menuOrder": 0,
     "published": true,
-    "body": "## Make a Difference\n\nThe Ramakrishna Vedanta Society of North Texas is a non-profit organization dedicated to spreading the timeless teachings of Vedanta and serving the community through spiritual education and charitable activities.\n\n\nAll our programs and services are offered free of charge. We rely entirely on the generous donations of our members and well-wishers to sustain our activities and maintain our center.\n\n\nAll donations are tax-deductible under Section 501(c)(3) of the IRS code.\n\n## Vivekananda Hall Project\n\nWe are currently working towards expanding our facilities with the construction of Vivekananda Hall, a dedicated space for larger gatherings, retreats, and community programs.\n\n\nThis new hall will enable us to serve more people and offer enhanced programs for spiritual growth and community engagement.\n\n\nFor more information about contributing to this special project, please contact us.",
+    "body": "## Make a Difference\n\nThe Ramakrishna Vedanta Society of North Texas is a non-profit organization dedicated to spreading the timeless teachings of Vedanta and serving the community through spiritual education and charitable activities.\n\n\nAll our programs and services are offered free of charge. We rely entirely on the generous donations of our members and well-wishers to sustain our activities and maintain our center.\n\n\nAll donations are tax-deductible under Section 501(c)(3) of the IRS code.",
     "id": "donate"
   },
   "lectures": {

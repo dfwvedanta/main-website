@@ -23,22 +23,6 @@ sections:
     All donations are tax-deductible under Section 501(c)(3) of the IRS code.'
   sectionImage: ''
   bgColor: White
-- sectionTitle: Vivekananda Hall Project
-  sectionContent: 'We are currently working towards expanding our facilities with
-    the construction of Vivekananda Hall, a dedicated space for larger gatherings,
-    retreats, and community programs.
-
-
-
-    This new hall will enable us to serve more people and offer enhanced programs
-    for spiritual growth and community engagement.
-
-
-
-    For more information about contributing to this special project, please contact
-    us.'
-  sectionImage: ''
-  bgColor: White
 ctaText: ''
 ctaLink: ''
 showInMenu: false
@@ -56,13 +40,3 @@ All our programs and services are offered free of charge. We rely entirely on th
 
 
 All donations are tax-deductible under Section 501(c)(3) of the IRS code.
-
-## Vivekananda Hall Project
-
-We are currently working towards expanding our facilities with the construction of Vivekananda Hall, a dedicated space for larger gatherings, retreats, and community programs.
-
-
-This new hall will enable us to serve more people and offer enhanced programs for spiritual growth and community engagement.
-
-
-For more information about contributing to this special project, please contact us.
