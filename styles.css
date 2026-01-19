@@ -3026,3 +3026,330 @@ section {
         height: 45px;
     }
 }
+
+/* ==========================================
+   Interactive Meditation Module
+   ========================================== */
+.meditation-module-card {
+    margin-top: 3rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8eff5 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.meditation-module-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-heading);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.meditation-module-subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 1.125rem;
+    margin-bottom: 2.5rem;
+}
+
+.meditation-interface {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Breathing Circle */
+.breathing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.breathing-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #f0f4f8 100%);
+    box-shadow:
+        0 0 0 4px rgba(255, 152, 0, 0.2),
+        0 0 40px rgba(255, 152, 0, 0.3),
+        inset 0 0 30px rgba(255, 152, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.breathing-circle::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 152, 0, 0.15) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.breathing-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    z-index: 1;
+    font-family: var(--font-heading);
+}
+
+/* Breathing phases */
+.breathing-circle.inhale {
+    transform: scale(1.5);
+    box-shadow:
+        0 0 0 4px rgba(255, 152, 0, 0.4),
+        0 0 60px rgba(255, 152, 0, 0.6),
+        inset 0 0 30px rgba(255, 152, 0, 0.2);
+}
+
+.breathing-circle.hold {
+    transform: scale(1.5);
+}
+
+.breathing-circle.exhale {
+    transform: scale(1);
+    box-shadow:
+        0 0 0 4px rgba(255, 152, 0, 0.1),
+        0 0 20px rgba(255, 152, 0, 0.2),
+        inset 0 0 20px rgba(255, 152, 0, 0.05);
+}
+
+.breathing-circle.pause {
+    transform: scale(1);
+}
+
+.breathing-circle.complete {
+    background: radial-gradient(circle, #4caf50 0%, #66bb6a 100%);
+    box-shadow:
+        0 0 0 4px rgba(76, 175, 80, 0.4),
+        0 0 60px rgba(76, 175, 80, 0.6);
+}
+
+.breathing-circle.complete .breathing-text {
+    color: white;
+}
+
+.breathing-instruction {
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    color: var(--color-text);
+    text-align: center;
+    min-height: 1.5rem;
+    font-style: italic;
+}
+
+/* Timer */
+.meditation-timer {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--color-heading);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.1em;
+}
+
+/* Duration Selector */
+.duration-selector {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.duration-selector label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--color-heading);
+}
+
+.duration-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.duration-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-border);
+    background: white;
+    color: var(--color-text);
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.duration-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.duration-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.duration-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Controls */
+.meditation-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.meditation-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.meditation-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.meditation-btn:active {
+    transform: translateY(0);
+}
+
+.start-btn {
+    background: var(--color-primary);
+    color: white;
+}
+
+.start-btn:hover {
+    background: #e68900;
+}
+
+.pause-btn {
+    background: #ffa726;
+    color: white;
+}
+
+.pause-btn:hover {
+    background: #ff9800;
+}
+
+.stop-btn {
+    background: #666;
+    color: white;
+}
+
+.stop-btn:hover {
+    background: #555;
+}
+
+/* Instructions */
+.meditation-instructions {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 4px solid var(--color-primary);
+}
+
+.meditation-instructions p {
+    margin-bottom: 0.75rem;
+}
+
+.meditation-instructions ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.meditation-instructions li {
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .meditation-module-card {
+        padding: 2rem 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .meditation-module-title {
+        font-size: 1.75rem;
+    }
+
+    .meditation-module-subtitle {
+        font-size: 1rem;
+    }
+
+    .breathing-circle {
+        width: 180px;
+        height: 180px;
+    }
+
+    .breathing-text {
+        font-size: 1.25rem;
+    }
+
+    .breathing-instruction {
+        font-size: 1rem;
+    }
+
+    .meditation-timer {
+        font-size: 2.5rem;
+    }
+
+    .duration-buttons {
+        gap: 0.5rem;
+    }
+
+    .duration-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .meditation-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .meditation-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .meditation-instructions {
+        padding: 1.25rem;
+    }
+}
