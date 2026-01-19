@@ -205,29 +205,40 @@
 
      <!-- Interactive Meditation Module -->
      <div class="meditation-module-card">
-      <h3 class="meditation-module-title">Try a Guided Meditation Now</h3>
-      <p class="meditation-module-subtitle">Experience the peace of meditation with our interactive breathing exercise</p>
+      <h3 class="meditation-module-title">Practice Meditation Now</h3>
+      <p class="meditation-module-subtitle">Experience the peace of silent meditation with a focal point for concentration</p>
 
       <div class="meditation-interface">
-       <!-- Breathing Circle -->
-       <div class="breathing-container">
-        <div class="breathing-circle" id="breathingCircle">
-         <div class="breathing-text" id="breathingText">Begin</div>
+       <!-- Focal Point Options -->
+       <div class="focal-point-selector">
+        <label>Choose Your Focal Point:</label>
+        <div class="focal-point-buttons">
+         <button class="focal-btn active" data-focus="om">Om Symbol</button>
+         <button class="focal-btn" data-focus="point">Single Point</button>
+         <button class="focal-btn" data-focus="silent">Silent (Eyes Closed)</button>
         </div>
-        <div class="breathing-instruction" id="breathingInstruction">Click "Start" to begin your meditation</div>
+       </div>
+
+       <!-- Meditation Focal Point Display -->
+       <div class="meditation-focal-container" id="focalContainer">
+        <div class="meditation-focal om-symbol" id="meditationFocal">
+         ॐ
+        </div>
+        <div class="meditation-instruction" id="meditationInstruction">Focus your attention gently on the symbol</div>
        </div>
 
        <!-- Timer Display -->
-       <div class="meditation-timer" id="meditationTimer">5:00</div>
+       <div class="meditation-timer" id="meditationTimer">10:00</div>
 
        <!-- Duration Selection -->
        <div class="duration-selector">
-        <label>Choose Duration:</label>
+        <label>Duration:</label>
         <div class="duration-buttons">
-         <button class="duration-btn active" data-duration="300">5 min</button>
-         <button class="duration-btn" data-duration="600">10 min</button>
+         <button class="duration-btn" data-duration="300">5 min</button>
+         <button class="duration-btn active" data-duration="600">10 min</button>
          <button class="duration-btn" data-duration="900">15 min</button>
          <button class="duration-btn" data-duration="1200">20 min</button>
+         <button class="duration-btn" data-duration="1800">30 min</button>
         </div>
        </div>
 
@@ -237,31 +248,29 @@
          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
           <path d="M8 5v14l11-7z"/>
          </svg>
-         Start
-        </button>
-        <button class="meditation-btn pause-btn" id="pauseBtn" style="display: none;">
-         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-         </svg>
-         Pause
+         Begin Meditation
         </button>
         <button class="meditation-btn stop-btn" id="stopBtn" style="display: none;">
          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
           <rect x="6" y="6" width="12" height="12"/>
          </svg>
-         Stop
+         End Session
         </button>
        </div>
 
-       <!-- Instructions -->
+       <!-- Meditation Instructions -->
        <div class="meditation-instructions">
-        <p><strong>How to practice:</strong></p>
+        <p><strong>How to Meditate (Dharana - Concentration):</strong></p>
         <ul>
-         <li>Find a comfortable seated position</li>
-         <li>Close your eyes or maintain a soft gaze</li>
-         <li>Follow the breathing circle - inhale as it expands, exhale as it contracts</li>
-         <li>If your mind wanders, gently bring attention back to your breath</li>
+         <li><strong>Posture:</strong> Sit with your spine straight, either cross-legged or in a chair. Keep your body still and relaxed.</li>
+         <li><strong>Focus:</strong> Gently fix your attention on the chosen focal point. If using Om or the point, keep your eyes softly focused on it. If practicing silent meditation, close your eyes.</li>
+         <li><strong>Mind:</strong> When your mind wanders (and it will), simply notice without judgment and gently bring your attention back to the focal point.</li>
+         <li><strong>Patience:</strong> Don't force concentration. Let it develop naturally through practice.</li>
+         <li><strong>Duration:</strong> Consistency matters more than length. Even 10 minutes daily is beneficial.</li>
         </ul>
+        <p style="margin-top: 1rem; font-style: italic; color: #666;">
+         "The mind is like a lake. When the waters are still, you can see your true Self reflected." - Vedantic Teaching
+        </p>
        </div>
       </div>
      </div>
@@ -297,22 +306,32 @@
   <script>
    // Interactive Meditation Module
    document.addEventListener('DOMContentLoaded', function() {
-    const breathingCircle = document.getElementById('breathingCircle');
-    const breathingText = document.getElementById('breathingText');
-    const breathingInstruction = document.getElementById('breathingInstruction');
+    const focalContainer = document.getElementById('focalContainer');
+    const meditationFocal = document.getElementById('meditationFocal');
+    const meditationInstruction = document.getElementById('meditationInstruction');
     const timerDisplay = document.getElementById('meditationTimer');
     const startBtn = document.getElementById('startBtn');
-    const pauseBtn = document.getElementById('pauseBtn');
     const stopBtn = document.getElementById('stopBtn');
     const durationBtns = document.querySelectorAll('.duration-btn');
+    const focalBtns = document.querySelectorAll('.focal-btn');
 
     let meditationInterval;
-    let breathingInterval;
-    let totalSeconds = 300; // Default 5 minutes
+    let totalSeconds = 600; // Default 10 minutes
     let remainingSeconds = totalSeconds;
     let isRunning = false;
-    let isPaused = false;
-    let breathingPhase = 'inhale'; // inhale, hold, exhale, pause
+    let currentFocus = 'om';
+
+    // Focal point selection
+    focalBtns.forEach(btn => {
+     btn.addEventListener('click', function() {
+      if (!isRunning) {
+       focalBtns.forEach(b => b.classList.remove('active'));
+       this.classList.add('active');
+       currentFocus = this.dataset.focus;
+       updateFocalPoint(false);
+      }
+     });
+    });
 
     // Duration selection
     durationBtns.forEach(btn => {
@@ -327,85 +346,56 @@
      });
     });
 
+    function updateFocalPoint(isMeditating) {
+     meditationFocal.classList.remove('om-symbol', 'single-point', 'silent-mode');
+
+     if (currentFocus === 'om') {
+      meditationFocal.classList.add('om-symbol');
+      meditationFocal.innerHTML = 'ॐ';
+      meditationInstruction.textContent = isMeditating ?
+       'Gently fix your gaze on Om. When thoughts arise, return your attention here.' :
+       'Focus your attention gently on the symbol';
+     } else if (currentFocus === 'point') {
+      meditationFocal.classList.add('single-point');
+      meditationFocal.innerHTML = '<div class="point-dot"></div>';
+      meditationInstruction.textContent = isMeditating ?
+       'Keep your gaze steady on the point. Let your mind become one-pointed.' :
+       'Fix your gaze on the single point';
+     } else {
+      meditationFocal.classList.add('silent-mode');
+      meditationFocal.innerHTML = '<div class="silent-icon">Close your eyes and turn inward</div>';
+      meditationInstruction.textContent = isMeditating ?
+       'Sit in silence. Observe your thoughts without attachment.' :
+       'Close your eyes and meditate in silence';
+     }
+
+     if (isMeditating) {
+      meditationFocal.classList.add('active');
+     } else {
+      meditationFocal.classList.remove('active');
+     }
+    }
+
     function updateTimerDisplay() {
      const minutes = Math.floor(remainingSeconds / 60);
      const seconds = remainingSeconds % 60;
      timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    function startBreathing() {
-     const breathingCycle = [
-      { phase: 'inhale', duration: 4000, text: 'Breathe In', instruction: 'Slowly inhale through your nose' },
-      { phase: 'hold', duration: 2000, text: 'Hold', instruction: 'Hold your breath gently' },
-      { phase: 'exhale', duration: 6000, text: 'Breathe Out', instruction: 'Slowly exhale through your mouth' },
-      { phase: 'pause', duration: 2000, text: 'Rest', instruction: 'Pause naturally before the next breath' }
-     ];
-
-     let currentPhaseIndex = 0;
-
-     function nextPhase() {
-      if (!isRunning || isPaused) return;
-
-      const phase = breathingCycle[currentPhaseIndex];
-      breathingText.textContent = phase.text;
-      breathingInstruction.textContent = phase.instruction;
-
-      // Remove all phase classes
-      breathingCircle.classList.remove('inhale', 'hold', 'exhale', 'pause');
-      // Add current phase class
-      breathingCircle.classList.add(phase.phase);
-
-      currentPhaseIndex = (currentPhaseIndex + 1) % breathingCycle.length;
-
-      breathingInterval = setTimeout(nextPhase, phase.duration);
-     }
-
-     nextPhase();
-    }
-
-    function stopBreathing() {
-     clearTimeout(breathingInterval);
-     breathingCircle.classList.remove('inhale', 'hold', 'exhale', 'pause');
-     breathingText.textContent = 'Begin';
-     breathingInstruction.textContent = 'Click "Start" to begin your meditation';
-    }
-
     function startMeditation() {
      isRunning = true;
-     isPaused = false;
      startBtn.style.display = 'none';
-     pauseBtn.style.display = 'inline-flex';
      stopBtn.style.display = 'inline-flex';
 
-     // Disable duration selection
+     // Disable controls during meditation
      durationBtns.forEach(btn => btn.disabled = true);
+     focalBtns.forEach(btn => btn.disabled = true);
 
-     startBreathing();
+     // Update focal point for meditation state
+     updateFocalPoint(true);
 
-     meditationInterval = setInterval(function() {
-      remainingSeconds--;
-      updateTimerDisplay();
-
-      if (remainingSeconds <= 0) {
-       completeMeditation();
-      }
-     }, 1000);
-    }
-
-    function pauseMeditation() {
-     isPaused = true;
-     clearInterval(meditationInterval);
-     stopBreathing();
-     pauseBtn.style.display = 'none';
-     startBtn.style.display = 'inline-flex';
-     startBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Resume';
-    }
-
-    function resumeMeditation() {
-     isPaused = false;
-     startBtn.style.display = 'none';
-     pauseBtn.style.display = 'inline-flex';
-     startBreathing();
+     // Add meditation state to container
+     focalContainer.classList.add('meditating');
 
      meditationInterval = setInterval(function() {
       remainingSeconds--;
@@ -419,18 +409,19 @@
 
     function stopMeditation() {
      isRunning = false;
-     isPaused = false;
      clearInterval(meditationInterval);
-     stopBreathing();
 
      // Reset UI
      startBtn.style.display = 'inline-flex';
-     pauseBtn.style.display = 'none';
      stopBtn.style.display = 'none';
-     startBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Start';
 
-     // Enable duration selection
+     // Enable controls
      durationBtns.forEach(btn => btn.disabled = false);
+     focalBtns.forEach(btn => btn.disabled = false);
+
+     // Remove meditation state
+     focalContainer.classList.remove('meditating');
+     updateFocalPoint(false);
 
      // Reset timer
      const selectedBtn = document.querySelector('.duration-btn.active');
@@ -441,31 +432,26 @@
 
     function completeMeditation() {
      clearInterval(meditationInterval);
-     stopBreathing();
      isRunning = false;
 
-     breathingText.textContent = 'Complete';
-     breathingInstruction.textContent = 'Well done! Take a moment to notice how you feel.';
-     breathingCircle.classList.add('complete');
+     // Show completion message
+     meditationFocal.classList.remove('om-symbol', 'single-point', 'silent-mode');
+     meditationFocal.classList.add('complete');
+     meditationFocal.innerHTML = '🙏';
+     meditationInstruction.textContent = 'Meditation complete. Slowly open your eyes and notice how you feel.';
 
-     // Play completion bell sound (optional)
+     // Auto-reset after 8 seconds
      setTimeout(function() {
       stopMeditation();
-      breathingCircle.classList.remove('complete');
-     }, 5000);
+     }, 8000);
     }
 
     // Event listeners
-    startBtn.addEventListener('click', function() {
-     if (isPaused) {
-      resumeMeditation();
-     } else {
-      startMeditation();
-     }
-    });
-
-    pauseBtn.addEventListener('click', pauseMeditation);
+    startBtn.addEventListener('click', startMeditation);
     stopBtn.addEventListener('click', stopMeditation);
+
+    // Initialize timer display
+    updateTimerDisplay();
    });
   </script>
  </body>
