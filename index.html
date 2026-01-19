@@ -392,6 +392,40 @@
         </div>
     </section>
 
+    <!-- Daily Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-container">
+                <div class="quote-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 7.5C10 5.567 8.433 4 6.5 4C4.567 4 3 5.567 3 7.5C3 9.433 4.567 11 6.5 11C6.72 11 6.933 10.973 7.137 10.922C6.97 12.595 6.104 14.094 4.663 15.104C4.309 15.341 4.217 15.832 4.454 16.186C4.621 16.439 4.903 16.582 5.193 16.582C5.344 16.582 5.497 16.539 5.631 16.447C7.689 15.057 9 12.624 9 10V7.5H10ZM21 7.5C21 5.567 19.433 4 17.5 4C15.567 4 14 5.567 14 7.5C14 9.433 15.567 11 17.5 11C17.72 11 17.933 10.973 18.137 10.922C17.97 12.595 17.104 14.094 15.663 15.104C15.309 15.341 15.217 15.832 15.454 16.186C15.621 16.439 15.903 16.582 16.193 16.582C16.344 16.582 16.497 16.539 16.631 16.447C18.689 15.057 20 12.624 20 10V7.5H21Z" fill="currentColor" opacity="0.2"/>
+                    </svg>
+                </div>
+                <h2 class="quote-section-title">Wisdom of Swami Vivekananda</h2>
+                <p class="quote-section-subtitle">Daily inspiration from the teachings of Vedanta</p>
+                <div class="quote-content">
+                    <blockquote id="daily-quote" class="daily-quote">
+                        Loading quote...
+                    </blockquote>
+                    <div class="quote-author">— Swami Vivekananda</div>
+                </div>
+                <div class="quote-footer">
+                    <button id="prev-quote" class="quote-nav-btn" title="Previous Quote">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <span id="quote-number" class="quote-number">Quote 1 of 100</span>
+                    <button id="next-quote" class="quote-nav-btn" title="Next Quote">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -413,6 +447,65 @@
     <script src="script.js"></script>
     <script src="add-to-calendar.js"></script>
     <script>
+        // Load and display daily quote
+        let allQuotes = [];
+        let currentQuoteIndex = 0;
+
+        async function loadQuotes() {
+            try {
+                const response = await fetch('quotes.txt');
+                const text = await response.text();
+                allQuotes = text.split('\n').filter(quote => quote.trim() !== '');
+
+                // Get quote index based on day of year
+                const now = new Date();
+                const start = new Date(now.getFullYear(), 0, 0);
+                const diff = now - start;
+                const oneDay = 1000 * 60 * 60 * 24;
+                const dayOfYear = Math.floor(diff / oneDay);
+
+                // Use day of year to select quote (cycles through 100 quotes)
+                currentQuoteIndex = dayOfYear % allQuotes.length;
+                displayQuote(currentQuoteIndex);
+            } catch (error) {
+                console.error('Error loading quotes:', error);
+                document.getElementById('daily-quote').textContent = 'Arise, awake, and stop not till the goal is reached.';
+            }
+        }
+
+        function displayQuote(index) {
+            if (allQuotes.length === 0) return;
+
+            const quoteElement = document.getElementById('daily-quote');
+            const quoteNumberElement = document.getElementById('quote-number');
+
+            // Add fade out effect
+            quoteElement.style.opacity = '0';
+
+            setTimeout(() => {
+                quoteElement.textContent = allQuotes[index];
+                quoteNumberElement.textContent = `Quote ${index + 1} of ${allQuotes.length}`;
+
+                // Fade in
+                quoteElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Quote navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuotes();
+
+            document.getElementById('prev-quote').addEventListener('click', function() {
+                currentQuoteIndex = (currentQuoteIndex - 1 + allQuotes.length) % allQuotes.length;
+                displayQuote(currentQuoteIndex);
+            });
+
+            document.getElementById('next-quote').addEventListener('click', function() {
+                currentQuoteIndex = (currentQuoteIndex + 1) % allQuotes.length;
+                displayQuote(currentQuoteIndex);
+            });
+        });
+
         // Automatically sort events by date
         document.addEventListener('DOMContentLoaded', function() {
             const currentDate = new Date();

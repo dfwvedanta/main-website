@@ -2826,3 +2826,203 @@ section {
         border-left-color: var(--color-primary);
     }
 }
+
+/* ==========================================
+   Quote Section
+   ========================================== */
+.quote-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f0e3 0%, #faf6f1 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(255, 152, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 152, 0, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.quote-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.quote-icon {
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.quote-section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-heading);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.quote-section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.quote-content {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 152, 0, 0.1);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.quote-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    border-radius: 5px;
+}
+
+.daily-quote {
+    font-size: 1.5rem;
+    line-height: 2;
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition: opacity 0.3s ease;
+    min-height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-author {
+    margin-top: 2rem;
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.quote-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.quote-nav-btn {
+    background: white;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);
+}
+
+.quote-nav-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+}
+
+.quote-nav-btn:active {
+    transform: scale(0.95);
+}
+
+.quote-number {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+    min-width: 120px;
+}
+
+/* Mobile responsive for quote section */
+@media (max-width: 768px) {
+    .quote-section {
+        padding: 3rem 0;
+    }
+
+    .quote-section-title {
+        font-size: 2rem;
+    }
+
+    .quote-section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .quote-content {
+        padding: 2rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .daily-quote {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        min-height: 8rem;
+    }
+
+    .quote-author {
+        font-size: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .quote-footer {
+        gap: 1rem;
+    }
+
+    .quote-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .quote-number {
+        font-size: 0.875rem;
+        min-width: 100px;
+    }
+
+    .quote-icon svg {
+        width: 45px;
+        height: 45px;
+    }
+}
