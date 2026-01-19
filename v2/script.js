@@ -754,6 +754,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const includeLoader = new IncludeLoader();
     await includeLoader.loadIncludes();
 
+    // Initialize modals after header is loaded
+    initEmblemModal();
+    initVivekanandaModal();
+
     // Initialize all components after header/footer are loaded
     new Navigation();
     new ScrollAnimations();
@@ -1172,9 +1176,6 @@ if (document.readyState === 'loading') {
             await window.cmsLoader.updateNavigation();
             await window.cmsLoader.updateFooter();
         }
-
-        // Initialize emblem modal after header is loaded
-        initEmblemModal();
     });
 } else {
     // DOM already loaded
@@ -1184,9 +1185,6 @@ if (document.readyState === 'loading') {
         window.cmsLoader.updateNavigation();
         window.cmsLoader.updateFooter();
     }
-
-    // Initialize emblem modal
-    setTimeout(initEmblemModal, 100);
 }
 
 // ================================
