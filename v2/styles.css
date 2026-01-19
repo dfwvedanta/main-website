@@ -2211,13 +2211,6 @@ section {
     box-shadow: 0 4px 16px rgba(255, 153, 51, 0.2);
 }
 
-.search-icon {
-    color: var(--color-text-light);
-    margin-left: auto;
-    flex-shrink: 0;
-    pointer-events: none;
-}
-
 #library-search-input {
     flex: 1;
     border: none;
