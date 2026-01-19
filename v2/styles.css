@@ -2213,7 +2213,7 @@ section {
 
 .search-icon {
     color: var(--color-text-light);
-    margin-left: 0.75rem;
+    margin-left: auto;
     flex-shrink: 0;
     pointer-events: none;
 }
