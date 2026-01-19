@@ -3252,6 +3252,52 @@ section {
     letter-spacing: 0.1em;
 }
 
+/* Sound Toggle */
+.sound-toggle-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.sound-toggle {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sound-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.sound-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: white;
+    border: 2px solid var(--color-border);
+    border-radius: 25px;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.sound-toggle input:checked + .sound-toggle-label {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.sound-toggle:hover .sound-toggle-label {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sound-icon {
+    flex-shrink: 0;
+}
+
 /* Duration Selector */
 .duration-selector {
     margin-bottom: 2rem;

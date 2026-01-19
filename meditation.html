@@ -242,6 +242,19 @@
         </div>
        </div>
 
+       <!-- Sound Toggle -->
+       <div class="sound-toggle-container">
+        <label class="sound-toggle">
+         <input type="checkbox" id="soundToggle" checked>
+         <span class="sound-toggle-label">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="sound-icon">
+           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+          Sound & Voice
+         </span>
+        </label>
+       </div>
+
        <!-- Controls -->
        <div class="meditation-controls">
         <button class="meditation-btn start-btn" id="startBtn">
@@ -314,12 +327,79 @@
     const stopBtn = document.getElementById('stopBtn');
     const durationBtns = document.querySelectorAll('.duration-btn');
     const focalBtns = document.querySelectorAll('.focal-btn');
+    const soundToggle = document.getElementById('soundToggle');
 
     let meditationInterval;
     let totalSeconds = 600; // Default 10 minutes
     let remainingSeconds = totalSeconds;
     let isRunning = false;
     let currentFocus = 'om';
+    let soundEnabled = true;
+
+    // Audio Context for meditation bells
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioContext = null;
+
+    // Initialize audio on first user interaction
+    function initAudio() {
+     if (!audioContext) {
+      audioContext = new AudioContext();
+     }
+    }
+
+    // Create meditation bell sound
+    function playBell(frequency = 528, duration = 1.5, volume = 0.3) {
+     if (!soundEnabled || !audioContext) return;
+
+     const oscillator = audioContext.createOscillator();
+     const gainNode = audioContext.createGain();
+
+     oscillator.connect(gainNode);
+     gainNode.connect(audioContext.destination);
+
+     oscillator.frequency.value = frequency;
+     oscillator.type = 'sine';
+
+     // Gentle fade in and out
+     gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+     gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.1);
+     gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+
+     oscillator.start(audioContext.currentTime);
+     oscillator.stop(audioContext.currentTime + duration);
+    }
+
+    // Play completion chime (three bells)
+    function playCompletionChime() {
+     if (!soundEnabled || !audioContext) return;
+
+     playBell(528, 1.2, 0.25);  // C
+     setTimeout(() => playBell(660, 1.2, 0.25), 400);  // E
+     setTimeout(() => playBell(792, 1.5, 0.3), 800);  // G
+    }
+
+    // Text-to-Speech function
+    function speak(text) {
+     if (!soundEnabled || !window.speechSynthesis) return;
+
+     // Cancel any ongoing speech
+     window.speechSynthesis.cancel();
+
+     const utterance = new SpeechSynthesisUtterance(text);
+     utterance.rate = 0.85;  // Slightly slower, more meditative
+     utterance.pitch = 1.0;
+     utterance.volume = 0.7;
+
+     window.speechSynthesis.speak(utterance);
+    }
+
+    // Sound toggle
+    soundToggle.addEventListener('change', function() {
+     soundEnabled = this.checked;
+     if (soundEnabled && !audioContext) {
+      initAudio();
+     }
+    });
 
     // Focal point selection
     focalBtns.forEach(btn => {
@@ -387,6 +467,9 @@
      startBtn.style.display = 'none';
      stopBtn.style.display = 'inline-flex';
 
+     // Initialize audio context on user interaction
+     initAudio();
+
      // Disable controls during meditation
      durationBtns.forEach(btn => btn.disabled = true);
      focalBtns.forEach(btn => btn.disabled = true);
@@ -396,6 +479,12 @@
 
      // Add meditation state to container
      focalContainer.classList.add('meditating');
+
+     // Play starting bell and announcement
+     if (soundEnabled && audioContext) {
+      playBell(528, 1.5, 0.3);
+      setTimeout(() => speak('Begin your meditation'), 1800);
+     }
 
      meditationInterval = setInterval(function() {
       remainingSeconds--;
@@ -434,16 +523,22 @@
      clearInterval(meditationInterval);
      isRunning = false;
 
+     // Play completion chime and announcement
+     if (soundEnabled && audioContext) {
+      playCompletionChime();
+      setTimeout(() => speak('Your meditation is complete'), 1500);
+     }
+
      // Show completion message
      meditationFocal.classList.remove('om-symbol', 'single-point', 'silent-mode');
      meditationFocal.classList.add('complete');
      meditationFocal.innerHTML = '🙏';
      meditationInstruction.textContent = 'Meditation complete. Slowly open your eyes and notice how you feel.';
 
-     // Auto-reset after 8 seconds
+     // Auto-reset after 10 seconds
      setTimeout(function() {
       stopMeditation();
-     }, 8000);
+     }, 10000);
     }
 
     // Event listeners
