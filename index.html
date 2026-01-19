@@ -69,10 +69,9 @@
                 <button class="event-tab" data-tab="past">Past Events</button>
             </div>
 
-            <!-- Upcoming Events Tab -->
-            <div class="event-tab-content active" id="upcoming-events">
-                <div class="events-grid">
-                <div class="event-card">
+            <!-- All Events (will be sorted by JavaScript) -->
+            <div class="all-events-container" style="display: none;">
+                <div class="event-card" data-end-date="2026-01-17T20:00:00">
                     <div class="event-card-date">
                         <span class="month">Jan</span>
                         <span class="day">16-17</span>
@@ -86,12 +85,12 @@
                         </p>
                         <div class="event-card-actions">
                             <a href="event-swami-ishtananda-retreat.html" class="text-link">More Details →</a>
-                            <div id="event1-calendar"></div>
+                            <div class="event-calendar-placeholder"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="event-card">
+                <div class="event-card" data-end-date="2026-01-25T17:00:00">
                     <div class="event-card-date">
                         <span class="month">Jan</span>
                         <span class="day">18-25</span>
@@ -105,12 +104,12 @@
                         </p>
                         <div class="event-card-actions">
                             <a href="event-vivekananda-food-drive.html" class="text-link">More Details →</a>
-                            <div id="event2-calendar"></div>
+                            <div class="event-calendar-placeholder"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="event-card">
+                <div class="event-card" data-end-date="2026-02-26T21:00:00">
                     <div class="event-card-date">
                         <span class="month">Feb</span>
                         <span class="day">26</span>
@@ -124,11 +123,69 @@
                         </p>
                         <div class="event-card-actions">
                             <a href="event-shiva-ratri-puja.html" class="text-link">More Details →</a>
-                            <div id="event3-calendar"></div>
+                            <div class="event-calendar-placeholder"></div>
                         </div>
                     </div>
                 </div>
+
+                <div class="event-card" data-end-date="2025-12-25T20:00:00">
+                    <div class="event-card-date">
+                        <span class="month">Dec</span>
+                        <span class="day">25</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Christmas Eve Service</h3>
+                        <p class="event-card-time">December 25, 2025 | 6:00 PM - 8:00 PM</p>
+                        <p class="event-card-description">
+                            Special Christmas Eve service celebrating the birth of Jesus Christ with readings from the Gospel and reflections on the universal message of love and compassion.
+                        </p>
+                        <div class="event-card-actions">
+                            <a href="event-christmas-eve-service.html" class="text-link">More Details →</a>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="event-card" data-end-date="2025-11-17T23:59:00">
+                    <div class="event-card-date">
+                        <span class="month">Nov</span>
+                        <span class="day">15-17</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Fall Retreat with Swami Tyagananda</h3>
+                        <p class="event-card-time">November 15-17, 2025</p>
+                        <p class="event-card-description">
+                            Three-day spiritual retreat featuring talks on the Bhagavad Gita, meditation sessions, and question-answer sessions with Swami Tyagananda from the Vedanta Society of Boston.
+                        </p>
+                        <div class="event-card-actions">
+                            <a href="event-fall-retreat.html" class="text-link">More Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card" data-end-date="2025-10-12T21:00:00">
+                    <div class="event-card-date">
+                        <span class="month">Oct</span>
+                        <span class="day">12</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Durga Puja Celebration</h3>
+                        <p class="event-card-time">October 12, 2025 | 5:00 PM - 9:00 PM</p>
+                        <p class="event-card-description">
+                            Traditional Durga Puja celebration with puja rituals, devotional music, spiritual discourse on the Divine Mother, and prasad distribution.
+                        </p>
+                        <div class="event-card-actions">
+                            <a href="event-durga-puja.html" class="text-link">More Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events Tab -->
+            <div class="event-tab-content active" id="upcoming-events">
+                <div class="events-grid"></div>
                 <div class="section-cta">
                     <a href="calendar.html" class="btn btn-primary">View Full Calendar</a>
                 </div>
@@ -136,64 +193,7 @@
 
             <!-- Past Events Tab -->
             <div class="event-tab-content" id="past-events">
-                <div class="events-grid">
-                    <div class="event-card past-event">
-                        <div class="event-card-date">
-                            <span class="month">Dec</span>
-                            <span class="day">25</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="event-card-content">
-                            <h3>Christmas Eve Service</h3>
-                            <p class="event-card-time">December 25, 2025 | 6:00 PM - 8:00 PM</p>
-                            <p class="event-card-description">
-                                Special Christmas Eve service celebrating the birth of Jesus Christ with readings from the Gospel and reflections on the universal message of love and compassion.
-                            </p>
-                            <div class="event-card-actions">
-                                <a href="event-christmas-eve-service.html" class="text-link">More Details →</a>
-                                <span class="event-completed-badge">Completed</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="event-card past-event">
-                        <div class="event-card-date">
-                            <span class="month">Nov</span>
-                            <span class="day">15</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="event-card-content">
-                            <h3>Fall Retreat with Swami Tyagananda</h3>
-                            <p class="event-card-time">November 15-17, 2025</p>
-                            <p class="event-card-description">
-                                Three-day spiritual retreat featuring talks on the Bhagavad Gita, meditation sessions, and question-answer sessions with Swami Tyagananda from the Vedanta Society of Boston.
-                            </p>
-                            <div class="event-card-actions">
-                                <a href="event-fall-retreat.html" class="text-link">More Details →</a>
-                                <span class="event-completed-badge">Completed</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="event-card past-event">
-                        <div class="event-card-date">
-                            <span class="month">Oct</span>
-                            <span class="day">12</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="event-card-content">
-                            <h3>Durga Puja Celebration</h3>
-                            <p class="event-card-time">October 12, 2025 | 5:00 PM - 9:00 PM</p>
-                            <p class="event-card-description">
-                                Traditional Durga Puja celebration with puja rituals, devotional music, spiritual discourse on the Divine Mother, and prasad distribution.
-                            </p>
-                            <div class="event-card-actions">
-                                <a href="event-durga-puja.html" class="text-link">More Details →</a>
-                                <span class="event-completed-badge">Completed</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="events-grid"></div>
                 <div class="section-cta">
                     <a href="calendar.html" class="btn btn-primary">View All Past Events</a>
                 </div>
@@ -413,43 +413,86 @@
     <script src="script.js"></script>
     <script src="add-to-calendar.js"></script>
     <script>
-        // Initialize Add to Calendar buttons for home page events
+        // Automatically sort events by date
         document.addEventListener('DOMContentLoaded', function() {
-            // Event 1: Swami Ishtananda's Retreat
-            const homeEvent1 = new AddToCalendar({
-                title: "Swami Ishtananda's Retreat",
-                description: "Join us for a transformative weekend retreat with inspiring talks on Vedantic philosophy, guided meditation sessions, and opportunities for personal spiritual guidance.",
-                location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
-                startDate: new Date('2026-01-16T19:00:00'),
-                endDate: new Date('2026-01-17T20:00:00')
-            });
+            const currentDate = new Date();
+            const allEventsContainer = document.querySelector('.all-events-container');
+            const upcomingGrid = document.querySelector('#upcoming-events .events-grid');
+            const pastGrid = document.querySelector('#past-events .events-grid');
 
-            // Event 2: Vivekananda Food Drive
-            const homeEvent2 = new AddToCalendar({
-                title: "Vivekananda Food Drive 2026",
-                description: "Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week.",
-                location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
-                startDate: new Date('2026-01-18T09:00:00'),
-                endDate: new Date('2026-01-25T17:00:00')
-            });
+            // Event calendar configurations
+            const calendarConfigs = {
+                "Swami Ishtananda's Retreat": {
+                    startDate: new Date('2026-01-16T19:00:00'),
+                    endDate: new Date('2026-01-17T20:00:00'),
+                    description: "Join us for a transformative weekend retreat with inspiring talks on Vedantic philosophy, guided meditation sessions, and opportunities for personal spiritual guidance."
+                },
+                "Vivekananda Food Drive 2026": {
+                    startDate: new Date('2026-01-18T09:00:00'),
+                    endDate: new Date('2026-01-25T17:00:00'),
+                    description: "Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week."
+                },
+                "Shiva Ratri Puja Program": {
+                    startDate: new Date('2026-02-26T18:00:00'),
+                    endDate: new Date('2026-02-26T21:00:00'),
+                    description: "Special worship program celebrating Maha Shivaratri with traditional rituals, meditation, and spiritual discourse on Lord Shiva's significance in Vedanta."
+                }
+            };
 
-            // Event 3: Shiva Ratri Puja
-            const homeEvent3 = new AddToCalendar({
-                title: "Shiva Ratri Puja Program",
-                description: "Special worship program celebrating Maha Shivaratri with traditional rituals, meditation, and spiritual discourse on Lord Shiva's significance in Vedanta.",
-                location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
-                startDate: new Date('2026-02-26T18:00:00'),
-                endDate: new Date('2026-02-26T21:00:00')
-            });
+            if (allEventsContainer && upcomingGrid && pastGrid) {
+                const eventCards = allEventsContainer.querySelectorAll('.event-card');
 
-            // Add buttons to event cards
-            const event1Cal = document.getElementById('event1-calendar');
-            const event2Cal = document.getElementById('event2-calendar');
-            const event3Cal = document.getElementById('event3-calendar');
+                eventCards.forEach(card => {
+                    const endDateStr = card.getAttribute('data-end-date');
+                    const endDate = new Date(endDateStr);
+                    const eventTitle = card.querySelector('h3').textContent.trim();
 
-            if (event1Cal) event1Cal.appendChild(homeEvent1.createDropdown());
-            if (event2Cal) event2Cal.appendChild(homeEvent2.createDropdown());
-            if (event3Cal) event3Cal.appendChild(homeEvent3.createDropdown());
+                    // Clone the card
+                    const clonedCard = card.cloneNode(true);
+
+                    if (endDate > currentDate) {
+                        // Upcoming event
+                        upcomingGrid.appendChild(clonedCard);
+
+                        // Add calendar button if config exists
+                        if (calendarConfigs[eventTitle]) {
+                            const config = calendarConfigs[eventTitle];
+                            const calendarPlaceholder = clonedCard.querySelector('.event-calendar-placeholder');
+
+                            if (calendarPlaceholder) {
+                                const calendarEvent = new AddToCalendar({
+                                    title: eventTitle,
+                                    description: config.description,
+                                    location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
+                                    startDate: config.startDate,
+                                    endDate: config.endDate
+                                });
+                                calendarPlaceholder.appendChild(calendarEvent.createDropdown());
+                            }
+                        }
+                    } else {
+                        // Past event
+                        clonedCard.classList.add('past-event');
+
+                        // Add completed badge
+                        const actions = clonedCard.querySelector('.event-card-actions');
+                        if (actions) {
+                            const badge = document.createElement('span');
+                            badge.className = 'event-completed-badge';
+                            badge.textContent = 'Completed';
+                            actions.appendChild(badge);
+                        }
+
+                        // Remove calendar placeholder
+                        const calendarPlaceholder = clonedCard.querySelector('.event-calendar-placeholder');
+                        if (calendarPlaceholder) {
+                            calendarPlaceholder.remove();
+                        }
+
+                        pastGrid.appendChild(clonedCard);
+                    }
+                });
+            }
 
             // Event Tabs Functionality
             const eventTabs = document.querySelectorAll('.event-tab');
