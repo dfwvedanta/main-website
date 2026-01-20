@@ -2198,7 +2198,9 @@ section {
 }
 
 .calendar-header {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: var(--spacing-md);
 }
 
@@ -2207,6 +2209,37 @@ section {
     font-size: 2rem;
     font-weight: 600;
     color: var(--color-primary);
+    flex: 1;
+    text-align: center;
+}
+
+.calendar-nav-btn {
+    background: var(--color-white);
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--color-text);
+}
+
+.calendar-nav-btn:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.1);
+}
+
+.calendar-nav-btn:active {
+    transform: scale(0.95);
+}
+
+.calendar-nav-btn svg {
+    pointer-events: none;
 }
 
 .calendar-weekdays {
@@ -2238,6 +2271,12 @@ section {
     background: var(--color-white);
     transition: all 0.3s ease;
     position: relative;
+}
+
+.calendar-day.empty {
+    border: none;
+    background: transparent;
+    pointer-events: none;
 }
 
 .calendar-day:hover {
@@ -2336,6 +2375,11 @@ section {
         font-size: 1.5rem;
     }
 
+    .calendar-nav-btn {
+        width: 36px;
+        height: 36px;
+    }
+
     .calendar-day {
         min-height: 80px;
         padding: 0.25rem;
@@ -2361,6 +2405,20 @@ section {
 @media (max-width: 640px) {
     .visual-calendar {
         padding: var(--spacing-sm);
+    }
+
+    .calendar-month {
+        font-size: 1.2rem;
+    }
+
+    .calendar-nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .calendar-nav-btn svg {
+        width: 16px;
+        height: 16px;
     }
 
     .calendar-days {
