@@ -889,7 +889,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await includeLoader.loadIncludes();
 
     // Initialize modals after header is loaded
-    initEmblemModal();
+    // initEmblemModal(); // Commented out - emblem now has dedicated page instead of modal
     initVivekanandaModal();
 
     // Initialize all components after header/footer are loaded
