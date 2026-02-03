@@ -175,10 +175,21 @@ body {
     height: 80px;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
-    height: 50px;
+    height: 65px;
     width: auto;
     display: block;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo:hover img {
+    transform: scale(1.05);
 }
 
 .nav {
