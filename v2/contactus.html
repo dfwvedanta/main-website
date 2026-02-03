@@ -79,7 +79,8 @@
      <h2 class="content-title">
       Send Us a Message
      </h2>
-     <form class="contact-form">
+     <div id="form-status" style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 8px;"></div>
+     <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <div class="form-row">
        <div class="form-group">
         <label for="name">
@@ -106,7 +107,9 @@
        </label>
        <textarea id="message" name="message" required="" rows="6"></textarea>
       </div>
-      <button class="btn btn-primary" type="submit">
+      <input type="hidden" name="_subject" value="New Contact Form Submission - Vedanta Society">
+      <input type="hidden" name="_next" value="https://v2-sigma-two.vercel.app/contactus.html?success=true">
+      <button class="btn btn-primary" type="submit" id="submit-btn">
        Send Message
       </button>
      </form>
@@ -157,7 +160,7 @@
   <!-- Footer loaded from includes/footer.html -->
   <div id="footer-placeholder">
   </div>
-  <script src="script.js">
-  </script>
+  <script src="script.js"></script>
+  <script src="contact-form-handler.js"></script>
  </body>
 </html>
