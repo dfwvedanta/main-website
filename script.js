@@ -1,4 +1,15 @@
 // ================================
+// Analytics (Umami - Privacy-focused)
+// ================================
+(function() {
+    const script = document.createElement('script');
+    script.defer = true;
+    script.src = 'https://cloud.umami.is/script.js';
+    script.setAttribute('data-website-id', 'rkvsnt-website'); // Update with actual Umami website ID
+    document.head.appendChild(script);
+})();
+
+// ================================
 // Header & Footer Include Loader
 // ================================
 
@@ -547,20 +558,50 @@ class FormHandler {
     async handleSubmit() {
         const formData = new FormData(this.form);
         const data = Object.fromEntries(formData);
-
-        // Simulate form submission
-        console.log('Form submitted:', data);
-
-        // Show success message
         const button = this.form.querySelector('button[type="submit"]');
         const originalText = button.textContent;
-        button.textContent = 'Message Sent! ✓';
-        button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        
+        button.textContent = 'Sending...';
+        button.disabled = true;
+
+        try {
+            // Send via Formspree (free tier - update endpoint after signup at formspree.io)
+            const response = await fetch('https://formspree.io/f/xwpkpzqr', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email,
+                    subject: data.subject,
+                    message: data.message,
+                    _replyto: data.email,
+                    _subject: `[RKVSNT Website] ${data.subject}`
+                })
+            });
+
+            if (response.ok) {
+                button.textContent = 'Message Sent! ✓';
+                button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                this.form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error('Form error:', error);
+            // Fallback to mailto
+            const subject = encodeURIComponent(`[Website Contact] ${data.subject}`);
+            const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+            window.location.href = `mailto:dfwvedanta@gmail.com?subject=${subject}&body=${body}`;
+            button.textContent = 'Opening Email Client...';
+        }
 
         setTimeout(() => {
             button.textContent = originalText;
             button.style.background = '';
-            this.form.reset();
+            button.disabled = false;
         }, 3000);
     }
 }
