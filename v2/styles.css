@@ -4559,12 +4559,56 @@ section {
     opacity: 1;
 }
 
+/* Schedule Announcement Styles */
+.schedule-announcement {
+    text-align: left;
+    max-width: 800px;
+}
+
+.schedule-title {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+}
+
+.schedule-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+}
+
+.schedule-list li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.schedule-list li:last-child {
+    margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
     .announcement-content {
         padding-right: 2rem;
+        align-items: flex-start;
     }
     
     .announcement-text {
         font-size: 0.9rem;
+    }
+    
+    .schedule-announcement {
+        text-align: left;
+    }
+    
+    .schedule-title {
+        font-size: 0.9rem;
+    }
+    
+    .schedule-list li {
+        font-size: 0.85rem;
+    }
+    
+    .announcement-icon {
+        margin-top: 0.25rem;
     }
 }

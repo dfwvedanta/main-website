@@ -82,12 +82,19 @@
     -->
     <script>
         const announcementConfig = {
-            enabled: false,  // Set to true to show announcement
-            text: "Special Event: Swami Vivekananda's Birthday Celebration - January 12, 2026",
-            link: "calendar.html",  // Optional: leave empty for no link
-            linkText: "View Details →",
-            startDate: "2026-01-01",  // When to start showing (YYYY-MM-DD)
-            endDate: "2026-01-13",    // When to stop showing (YYYY-MM-DD)
+            enabled: true,  // Set to true to show announcement
+            html: `<div class="schedule-announcement">
+                <p class="schedule-title">Dear Friends and Devotees, <strong>Effective March 1, the Center schedule will be:</strong></p>
+                <ul class="schedule-list">
+                    <li><strong>Sunday (In person): 10:00 AM–2:00 PM</strong> — Sunday Service (11:00 AM–12:00 Noon) followed by Ārati and Prasad; Children's Sunday School (11:00 AM–12:00 Noon)</li>
+                    <li><strong>Saturday (In person): 5:00 PM–7:00 PM</strong> — Ārati, meditation, and Gospel readings</li>
+                    <li><strong>Saturday (Online only): 10:00 AM–11:30 AM</strong> — Tattvabodha study (facilitated by devotees)</li>
+                </ul>
+            </div>`,
+            link: "",  // Optional: leave empty for no link
+            linkText: "",
+            startDate: "2026-02-13",  // When to start showing (YYYY-MM-DD)
+            endDate: "2026-03-31",    // When to stop showing (YYYY-MM-DD)
             dismissible: true         // Allow users to close it
         };
         
@@ -102,7 +109,12 @@
             }
             
             if (announcementConfig.enabled && now >= start && now <= end) {
-                document.getElementById('announcement-text').textContent = announcementConfig.text;
+                // Support HTML content
+                if (announcementConfig.html) {
+                    document.getElementById('announcement-text').innerHTML = announcementConfig.html;
+                } else {
+                    document.getElementById('announcement-text').textContent = announcementConfig.text || '';
+                }
                 
                 if (announcementConfig.link) {
                     const linkEl = document.getElementById('announcement-link');
@@ -133,7 +145,7 @@
         <div class="container">
             <div class="announcement-content">
                 <span class="announcement-icon">📢</span>
-                <p class="announcement-text" id="announcement-text"></p>
+                <div class="announcement-text" id="announcement-text"></div>
                 <a href="#" class="announcement-link" id="announcement-link" style="display: none;">Learn More →</a>
                 <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">×</button>
             </div>
