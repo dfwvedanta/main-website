@@ -1,19 +1,36 @@
 // GitHub OAuth for Decap CMS on Vercel
-const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
 export default async function handler(req, res) {
-  const { code } = req.query;
+  const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+  const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
   
-  if (!code) {
-    // Redirect to GitHub OAuth
-    const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo,user`;
-    return res.redirect(authUrl);
+  // Debug: check if env vars are set
+  if (!CLIENT_ID || !CLIENT_SECRET) {
+    return res.status(500).json({ 
+      error: 'OAuth not configured',
+      hasClientId: !!CLIENT_ID,
+      hasClientSecret: !!CLIENT_SECRET
+    });
   }
-  
-  // Exchange code for token
+
+  const { code } = req.query;
+  const host = req.headers.host;
+  const protocol = host.includes('localhost') ? 'http' : 'https';
+  const redirectUri = `${protocol}://${host}/api/auth`;
+
+  // Step 1: No code = redirect to GitHub
+  if (!code) {
+    const authUrl = new URL('https://github.com/login/oauth/authorize');
+    authUrl.searchParams.set('client_id', CLIENT_ID);
+    authUrl.searchParams.set('redirect_uri', redirectUri);
+    authUrl.searchParams.set('scope', 'repo,user');
+    
+    return res.redirect(302, authUrl.toString());
+  }
+
+  // Step 2: Exchange code for token
   try {
-    const response = await fetch('https://github.com/login/oauth/access_token', {
+    const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -23,43 +40,67 @@ export default async function handler(req, res) {
         client_id: CLIENT_ID,
         client_secret: CLIENT_SECRET,
         code: code,
+        redirect_uri: redirectUri,
       }),
     });
-    
-    const data = await response.json();
-    
-    if (data.access_token) {
-      // Return HTML that posts message to parent window
-      const html = `
-        <script>
-          const token = "${data.access_token}";
-          const provider = "github";
-          
-          if (window.opener) {
-            window.opener.postMessage(
-              'authorization:github:success:{"token":"' + token + '","provider":"' + provider + '"}',
-              window.location.origin
-            );
-            window.close();
-          }
-        </script>
-      `;
-      res.setHeader('Content-Type', 'text/html');
-      return res.send(html);
-    } else {
-      throw new Error(data.error_description || 'Failed to get token');
+
+    const data = await tokenResponse.json();
+
+    if (data.error) {
+      throw new Error(data.error_description || data.error);
     }
-  } catch (error) {
-    const html = `
-      <script>
-        window.opener.postMessage(
-          'authorization:github:error:' + ${JSON.stringify(error.message)},
-          window.location.origin
-        );
-        window.close();
-      </script>
-    `;
+
+    if (!data.access_token) {
+      throw new Error('No access token received');
+    }
+
+    // Return HTML that sends message to opener window
+    const html = `<!DOCTYPE html>
+<html>
+<head><title>Authenticating...</title></head>
+<body>
+<script>
+(function() {
+  const token = "${data.access_token}";
+  const message = "authorization:github:success:" + JSON.stringify({token: token, provider: "github"});
+  
+  if (window.opener) {
+    window.opener.postMessage(message, "*");
+    window.close();
+  } else {
+    document.body.innerHTML = '<p>Authentication successful! You can close this window.</p>';
+  }
+})();
+</script>
+<p>Authenticating...</p>
+</body>
+</html>`;
+
     res.setHeader('Content-Type', 'text/html');
-    return res.send(html);
+    return res.status(200).send(html);
+
+  } catch (error) {
+    console.error('OAuth error:', error);
+    
+    const html = `<!DOCTYPE html>
+<html>
+<head><title>Authentication Error</title></head>
+<body>
+<script>
+(function() {
+  const message = "authorization:github:error:" + ${JSON.stringify(JSON.stringify(error.message || 'Unknown error'))};
+  if (window.opener) {
+    window.opener.postMessage(message, "*");
+    window.close();
+  }
+})();
+</script>
+<p>Authentication error: ${error.message || 'Unknown error'}</p>
+<p><a href="/admin/">Back to admin</a></p>
+</body>
+</html>`;
+
+    res.setHeader('Content-Type', 'text/html');
+    return res.status(200).send(html);
   }
 }
