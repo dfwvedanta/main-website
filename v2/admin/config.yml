@@ -1,0 +1,209 @@
+# Decap CMS Configuration for Vedanta DFW
+# ==========================================
+
+backend:
+  name: github
+  repo: vinaysolapurkar/vedantadfw
+  branch: master
+  base_url: https://decap-oauth.netlify.app  # OAuth proxy
+
+# Local development
+local_backend: true
+
+# Media
+media_folder: "v2/images/uploads"
+public_folder: "/images/uploads"
+
+# Site settings
+site_url: https://v2-sigma-two.vercel.app
+display_url: https://v2-sigma-two.vercel.app
+logo_url: /images/logo.png
+
+# Editorial workflow (draft/review/publish)
+publish_mode: editorial_workflow
+
+# Slug settings
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  # =====================
+  # SITE SETTINGS
+  # =====================
+  - name: "settings"
+    label: "⚙️ Site Settings"
+    files:
+      - name: "announcement"
+        label: "📢 Announcement Bar"
+        file: "v2/content/settings/announcement.json"
+        fields:
+          - {label: "Enable Announcement", name: "enabled", widget: "boolean", default: false}
+          - {label: "Announcement Text", name: "text", widget: "string"}
+          - {label: "Link (optional)", name: "link", widget: "string", required: false}
+          - {label: "Link Text", name: "linkText", widget: "string", default: "Learn More →", required: false}
+          - {label: "Start Date", name: "startDate", widget: "date", format: "YYYY-MM-DD"}
+          - {label: "End Date", name: "endDate", widget: "date", format: "YYYY-MM-DD"}
+          - {label: "Allow Dismiss", name: "dismissible", widget: "boolean", default: true}
+
+  # =====================
+  # EVENTS
+  # =====================
+  - name: "events"
+    label: "📅 Events"
+    label_singular: "Event"
+    folder: "v2/content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} - {{startDate}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Event Type", name: "eventType", widget: "select", 
+         options: ["Sunday Service", "Retreat", "Lecture", "Puja", "Workshop", "Special Event", "Children's Program"]}
+      - {label: "Start Date & Time", name: "startDate", widget: "datetime", required: true}
+      - {label: "End Date & Time", name: "endDate", widget: "datetime", required: true}
+      - {label: "Location", name: "location", widget: "select", 
+         options: ["In-Person", "Online", "Hybrid"], default: "In-Person"}
+      - {label: "Description", name: "description", widget: "markdown", required: true}
+      - {label: "Speaker/Leader", name: "speaker", widget: "string", required: false}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Featured Event?", name: "featured", widget: "boolean", default: false}
+      - {label: "Published", name: "published", widget: "boolean", default: true}
+
+  # =====================
+  # PAGES (Content Editing)
+  # =====================
+  - name: "pages"
+    label: "📄 Pages"
+    files:
+      - name: "about"
+        label: "About Us"
+        file: "v2/content/pages/about.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Hero Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
+      - name: "vedanta"
+        label: "Vedanta Philosophy"
+        file: "v2/content/pages/vedanta.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
+      - name: "ramakrishna"
+        label: "Sri Ramakrishna"
+        file: "v2/content/pages/ramakrishna.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
+      - name: "sarada-devi"
+        label: "Sri Sarada Devi"
+        file: "v2/content/pages/sarada-devi.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
+      - name: "vivekananda"
+        label: "Swami Vivekananda"
+        file: "v2/content/pages/vivekananda.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
+      - name: "meditation"
+        label: "Meditation"
+        file: "v2/content/pages/meditation.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
+      - name: "contact"
+        label: "Contact Us"
+        file: "v2/content/pages/contact.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Address", name: "address", widget: "text"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+
+  # =====================
+  # LEADERSHIP
+  # =====================
+  - name: "leadership"
+    label: "👥 Leadership"
+    label_singular: "Leader"
+    folder: "v2/content/leadership"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string", required: true}
+      - {label: "Title/Role", name: "role", widget: "string", required: true}
+      - {label: "Position Order", name: "order", widget: "number", default: 10}
+      - {label: "Photo", name: "photo", widget: "image", required: true}
+      - {label: "Biography", name: "bio", widget: "markdown", required: true}
+      - {label: "Category", name: "category", widget: "select",
+         options: ["Spiritual Founder", "Spiritual Leadership", "Spiritual Advisor", "Resident Minister"]}
+
+  # =====================
+  # NEWSLETTERS
+  # =====================
+  - name: "newsletters"
+    label: "📰 Newsletters"
+    label_singular: "Newsletter"
+    folder: "v2/content/newsletters"
+    create: true
+    slug: "{{year}}-{{month}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Year", name: "year", widget: "number", required: true, min: 2020, max: 2030}
+      - {label: "Month", name: "month", widget: "select", 
+         options: ["January", "February", "March", "April", "May", "June", 
+                   "July", "August", "September", "October", "November", "December"]}
+      - {label: "PDF File", name: "pdf", widget: "file", required: true}
+      - {label: "Cover Image", name: "cover", widget: "image", required: false}
+      - {label: "Description", name: "description", widget: "text", required: false}
+
+  # =====================
+  # SOCIAL SERVICES
+  # =====================
+  - name: "social-services"
+    label: "🤝 Social Services"
+    files:
+      - name: "food-drive"
+        label: "Food Drive"
+        file: "v2/content/services/food-drive.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Active", name: "active", widget: "boolean", default: true}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
+      - name: "blanket-drive"
+        label: "Blanket Drive"
+        file: "v2/content/services/blanket-drive.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Active", name: "active", widget: "boolean", default: true}
+          - {label: "Content", name: "body", widget: "markdown"}
+
+  # =====================
+  # MEDIA LIBRARY
+  # =====================
+  - name: "media"
+    label: "🖼️ Photo Gallery"
+    folder: "v2/content/media"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image", required: true}
+      - {label: "Caption", name: "caption", widget: "string", required: false}
+      - {label: "Category", name: "category", widget: "select",
+         options: ["Events", "Temple", "Leaders", "Activities", "Other"]}
+      - {label: "Date", name: "date", widget: "date", required: false}

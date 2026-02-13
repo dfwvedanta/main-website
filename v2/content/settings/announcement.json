@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "text": "Special Announcement: Update this text in the admin panel",
+  "link": "",
+  "linkText": "Learn More →",
+  "startDate": "2026-01-01",
+  "endDate": "2026-12-31",
+  "dismissible": true
+}
