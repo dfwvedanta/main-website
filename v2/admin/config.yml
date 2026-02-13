@@ -1,10 +1,12 @@
 # Decap CMS Configuration for Vedanta DFW
 # ==========================================
 
-# Simple test backend - no login needed (for testing)
-# Change to github backend later for production
 backend:
-  name: test-repo
+  name: github
+  repo: vinaysolapurkar/vedantadfw
+  branch: master
+  base_url: https://v2-sigma-two.vercel.app
+  auth_endpoint: api/auth
 
 # Local development
 local_backend: true
