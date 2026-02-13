@@ -426,14 +426,14 @@
                         // Past event
                         clonedCard.classList.add('past-event');
 
-                        // Add completed badge
-                        const actions = clonedCard.querySelector('.event-card-actions');
-                        if (actions) {
-                            const badge = document.createElement('span');
-                            badge.className = 'event-completed-badge';
-                            badge.textContent = 'Completed';
-                            actions.appendChild(badge);
-                        }
+                        // REMOVED: Completed badge (redundant since already in Past Events section)
+                        // const actions = clonedCard.querySelector('.event-card-actions');
+                        // if (actions) {
+                        //     const badge = document.createElement('span');
+                        //     badge.className = 'event-completed-badge';
+                        //     badge.textContent = 'Completed';
+                        //     actions.appendChild(badge);
+                        // }
 
                         // Remove calendar placeholder
                         const calendarPlaceholder = clonedCard.querySelector('.event-calendar-placeholder');
