@@ -6,10 +6,7 @@ backend:
   repo: vinaysolapurkar/vedantadfw
   branch: master
   base_url: https://v2-sigma-two.vercel.app
-  auth_endpoint: api/auth
-
-# Local development
-local_backend: true
+  auth_endpoint: /api/auth
 
 # Media
 media_folder: "v2/images/uploads"
