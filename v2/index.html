@@ -76,6 +76,70 @@
         </div>
     </section>
 
+    <!-- Announcement Bar Configuration
+         To show an announcement, set enabled: true and fill in the details.
+         The bar will automatically hide after the endDate.
+    -->
+    <script>
+        const announcementConfig = {
+            enabled: false,  // Set to true to show announcement
+            text: "Special Event: Swami Vivekananda's Birthday Celebration - January 12, 2026",
+            link: "calendar.html",  // Optional: leave empty for no link
+            linkText: "View Details →",
+            startDate: "2026-01-01",  // When to start showing (YYYY-MM-DD)
+            endDate: "2026-01-13",    // When to stop showing (YYYY-MM-DD)
+            dismissible: true         // Allow users to close it
+        };
+        
+        function showAnnouncement() {
+            const now = new Date();
+            const start = new Date(announcementConfig.startDate);
+            const end = new Date(announcementConfig.endDate + "T23:59:59");
+            
+            // Check if dismissed in this session
+            if (sessionStorage.getItem('announcementDismissed') === 'true') {
+                return;
+            }
+            
+            if (announcementConfig.enabled && now >= start && now <= end) {
+                document.getElementById('announcement-text').textContent = announcementConfig.text;
+                
+                if (announcementConfig.link) {
+                    const linkEl = document.getElementById('announcement-link');
+                    linkEl.href = announcementConfig.link;
+                    linkEl.textContent = announcementConfig.linkText || 'Learn More →';
+                    linkEl.style.display = 'inline';
+                }
+                
+                if (!announcementConfig.dismissible) {
+                    document.querySelector('.announcement-close').style.display = 'none';
+                }
+                
+                document.getElementById('announcement-bar').style.display = 'block';
+            }
+        }
+        
+        function closeAnnouncement() {
+            document.getElementById('announcement-bar').style.display = 'none';
+            sessionStorage.setItem('announcementDismissed', 'true');
+        }
+        
+        // Show announcement when page loads
+        document.addEventListener('DOMContentLoaded', showAnnouncement);
+    </script>
+
+    <!-- Announcement Bar (conditionally rendered) -->
+    <section id="announcement-bar" class="announcement-section" style="display: none;">
+        <div class="container">
+            <div class="announcement-content">
+                <span class="announcement-icon">📢</span>
+                <p class="announcement-text" id="announcement-text"></p>
+                <a href="#" class="announcement-link" id="announcement-link" style="display: none;">Learn More →</a>
+                <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">×</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Events Section with Tabs -->
     <section class="home-events-section">
         <div class="container">
