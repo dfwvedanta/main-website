@@ -1,10 +1,10 @@
 # Decap CMS Configuration for Vedanta DFW
 # ==========================================
 
+# Simple test backend - no login needed (for testing)
+# Change to github backend later for production
 backend:
-  name: github
-  repo: vinaysolapurkar/vedantadfw
-  branch: master
+  name: test-repo
 
 # Local development
 local_backend: true
