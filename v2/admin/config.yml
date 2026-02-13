@@ -42,8 +42,8 @@ collections:
           - {label: "Announcement Text", name: "text", widget: "string"}
           - {label: "Link (optional)", name: "link", widget: "string", required: false}
           - {label: "Link Text", name: "linkText", widget: "string", default: "Learn More →", required: false}
-          - {label: "Start Date", name: "startDate", widget: "date", format: "YYYY-MM-DD"}
-          - {label: "End Date", name: "endDate", widget: "date", format: "YYYY-MM-DD"}
+          - {label: "Start Date", name: "startDate", widget: "datetime", format: "YYYY-MM-DD", time_format: false}
+          - {label: "End Date", name: "endDate", widget: "datetime", format: "YYYY-MM-DD", time_format: false}
           - {label: "Allow Dismiss", name: "dismissible", widget: "boolean", default: true}
 
   # =====================
@@ -205,4 +205,4 @@ collections:
       - {label: "Caption", name: "caption", widget: "string", required: false}
       - {label: "Category", name: "category", widget: "select",
          options: ["Events", "Temple", "Leaders", "Activities", "Other"]}
-      - {label: "Date", name: "date", widget: "date", required: false}
+      - {label: "Date", name: "date", widget: "datetime", time_format: false, required: false}
