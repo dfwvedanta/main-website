@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     const authUrl = new URL('https://github.com/login/oauth/authorize');
     authUrl.searchParams.set('client_id', CLIENT_ID);
     authUrl.searchParams.set('redirect_uri', redirectUri);
-    authUrl.searchParams.set('scope', 'public_repo');  // Limited to public repos only
+    authUrl.searchParams.set('scope', 'repo');  // Required for private repos
     
     return res.redirect(302, authUrl.toString());
   }
