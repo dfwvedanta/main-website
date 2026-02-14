@@ -627,6 +627,24 @@
         .legend-dot.retreat { background: #3a6a9a; }
         .legend-dot.special { background: #cc6600; }
         
+        /* View All Button */
+        .view-all-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--color-primary);
+            background: white;
+            color: var(--color-primary);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .view-all-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
         /* Hide filters in monthly view */
         .filter-section.hidden {
             display: none;
@@ -838,10 +856,15 @@
                 <div class="legend-item"><span class="legend-dot special"></span> Special Event</div>
             </div>
             
-            <div class="selected-day-events" id="selected-day-events">
-                <h3 id="selected-day-title">Events on February 15</h3>
+            <div class="selected-day-events active" id="selected-day-events">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 id="selected-day-title" style="margin: 0;">Events in February 2026</h3>
+                    <button id="view-all-btn" class="view-all-btn" onclick="showAllMonthEvents()" style="display: none;">
+                        ← View all events
+                    </button>
+                </div>
                 <div id="selected-day-content">
-                    <!-- Events for selected day -->
+                    <!-- Events for selected day or month -->
                 </div>
             </div>
         </div>
@@ -1125,15 +1148,16 @@
             
             if (view === 'monthly') {
                 renderCalendar();
+                showAllMonthEvents();
             }
         }
         
         function changeMonth(delta) {
             currentMonthDate.setMonth(currentMonthDate.getMonth() + delta);
             renderCalendar();
-            // Hide selected day events when changing month
-            document.getElementById('selected-day-events').classList.remove('active');
+            // Show all events for new month
             selectedDate = null;
+            showAllMonthEvents();
         }
         
         function renderCalendar() {
@@ -1221,6 +1245,52 @@
             document.getElementById('calendar-body').innerHTML = html;
         }
         
+        function getMonthEvents(year, month) {
+            return programs.filter(p => {
+                const [eventYear, eventMonth] = p.date.split('-');
+                return parseInt(eventYear) === year && parseInt(eventMonth) === month + 1;
+            }).sort((a, b) => new Date(a.date) - new Date(b.date));
+        }
+        
+        function showAllMonthEvents() {
+            selectedDate = null;
+            
+            // Clear selected state on calendar
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            const year = currentMonthDate.getFullYear();
+            const month = currentMonthDate.getMonth();
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            const monthEvents = getMonthEvents(year, month);
+            
+            const titleEl = document.getElementById('selected-day-title');
+            const contentEl = document.getElementById('selected-day-content');
+            const viewAllBtn = document.getElementById('view-all-btn');
+            
+            titleEl.textContent = `Events in ${monthNames[month]} ${year}`;
+            viewAllBtn.style.display = 'none';
+            
+            if (monthEvents.length === 0) {
+                contentEl.innerHTML = '<p style="color: var(--color-text-light); text-align: center; padding: 2rem;">No events scheduled for this month.</p>';
+            } else {
+                contentEl.innerHTML = monthEvents.map(e => `
+                    <div class="selected-day-event" style="border-left-color: ${
+                        e.category === 'festival' ? '#9a4a9a' : 
+                        e.category === 'retreat' ? '#3a6a9a' : '#cc6600'
+                    }">
+                        <h4>${e.title}</h4>
+                        <div class="event-time">${e.dateDisplay.month} ${e.dateDisplay.day} • ${e.time}</div>
+                        <p>${e.description}</p>
+                        ${e.zoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
+                    </div>
+                `).join('');
+            }
+        }
+        
         function selectDay(dateStr) {
             selectedDate = dateStr;
             
@@ -1244,34 +1314,32 @@
                 return false;
             });
             
-            const eventsContainer = document.getElementById('selected-day-events');
             const titleEl = document.getElementById('selected-day-title');
             const contentEl = document.getElementById('selected-day-content');
-            
-            if (dayEvents.length === 0) {
-                eventsContainer.classList.remove('active');
-                return;
-            }
+            const viewAllBtn = document.getElementById('view-all-btn');
             
             // Format date for title
             const d = new Date(dateStr);
             const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                                'July', 'August', 'September', 'October', 'November', 'December'];
             titleEl.textContent = `Events on ${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+            viewAllBtn.style.display = 'inline-block';
             
-            contentEl.innerHTML = dayEvents.map(e => `
-                <div class="selected-day-event" style="border-left-color: ${
-                    e.category === 'festival' ? '#9a4a9a' : 
-                    e.category === 'retreat' ? '#3a6a9a' : '#cc6600'
-                }">
-                    <h4>${e.title}</h4>
-                    <div class="event-time">${e.time}</div>
-                    <p>${e.description}</p>
-                    ${e.zoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
-                </div>
-            `).join('');
-            
-            eventsContainer.classList.add('active');
+            if (dayEvents.length === 0) {
+                contentEl.innerHTML = '<p style="color: var(--color-text-light); text-align: center; padding: 1rem;">No events on this day.</p>';
+            } else {
+                contentEl.innerHTML = dayEvents.map(e => `
+                    <div class="selected-day-event" style="border-left-color: ${
+                        e.category === 'festival' ? '#9a4a9a' : 
+                        e.category === 'retreat' ? '#3a6a9a' : '#cc6600'
+                    }">
+                        <h4>${e.title}</h4>
+                        <div class="event-time">${e.time}</div>
+                        <p>${e.description}</p>
+                        ${e.zoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
+                    </div>
+                `).join('');
+            }
         }
         
         // Initialize
