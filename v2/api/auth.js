@@ -4,7 +4,6 @@ export default async function handler(req, res) {
   const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
   const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
   
-  // Debug: check if env vars are set
   if (!CLIENT_ID || !CLIENT_SECRET) {
     return res.status(500).json({ 
       error: 'OAuth not configured',
@@ -23,7 +22,7 @@ export default async function handler(req, res) {
     const authUrl = new URL('https://github.com/login/oauth/authorize');
     authUrl.searchParams.set('client_id', CLIENT_ID);
     authUrl.searchParams.set('redirect_uri', redirectUri);
-    authUrl.searchParams.set('scope', 'repo');  // Required for private repos
+    authUrl.searchParams.set('scope', 'repo,user');
     
     return res.redirect(302, authUrl.toString());
   }
@@ -54,25 +53,32 @@ export default async function handler(req, res) {
       throw new Error('No access token received');
     }
 
-    // Return HTML that sends message to opener window
+    // Return HTML that sends message to opener window (Decap CMS format)
     const html = `<!DOCTYPE html>
 <html>
-<head><title>Authenticating...</title></head>
+<head>
+  <meta charset="utf-8">
+  <title>Authenticating...</title>
+</head>
 <body>
+<p>Authenticating with GitHub...</p>
 <script>
 (function() {
-  const token = "${data.access_token}";
-  const message = "authorization:github:success:" + JSON.stringify({token: token, provider: "github"});
+  var token = "${data.access_token}";
+  var provider = "github";
   
   if (window.opener) {
-    window.opener.postMessage(message, "*");
-    window.close();
+    // Decap CMS expects this exact message format
+    window.opener.postMessage(
+      "authorization:" + provider + ":success:" + JSON.stringify({token: token, provider: provider}),
+      "*"
+    );
+    setTimeout(function() { window.close(); }, 500);
   } else {
-    document.body.innerHTML = '<p>Authentication successful! You can close this window.</p>';
+    document.body.innerHTML = '<p>Success! Token received. You can close this window.</p>';
   }
 })();
 </script>
-<p>Authenticating...</p>
 </body>
 </html>`;
 
@@ -84,18 +90,23 @@ export default async function handler(req, res) {
     
     const html = `<!DOCTYPE html>
 <html>
-<head><title>Authentication Error</title></head>
+<head>
+  <meta charset="utf-8">
+  <title>Authentication Error</title>
+</head>
 <body>
+<p>Authentication error: ${error.message || 'Unknown error'}</p>
 <script>
 (function() {
-  const message = "authorization:github:error:" + ${JSON.stringify(JSON.stringify(error.message || 'Unknown error'))};
   if (window.opener) {
-    window.opener.postMessage(message, "*");
-    window.close();
+    window.opener.postMessage(
+      "authorization:github:error:" + JSON.stringify({error: "${error.message || 'Unknown error'}"}),
+      location.origin
+    );
+    setTimeout(function() { window.close(); }, 2000);
   }
 })();
 </script>
-<p>Authentication error: ${error.message || 'Unknown error'}</p>
 <p><a href="/admin/">Back to admin</a></p>
 </body>
 </html>`;
