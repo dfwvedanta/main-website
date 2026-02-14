@@ -1,15 +1,1 @@
-[
-  {
-    "id": "1771095349067",
-    "name": "Vinay",
-    "email": "vinaysolapurkar22@gmail.com",
-    "requestType": "new-event",
-    "title": "Test Event",
-    "details": "test event details.",
-    "images": ["hero-gallery-01.jpg"],
-    "status": "completed",
-    "submittedAt": "2026-02-14T18:55:49.067Z",
-    "completedAt": "2026-02-14T18:58:00.000Z",
-    "completedBy": "Popeye"
-  }
-]
+[]
