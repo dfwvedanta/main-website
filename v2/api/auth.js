@@ -67,15 +67,21 @@ export default async function handler(req, res) {
   var token = "${data.access_token}";
   var provider = "github";
   
+  document.body.innerHTML = '<p>Token received! Sending to CMS...</p>';
+  
   if (window.opener) {
-    // Decap CMS expects this exact message format
-    window.opener.postMessage(
-      "authorization:" + provider + ":success:" + JSON.stringify({token: token, provider: provider}),
-      "*"
-    );
-    setTimeout(function() { window.close(); }, 500);
+    try {
+      // Decap CMS expects this exact message format
+      var msg = "authorization:" + provider + ":success:" + JSON.stringify({token: token, provider: provider});
+      console.log("Sending message:", msg);
+      window.opener.postMessage(msg, "*");
+      document.body.innerHTML += '<p>Message sent! Closing in 2 seconds...</p>';
+      setTimeout(function() { window.close(); }, 2000);
+    } catch(e) {
+      document.body.innerHTML += '<p>Error: ' + e.message + '</p>';
+    }
   } else {
-    document.body.innerHTML = '<p>Success! Token received. You can close this window.</p>';
+    document.body.innerHTML = '<p>No opener window. Token: ' + token.substring(0,10) + '...</p>';
   }
 })();
 </script>
