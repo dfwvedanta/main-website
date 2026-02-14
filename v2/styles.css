@@ -1002,7 +1002,10 @@ body {
 
 @media (max-width: 768px) {
     .logo-text {
-        display: none;
+        font-size: 0.65rem;
+        max-width: 120px;
+        white-space: normal;
+        line-height: 1.2;
     }
 }
 
