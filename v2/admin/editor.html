@@ -175,14 +175,26 @@
                 
                 // Extract body content for the editor
                 const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
-                const bodyContent = bodyMatch ? bodyMatch[1] : html;
+                let bodyContent = bodyMatch ? bodyMatch[1] : html;
                 
-                // Clean up scripts and complex elements for editing
+                // Clean up scripts, styles, and comments for editing
                 let editableContent = bodyContent
-                    .replace(/<script[\s\S]*?<\/script>/gi, '')
-                    .replace(/<!--[\s\S]*?-->/g, '');
+                    .replace(/<script[\s\S]*?<\/script>/gi, '<!-- script removed -->')
+                    .replace(/<style[\s\S]*?<\/style>/gi, '')
+                    .replace(/<!--[\s\S]*?-->/g, '')
+                    .replace(/<div id="header-placeholder"><\/div>/gi, '')
+                    .replace(/<div id="footer-placeholder"><\/div>/gi, '')
+                    .trim();
                 
-                quill.root.innerHTML = editableContent;
+                console.log('Editable content length:', editableContent.length);
+                console.log('First 500 chars:', editableContent.substring(0, 500));
+                
+                // Set content in Quill
+                if (editableContent) {
+                    quill.clipboard.dangerouslyPasteHTML(editableContent);
+                } else {
+                    quill.setText('Page loaded but no visible content found. Check HTML Code tab.');
+                }
                 document.getElementById('code-editor').value = html;
                 
                 setStatus('Loaded: ' + pageName);
