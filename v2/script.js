@@ -1393,7 +1393,76 @@ function setupEmblemModal() {
 }
 
 // ================================
-// Vivekananda Modal Functionality
+// Holy Trio Modal Functionality
+// ================================
+
+function initHolyTrioModals() {
+    const holyTrioCards = document.querySelectorAll('.holy-trio-card');
+    
+    holyTrioCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const figure = card.getAttribute('data-figure');
+            const modal = document.getElementById(`${figure}-modal`);
+            
+            if (modal) {
+                modal.classList.add('modal-open');
+                document.body.style.overflow = 'hidden';
+                
+                // Animate teaching cards in sequence
+                setTimeout(() => {
+                    const cards = modal.querySelectorAll('.teaching-card');
+                    cards.forEach((teachingCard, index) => {
+                        setTimeout(() => {
+                            teachingCard.style.opacity = '1';
+                            teachingCard.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    });
+                }, 300);
+            }
+        });
+    });
+    
+    // Setup close handlers for all holy trio modals
+    ['vivekananda', 'ramakrishna', 'sarada-devi'].forEach(figure => {
+        const modal = document.getElementById(`${figure}-modal`);
+        if (!modal) return;
+        
+        const modalClose = modal.querySelector('.modal-close');
+        const modalOverlay = modal.querySelector('.modal-overlay');
+        
+        const closeModal = () => {
+            modal.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            
+            const cards = modal.querySelectorAll('.teaching-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+            });
+        };
+        
+        if (modalClose) modalClose.addEventListener('click', closeModal);
+        if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+                closeModal();
+            }
+        });
+    });
+}
+
+// Initialize Holy Trio modals when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initHolyTrioModals, 200);
+    });
+} else {
+    setTimeout(initHolyTrioModals, 200);
+}
+
+// ================================
+// Vivekananda Modal Functionality (Legacy)
 // ================================
 
 function initVivekanandaModal() {

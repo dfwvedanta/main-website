@@ -1,469 +1,711 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-<!-- Google Analytics 4 -->
+<head>
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q0YDB1HWQ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3Q0YDB1HWQ');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3Q0YDB1HWQ');
     </script>
-
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Calendar - Ramakrishna Vedanta Society of North Texas
-  </title>
-  <link href="styles.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
- </head>
- <body>
-  <!-- Header loaded from includes/header.html -->
-  <div id="header-placeholder">
-  </div>
-  <!-- Page Hero -->
-  <section class="page-hero-section">
-   <div class="container">
-    <h1 class="page-hero-title">
-     Calendar
-    </h1>
-    <p class="page-hero-subtitle">
-     Upcoming Events &amp; Programs
-    </p>
-   </div>
-  </section>
-  <!-- Important Notice -->
-  <section class="content-section" style="padding-top: 2rem; padding-bottom: 1rem;">
-   <div class="container">
-    <div class="content-card" style="background: #fff8f0; border-left: 4px solid var(--color-accent);">
-     <p style="margin: 0; font-weight: 600;">
-      Note: In-person attendance for Sunday programs begins Sunday, February 9, 2026. All Sunday talks and Thursday classes are also available online via Zoom.
-     </p>
-    </div>
-   </div>
-  </section>
-
-  <!-- Regular Schedule -->
-  <section class="content-section" style="padding-top: 1rem;">
-   <div class="container">
-    <h2 class="section-title">
-     Weekly Schedule
-    </h2>
-    <div class="schedule-grid">
-     <div class="schedule-card">
-      <h3>
-       Sunday Service
-      </h3>
-      <p class="schedule-time">
-       Every Sunday | 11:00 AM - 12:30 PM
-      </p>
-      <p>
-       Silent meditation followed by spiritual discourse and discussion. All are welcome to join us for this inspiring weekly gathering.
-      </p>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-light);">
-       <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/87900497480" target="_blank" class="text-link">https://us02web.zoom.us/j/87900497480</a><br>
-       Meeting ID: 879 0049 7480<br>
-       Passcode: Provided in weekly Mailchimp announcement or email dfwvedanta@gmail.com 2 hours before program
-      </p>
-     </div>
-     <div class="schedule-card">
-      <h3>
-       Raja Yoga Study Circle
-      </h3>
-      <p class="schedule-time">
-       Every Thursday | 7:00 PM - 8:30 PM
-      </p>
-      <p>
-       In-depth study of Patanjali's Yoga Sutras and practical meditation techniques. Open to both beginners and experienced practitioners.
-      </p>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-light);">
-       <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/84119327910" target="_blank" class="text-link">https://us02web.zoom.us/j/84119327910</a><br>
-       Meeting ID: 841 1932 7910<br>
-       Passcode: Provided in weekly Mailchimp announcement or email dfwvedanta@gmail.com 2 hours before program
-      </p>
-     </div>
-     <div class="schedule-card">
-      <h3>
-       Saturday Evening Arati
-      </h3>
-      <p class="schedule-time">
-       Every Saturday | 6:00 PM - 7:00 PM
-      </p>
-      <p>
-       In-person devotional worship service with traditional arati ceremony. A beautiful way to end the week with prayer and meditation.
-      </p>
-     </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- February 2026 Visual Calendar -->
-  <section class="content-section alt-bg">
-   <div class="container">
-    <h2 class="section-title">
-     February 2026 Calendar
-    </h2>
-
-    <!-- Visual Calendar Grid -->
-    <div class="visual-calendar">
-     <div class="calendar-header">
-      <button class="calendar-nav-btn prev-month" aria-label="Previous month">
-       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-       </svg>
-      </button>
-      <div class="calendar-month" id="calendar-month-display">February 2026</div>
-      <button class="calendar-nav-btn next-month" aria-label="Next month">
-       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-       </svg>
-      </button>
-     </div>
-
-     <div class="calendar-weekdays">
-      <div class="weekday">Sun</div>
-      <div class="weekday">Mon</div>
-      <div class="weekday">Tue</div>
-      <div class="weekday">Wed</div>
-      <div class="weekday">Thu</div>
-      <div class="weekday">Fri</div>
-      <div class="weekday">Sat</div>
-     </div>
-
-     <div class="calendar-days" id="calendar-days-container">
-      <!-- Days will be generated dynamically by JavaScript -->
-     </div>
-
-     <div class="calendar-legend">
-      <div class="legend-item">
-       <span class="legend-color sunday-talk"></span>
-       <span>Sunday Talks</span>
-      </div>
-      <div class="legend-item">
-       <span class="legend-color raja-yoga"></span>
-       <span>Raja Yoga Study Circle</span>
-      </div>
-      <div class="legend-item">
-       <span class="legend-color special"></span>
-       <span>Special Events</span>
-      </div>
-     </div>
-    </div>
-
-    <!-- Event Details Below Calendar -->
-    <div style="max-width: 900px; margin: 2rem auto 0;">
-     <!-- Week 1 -->
-     <div class="content-card" style="margin-bottom: var(--spacing-md);">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Sunday, February 1</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>11:00 AM - Sunday Talk</strong></p>
-      <p style="margin-left: 1rem;">"Reminiscences of Vedanta Monks" by Pravrajika Brahmaprana</p>
-     </div>
-
-     <div class="content-card" style="margin-bottom: var(--spacing-md);">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Thursday, February 5</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>7:00 PM - Raja Yoga Study Circle</strong></p>
-      <p style="margin-left: 1rem;">Online via Zoom</p>
-     </div>
-
-     <!-- Week 2 -->
-     <div class="content-card" style="margin-bottom: var(--spacing-md);">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Sunday, February 8</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>11:00 AM - Sunday Talk</strong></p>
-      <p style="margin-left: 1rem;">"Vivekananda's Arati Song on Sri Ramakrishna" by Pravrajika Brahmaprana</p>
-     </div>
-
-     <div class="content-card" style="margin-bottom: var(--spacing-md);">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Thursday, February 12</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>7:00 PM - Raja Yoga Study Circle</strong></p>
-      <p style="margin-left: 1rem;">Online via Zoom</p>
-     </div>
-
-     <!-- Week 3 - Shivaratri -->
-     <div class="content-card" style="margin-bottom: var(--spacing-md); border-left: 4px solid var(--color-accent); background: #fff8f0;">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Sunday, February 15 - Shivaratri Puja</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>6:30 PM - 8:00 PM - Special Worship Program</strong></p>
-      <p style="margin-left: 1rem; margin-bottom: 0.5rem;">Worship of Lord Shiva, accompanied by devotional songs and readings</p>
-      <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>8:00 PM:</strong> Arati and Flower Offering</p>
-      <p style="margin-left: 1rem; margin-bottom: 0.5rem;"><strong>8:15 PM:</strong> Supper Prasad</p>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-light);">
-       <strong>In person and Online</strong><br>
-       Zoom: <a href="https://us02web.zoom.us/j/87900497480" target="_blank" class="text-link">https://us02web.zoom.us/j/87900497480</a><br>
-       Meeting ID: 879 0049 7480<br>
-       Passcode: Email dfwvedanta@gmail.com 3 hours before the puja
-      </p>
-     </div>
-
-     <div class="content-card" style="margin-bottom: var(--spacing-md);">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Thursday, February 19</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>7:00 PM - Raja Yoga Study Circle</strong></p>
-      <p style="margin-left: 1rem;">Online via Zoom</p>
-     </div>
-
-     <!-- Week 4 - Sri Ramakrishna's Birthday -->
-     <div class="content-card" style="margin-bottom: var(--spacing-md); border-left: 4px solid var(--color-accent); background: #fff8f0;">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Sunday, February 22 - Sri Ramakrishna's Birth Observance</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>10:30 AM - 12:00 PM:</strong> Worship, accompanied by devotional songs and readings</p>
-      <p style="margin-bottom: 0.5rem;"><strong>12:00 PM - 12:30 PM:</strong> Refreshment Break</p>
-      <p style="margin-bottom: 0.5rem;"><strong>12:30 PM - 1:30 PM:</strong> Afternoon Program and Lunch Prasad</p>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-light);">
-       <strong>In person and Online</strong><br>
-       Zoom: <a href="https://us02web.zoom.us/j/87900497480" target="_blank" class="text-link">https://us02web.zoom.us/j/87900497480</a><br>
-       Meeting ID: 879 0049 7480<br>
-       Passcode: Email dfwvedanta@gmail.com 2 hours before the program
-      </p>
-     </div>
-
-     <div class="content-card" style="margin-bottom: var(--spacing-md);">
-      <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Thursday, February 26</h3>
-      <p style="margin-bottom: 0.5rem;"><strong>7:00 PM - Raja Yoga Study Circle</strong></p>
-      <p style="margin-left: 1rem;">Online via Zoom</p>
-     </div>
-
-     <div class="content-card" style="background: #f0f0f0; text-align: center;">
-      <p style="margin: 0; font-style: italic; color: var(--color-text-light);">
-       March classes and Sunday programs to be announced
-      </p>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- Upcoming Events -->
-  <section class="content-section alt-bg">
-   <div class="container">
-    <h2 class="section-title">
-     Upcoming Special Events
-    </h2>
-    <div class="events-list">
-     <div class="event-item">
-      <div class="event-date-large">
-       <span class="month">
-        Jan
-       </span>
-       <span class="day">
-        16-17
-       </span>
-       <span class="year">
-        2026
-       </span>
-      </div>
-      <div class="event-content">
-       <h3>
-        Swami Ishtananda's Retreat
-       </h3>
-       <p class="event-time">
-        Friday 7:00 PM - Saturday 8:00 PM
-       </p>
-       <p>
-        Join us for a transformative weekend retreat with inspiring talks on Vedantic philosophy, guided meditation sessions, and opportunities for personal spiritual guidance.
-       </p>
-       <a class="text-link" href="contactus.html">
-        Register →
-       </a>
-      </div>
-     </div>
-     <div class="event-item">
-      <div class="event-date-large">
-       <span class="month">
-        Jan
-       </span>
-       <span class="day">
-        18-25
-       </span>
-       <span class="year">
-        2026
-       </span>
-      </div>
-      <div class="event-content">
-       <h3>
-        Vivekananda Food Drive 2026
-       </h3>
-       <p class="event-time">
-        All Week
-       </p>
-       <p>
-        Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week.
-       </p>
-       <a class="text-link" href="contactus.html">
-        Learn More →
-       </a>
-      </div>
-     </div>
-     <div class="event-item">
-      <div class="event-date-large">
-       <span class="month">
-        Feb
-       </span>
-       <span class="day">
-        15
-       </span>
-       <span class="year">
-        2026
-       </span>
-      </div>
-      <div class="event-content">
-       <h3>
-        Shivaratri Puja
-       </h3>
-       <p class="event-time">
-        6:30 PM - 8:15 PM
-       </p>
-       <p>
-        Special worship program celebrating Maha Shivaratri with traditional rituals, devotional songs and readings, followed by arati, flower offering, and supper prasad. Available in person and online.
-       </p>
-       <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-        <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/87900497480" target="_blank" class="text-link">Meeting ID: 879 0049 7480</a>
-       </p>
-      </div>
-     </div>
-     <div class="event-item">
-      <div class="event-date-large">
-       <span class="month">
-        Feb
-       </span>
-       <span class="day">
-        22
-       </span>
-       <span class="year">
-        2026
-       </span>
-      </div>
-      <div class="event-content">
-       <h3>
-        Sri Ramakrishna's Birth Observance
-       </h3>
-       <p class="event-time">
-        10:30 AM - 1:30 PM
-       </p>
-       <p>
-        Celebration of Sri Ramakrishna's birth anniversary with special puja, devotional singing, talks on his life and teachings, refreshments, and lunch prasad. Available in person and online.
-       </p>
-       <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-        <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/87900497480" target="_blank" class="text-link">Meeting ID: 879 0049 7480</a>
-       </p>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- Special Programs -->
-  <section class="content-section">
-   <div class="container">
-    <h2 class="section-title">
-     Special Programs Throughout the Year
-    </h2>
-    <div class="program-cards">
-     <div class="program-card">
-      <h3>
-       Spiritual Retreats
-      </h3>
-      <p>
-       Intensive meditation and study retreats led by visiting monastics from the Ramakrishna Order.
-      </p>
-     </div>
-     <div class="program-card">
-      <h3>
-       Festival Celebrations
-      </h3>
-      <p>
-       Traditional observances of major Hindu festivals and birthdays of spiritual luminaries.
-      </p>
-     </div>
-     <div class="program-card">
-      <h3>
-       Guest Lectures
-      </h3>
-      <p>
-       Special talks by scholars and monastics on various aspects of Vedanta philosophy and practice.
-      </p>
-     </div>
-     <div class="program-card">
-      <h3>
-       Community Service
-      </h3>
-      <p>
-       Opportunities to serve the community through food drives, charitable activities, and outreach programs.
-      </p>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- CTA Section -->
-  <section class="cta-section">
-   <div class="container">
-    <div class="cta-content">
-     <h2>
-      Stay Updated
-     </h2>
-     <p>
-      Subscribe to our newsletter to receive updates about upcoming events and programs
-     </p>
-     <div class="cta-buttons">
-      <a class="btn btn-primary" href="newsletter.html">
-       Subscribe
-      </a>
-      <a class="btn btn-secondary" href="contactus.html">
-       Contact Us
-      </a>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- Footer -->
-  <!-- Footer loaded from includes/footer.html -->
-  <div id="footer-placeholder">
-  </div>
-  <script src="script.js"></script>
-  <script src="add-to-calendar.js"></script>
-  <script src="calendar-nav.js"></script>
-  <script>
-    // Initialize Add to Calendar buttons for each event
-    document.addEventListener('DOMContentLoaded', function() {
-      // Event 1: Swami Ishtananda's Retreat
-      const event1 = new AddToCalendar({
-        title: "Swami Ishtananda's Retreat",
-        description: "Join us for a transformative weekend retreat with inspiring talks on Vedantic philosophy, guided meditation sessions, and opportunities for personal spiritual guidance.",
-        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
-        startDate: new Date('2026-01-16T19:00:00'),
-        endDate: new Date('2026-01-17T20:00:00')
-      });
-
-      // Event 2: Vivekananda Food Drive
-      const event2 = new AddToCalendar({
-        title: "Vivekananda Food Drive 2026",
-        description: "Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week.",
-        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
-        startDate: new Date('2026-01-18T09:00:00'),
-        endDate: new Date('2026-01-25T17:00:00')
-      });
-
-      // Event 3: Shivaratri Puja
-      const event3 = new AddToCalendar({
-        title: "Shivaratri Puja",
-        description: "Special worship program celebrating Maha Shivaratri with traditional rituals, devotional songs and readings, followed by arati, flower offering, and supper prasad. Available in person and online via Zoom (Meeting ID: 879 0049 7480).",
-        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
-        startDate: new Date('2026-02-15T18:30:00'),
-        endDate: new Date('2026-02-15T20:15:00')
-      });
-
-      // Event 4: Sri Ramakrishna's Birth Observance
-      const event4 = new AddToCalendar({
-        title: "Sri Ramakrishna's Birth Observance",
-        description: "Celebration of Sri Ramakrishna's birth anniversary with special puja, devotional singing, talks on his life and teachings, refreshments, and lunch prasad. Available in person and online via Zoom (Meeting ID: 879 0049 7480).",
-        location: "Ramakrishna Vedanta Society of North Texas, 119 W. Scotland Drive, Irving, TX 75063",
-        startDate: new Date('2026-02-22T10:30:00'),
-        endDate: new Date('2026-02-22T13:30:00')
-      });
-
-      // Add buttons to event items
-      const eventContents = document.querySelectorAll('.event-content');
-      if (eventContents[0]) eventContents[0].appendChild(event1.createDropdown());
-      if (eventContents[1]) eventContents[1].appendChild(event2.createDropdown());
-      if (eventContents[2]) eventContents[2].appendChild(event3.createDropdown());
-      if (eventContents[3]) eventContents[3].appendChild(event4.createDropdown());
-    });
-  </script>
- </body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs & Events - Ramakrishna Vedanta Society of North Texas</title>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Program Finder Styles */
+        .program-finder-hero {
+            background: linear-gradient(135deg, #f5f1ea 0%, #efe8dc 100%);
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        .program-finder-hero h1 {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+        
+        .program-finder-hero p {
+            font-size: 1.15rem;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Search Box */
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            border: 2px solid #e0d8cc;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 20px rgba(255, 153, 51, 0.15);
+        }
+        
+        .search-box svg {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .filter-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+        
+        .filter-pill {
+            padding: 0.6rem 1.25rem;
+            border: 2px solid #e0d8cc;
+            border-radius: 50px;
+            background: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        
+        .filter-pill:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        
+        .filter-pill.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+        }
+        
+        .filter-pill .count {
+            display: inline-block;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 6px;
+        }
+        
+        .filter-pill.active .count {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        /* Programs Grid */
+        .programs-section {
+            padding: 3rem 0 4rem;
+            background: #faf8f5;
+            min-height: 60vh;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* Program Card */
+        .program-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+        }
+        
+        .program-card-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .program-date-badge {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #e06600 100%);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 70px;
+            flex-shrink: 0;
+        }
+        
+        .program-date-badge .month {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+        
+        .program-date-badge .day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .program-date-badge .year {
+            font-size: 0.75rem;
+            opacity: 0.85;
+        }
+        
+        .program-card-header h3 {
+            font-size: 1.15rem;
+            color: var(--color-text);
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .program-card-body {
+            padding: 0 1.5rem 1.25rem;
+            flex: 1;
+        }
+        
+        .program-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .program-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--color-text-light);
+        }
+        
+        .program-meta svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-primary);
+        }
+        
+        .program-description {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .program-card-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .program-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #f5f1ea;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+        
+        .program-tag.weekly { background: #e8f4f0; color: #2a7a5a; }
+        .program-tag.special { background: #fff3e6; color: #cc6600; }
+        .program-tag.festival { background: #f0e8f5; color: #7a4a9a; }
+        .program-tag.retreat { background: #e8f0f8; color: #3a6a9a; }
+        .program-tag.online { background: #e8f8f0; color: #2a8a5a; }
+        
+        .program-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .program-btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .program-btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        .program-btn-primary:hover {
+            background: #e06600;
+        }
+        
+        .program-btn-secondary {
+            background: #f5f1ea;
+            color: var(--color-text);
+        }
+        
+        .program-btn-secondary:hover {
+            background: #ebe5d9;
+        }
+        
+        /* Zoom Info */
+        .zoom-info {
+            background: #f8f8f8;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .zoom-info a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        
+        .zoom-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Weekly Schedule Section */
+        .weekly-schedule-section {
+            background: white;
+            padding: 3rem 0;
+            border-top: 1px solid #eee;
+        }
+        
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .weekly-card {
+            background: linear-gradient(135deg, #f5f1ea 0%, #fff 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .weekly-card h3 {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin: 0 0 0.5rem;
+        }
+        
+        .weekly-card .time {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .weekly-card p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--color-text-light);
+        }
+        
+        .no-results svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+        }
+        
+        /* Mobile */
+        @media (max-width: 600px) {
+            .program-finder-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .filter-pills {
+                justify-content: flex-start;
+                padding: 0 1rem;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .filter-pill {
+                white-space: nowrap;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-card-header {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .program-date-badge {
+                flex-direction: row;
+                gap: 8px;
+                min-width: auto;
+                padding: 0.5rem 1rem;
+            }
+            
+            .program-date-badge .day {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    
+    <!-- Hero with Search -->
+    <section class="program-finder-hero">
+        <div class="container">
+            <h1>Programs & Events</h1>
+            <p>Discover spiritual programs, retreats, and celebrations at our center</p>
+            <div class="search-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="program-search" placeholder="Search programs..." oninput="filterPrograms()">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Filter Pills -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-pills">
+                <button class="filter-pill active" data-filter="all" onclick="setFilter('all')">All Programs <span class="count" id="count-all">0</span></button>
+                <button class="filter-pill" data-filter="weekly" onclick="setFilter('weekly')">Weekly <span class="count" id="count-weekly">0</span></button>
+                <button class="filter-pill" data-filter="special" onclick="setFilter('special')">Special Events <span class="count" id="count-special">0</span></button>
+                <button class="filter-pill" data-filter="festival" onclick="setFilter('festival')">Festivals <span class="count" id="count-festival">0</span></button>
+                <button class="filter-pill" data-filter="retreat" onclick="setFilter('retreat')">Retreats <span class="count" id="count-retreat">0</span></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Programs Grid -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="programs-grid" id="programs-grid">
+                <!-- Programs will be rendered by JavaScript -->
+            </div>
+            <div class="no-results" id="no-results" style="display: none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <h3>No programs found</h3>
+                <p>Try adjusting your search or filter</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Weekly Schedule -->
+    <section class="weekly-schedule-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Weekly Schedule</h2>
+            <p style="text-align: center; color: var(--color-text-light); margin-bottom: 0;">Join us every week for these regular programs</p>
+            
+            <div class="weekly-grid">
+                <div class="weekly-card">
+                    <h3>🕉️ Sunday Service</h3>
+                    <div class="time">Every Sunday • 11:00 AM - 12:30 PM</div>
+                    <p>Silent meditation followed by spiritual discourse and discussion. Available in-person and online via Zoom.</p>
+                    <div class="zoom-info">
+                        <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/87900497480" target="_blank">Meeting ID: 879 0049 7480</a>
+                    </div>
+                </div>
+                
+                <div class="weekly-card">
+                    <h3>📿 Raja Yoga Study Circle</h3>
+                    <div class="time">Every Thursday • 7:00 PM - 8:30 PM</div>
+                    <p>Study of Patanjali's Yoga Sutras and practical meditation techniques. Open to beginners and experienced practitioners.</p>
+                    <div class="zoom-info">
+                        <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/84119327910" target="_blank">Meeting ID: 841 1932 7910</a>
+                    </div>
+                </div>
+                
+                <div class="weekly-card">
+                    <h3>🪔 Saturday Evening Arati</h3>
+                    <div class="time">Every Saturday • 6:00 PM - 7:00 PM</div>
+                    <p>In-person devotional worship service with traditional arati ceremony. A beautiful way to end the week.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to receive updates about upcoming events and programs</p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary" href="newsletter.html">Subscribe</a>
+                    <a class="btn btn-secondary" href="contactus.html">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div id="footer-placeholder"></div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Program data - single source of truth
+        const programs = [
+            {
+                id: 1,
+                title: "Shivaratri Puja",
+                date: "2026-02-15",
+                dateDisplay: { month: "Feb", day: "15", year: "2026" },
+                time: "6:30 PM - 8:15 PM",
+                description: "Special worship celebrating Maha Shivaratri with traditional rituals, devotional songs, readings, arati, flower offering, and supper prasad.",
+                category: "festival",
+                tags: ["festival", "online"],
+                zoom: "879 0049 7480",
+                featured: true
+            },
+            {
+                id: 2,
+                title: "Sri Ramakrishna's Birth Observance",
+                date: "2026-02-22",
+                dateDisplay: { month: "Feb", day: "22", year: "2026" },
+                time: "10:30 AM - 1:30 PM",
+                description: "Celebration with special puja, devotional singing, talks on his life and teachings, refreshments, and lunch prasad.",
+                category: "festival",
+                tags: ["festival", "online"],
+                zoom: "879 0049 7480",
+                featured: true
+            },
+            {
+                id: 3,
+                title: "Swami Ishadhyanananda ji's Visit",
+                date: "2026-03-27",
+                dateDisplay: { month: "Mar", day: "27-29", year: "2026" },
+                time: "Friday - Sunday",
+                description: "Weekend retreat and spiritual programs with Swami Ishadhyanananda ji. Inspiring talks and meditation sessions.",
+                category: "retreat",
+                tags: ["retreat"]
+            },
+            {
+                id: 4,
+                title: "Ramnavami Puja",
+                date: "2026-03-29",
+                dateDisplay: { month: "Mar", day: "29", year: "2026" },
+                time: "Sunday",
+                description: "Celebration of Lord Rama's birth anniversary with special puja and devotional programs.",
+                category: "festival",
+                tags: ["festival"]
+            },
+            {
+                id: 5,
+                title: "Swami Nirakarananda ji's Visit",
+                date: "2026-04-17",
+                dateDisplay: { month: "Apr", day: "17-19", year: "2026" },
+                time: "Friday - Sunday",
+                description: "Weekend retreat and spiritual programs with Swami Nirakarananda ji.",
+                category: "retreat",
+                tags: ["retreat"]
+            },
+            {
+                id: 6,
+                title: "Rev. Swami Sarvadevananda ji's Visit",
+                date: "2026-04-30",
+                dateDisplay: { month: "Apr-May", day: "30-2", year: "2026" },
+                time: "Thursday - Saturday",
+                description: "Spiritual retreat and programs with Rev. Swami Sarvadevananda ji.",
+                category: "retreat",
+                tags: ["retreat"]
+            },
+            {
+                id: 7,
+                title: "Buddha Purnima",
+                date: "2026-05-01",
+                dateDisplay: { month: "May", day: "1", year: "2026" },
+                time: "Friday",
+                description: "Celebration of Buddha's birth, enlightenment, and parinirvana with meditation and readings.",
+                category: "festival",
+                tags: ["festival"]
+            },
+            {
+                id: 8,
+                title: "Swami Sarvapriyananda ji's Visit",
+                date: "2026-06-12",
+                dateDisplay: { month: "Jun", day: "12-14", year: "2026" },
+                time: "Friday - Sunday",
+                description: "Weekend retreat with the renowned Swami Sarvapriyananda ji from the Vedanta Society of New York. A rare opportunity for deep spiritual learning.",
+                category: "retreat",
+                tags: ["retreat"],
+                featured: true
+            },
+            {
+                id: 9,
+                title: "Swami Shivarchanananda ji's Visit",
+                date: "2026-08-29",
+                dateDisplay: { month: "Aug", day: "29-30", year: "2026" },
+                time: "Saturday - Sunday",
+                description: "Weekend retreat and spiritual programs with Swami Shivarchanananda ji.",
+                category: "retreat",
+                tags: ["retreat"]
+            },
+            {
+                id: 10,
+                title: "Janmashtami Puja",
+                date: "2026-08-30",
+                dateDisplay: { month: "Aug", day: "30", year: "2026" },
+                time: "Sunday",
+                description: "Celebration of Lord Krishna's birth anniversary with special puja, devotional singing, and traditional observances.",
+                category: "festival",
+                tags: ["festival"]
+            },
+            {
+                id: 11,
+                title: "Pravrajikas' Visit",
+                date: "2026-09-18",
+                dateDisplay: { month: "Sep", day: "18-20", year: "2026" },
+                time: "Friday - Sunday",
+                description: "Weekend retreat with Pravrajika Divyanandaprana ji and Pravrajika Brahmaprana ji.",
+                category: "retreat",
+                tags: ["retreat"]
+            }
+        ];
+        
+        let currentFilter = 'all';
+        let searchQuery = '';
+        
+        function renderPrograms() {
+            const grid = document.getElementById('programs-grid');
+            const noResults = document.getElementById('no-results');
+            
+            // Filter programs
+            let filtered = programs.filter(p => {
+                const matchesFilter = currentFilter === 'all' || p.category === currentFilter;
+                const matchesSearch = searchQuery === '' || 
+                    p.title.toLowerCase().includes(searchQuery) ||
+                    p.description.toLowerCase().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            });
+            
+            // Sort by date
+            filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            // Update counts
+            document.getElementById('count-all').textContent = programs.length;
+            document.getElementById('count-weekly').textContent = programs.filter(p => p.category === 'weekly').length;
+            document.getElementById('count-special').textContent = programs.filter(p => p.category === 'special').length;
+            document.getElementById('count-festival').textContent = programs.filter(p => p.category === 'festival').length;
+            document.getElementById('count-retreat').textContent = programs.filter(p => p.category === 'retreat').length;
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = filtered.map(p => `
+                <div class="program-card" data-category="${p.category}">
+                    <div class="program-card-header">
+                        <div class="program-date-badge">
+                            <div class="month">${p.dateDisplay.month}</div>
+                            <div class="day">${p.dateDisplay.day}</div>
+                            <div class="year">${p.dateDisplay.year}</div>
+                        </div>
+                        <h3>${p.title}</h3>
+                    </div>
+                    <div class="program-card-body">
+                        <div class="program-meta">
+                            <span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                ${p.time}
+                            </span>
+                            ${p.zoom ? `<span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 10l5-3v10l-5-3z"></path>
+                                    <rect x="1" y="6" width="14" height="12" rx="2" ry="2"></rect>
+                                </svg>
+                                Online Available
+                            </span>` : ''}
+                        </div>
+                        <p class="program-description">${p.description}</p>
+                        ${p.zoom ? `<div class="zoom-info">
+                            <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${p.zoom.replace(/\s/g, '')}" target="_blank">Meeting ID: ${p.zoom}</a>
+                        </div>` : ''}
+                    </div>
+                    <div class="program-card-footer">
+                        <div>
+                            ${p.tags.map(t => `<span class="program-tag ${t}">${t.charAt(0).toUpperCase() + t.slice(1)}</span>`).join(' ')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.classList.toggle('active', pill.dataset.filter === filter);
+            });
+            renderPrograms();
+        }
+        
+        function filterPrograms() {
+            searchQuery = document.getElementById('program-search').value.toLowerCase();
+            renderPrograms();
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', renderPrograms);
+    </script>
+</body>
 </html>

@@ -2,7 +2,11 @@
 # ==========================================
 
 backend:
-  name: test-repo
+  name: github
+  repo: vinaysolapurkar/vedantadfw
+  branch: main
+  base_url: https://v2-sigma-two.vercel.app
+  auth_endpoint: /api/auth
 
 # Media
 media_folder: "v2/images/uploads"
