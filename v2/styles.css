@@ -1048,8 +1048,8 @@ body {
 .hero-tagline {
     text-align: center;
     max-width: 800px;
-    padding: 0.25rem 0;
-    margin-top: -0.5rem;
+    padding: 0;
+    margin-top: -1rem;
 }
 
 .tagline-text {
@@ -1070,8 +1070,8 @@ body {
 .golden-line-canvas {
     width: 100%;
     max-width: 600px;
-    height: 60px;
-    margin: 0.5rem auto 0;
+    height: 50px;
+    margin: 0 auto;
     display: block;
     cursor: pointer;
 }
@@ -1091,7 +1091,7 @@ body {
     overflow: hidden;
     position: relative;
     border-radius: 12px;
-    margin-top: -0.5rem;
+    margin-top: -1rem;
 }
 
 .carousel-track {
