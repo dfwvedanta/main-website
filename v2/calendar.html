@@ -357,6 +357,285 @@
             opacity: 0.4;
         }
         
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .view-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e0d8cc;
+            background: white;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        
+        .view-btn:first-child {
+            border-radius: 8px 0 0 8px;
+            border-right: 1px solid #e0d8cc;
+        }
+        
+        .view-btn:last-child {
+            border-radius: 0 8px 8px 0;
+            border-left: 1px solid #e0d8cc;
+        }
+        
+        .view-btn:hover {
+            background: #f5f1ea;
+        }
+        
+        .view-btn.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+        }
+        
+        /* Monthly Calendar */
+        .monthly-view {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .monthly-view.active {
+            display: block;
+        }
+        
+        .month-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .month-nav h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            min-width: 200px;
+            text-align: center;
+            margin: 0;
+        }
+        
+        .month-nav-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #e0d8cc;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .month-nav-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        
+        .month-nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .calendar-grid {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .calendar-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: linear-gradient(135deg, #f5f1ea 0%, #efe8dc 100%);
+            border-bottom: 1px solid #e0d8cc;
+        }
+        
+        .calendar-header span {
+            padding: 1rem 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--color-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        
+        .calendar-day {
+            min-height: 80px;
+            padding: 0.5rem;
+            border: 1px solid #f0ebe3;
+            border-top: none;
+            border-left: none;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .calendar-day:nth-child(7n) {
+            border-right: none;
+        }
+        
+        .calendar-day:hover {
+            background: #faf8f5;
+        }
+        
+        .calendar-day.other-month {
+            background: #fafafa;
+            color: #ccc;
+        }
+        
+        .calendar-day.today {
+            background: #fff8f0;
+        }
+        
+        .calendar-day.today .day-number {
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .calendar-day.selected {
+            background: #fff3e6;
+            box-shadow: inset 0 0 0 2px var(--color-primary);
+        }
+        
+        .day-number {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 4px;
+        }
+        
+        .day-events {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+        
+        .event-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-primary);
+        }
+        
+        .event-dot.festival { background: #9a4a9a; }
+        .event-dot.retreat { background: #3a6a9a; }
+        .event-dot.special { background: #cc6600; }
+        .event-dot.weekly { background: #2a7a5a; }
+        
+        /* Selected Day Events */
+        .selected-day-events {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: none;
+        }
+        
+        .selected-day-events.active {
+            display: block;
+        }
+        
+        .selected-day-events h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin: 0 0 1rem;
+            color: var(--color-text);
+        }
+        
+        .selected-day-event {
+            padding: 1rem;
+            background: #f5f1ea;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .selected-day-event:last-child {
+            margin-bottom: 0;
+        }
+        
+        .selected-day-event h4 {
+            font-size: 1rem;
+            margin: 0 0 0.5rem;
+            color: var(--color-text);
+        }
+        
+        .selected-day-event p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .selected-day-event .event-time {
+            font-weight: 500;
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Calendar Legend */
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+        
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .legend-dot.festival { background: #9a4a9a; }
+        .legend-dot.retreat { background: #3a6a9a; }
+        .legend-dot.special { background: #cc6600; }
+        
+        /* Hide filters in monthly view */
+        .filter-section.hidden {
+            display: none;
+        }
+        
+        .programs-section.hidden {
+            display: none;
+        }
+
         /* Mobile */
         @media (max-width: 600px) {
             .program-finder-hero h1 {
@@ -394,6 +673,58 @@
             .program-date-badge .day {
                 font-size: 1.25rem;
             }
+            
+            /* Monthly calendar mobile */
+            .view-toggle {
+                margin-bottom: 1rem;
+            }
+            
+            .view-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .month-nav h2 {
+                font-size: 1.2rem;
+                min-width: 150px;
+            }
+            
+            .calendar-header span {
+                padding: 0.75rem 0.25rem;
+                font-size: 0.7rem;
+            }
+            
+            .calendar-day {
+                min-height: 60px;
+                padding: 0.35rem;
+            }
+            
+            .day-number {
+                font-size: 0.8rem;
+            }
+            
+            .event-dot {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .calendar-legend {
+                gap: 1rem;
+                font-size: 0.75rem;
+            }
+            
+            .legend-dot {
+                width: 8px;
+                height: 8px;
+            }
+            
+            .selected-day-events {
+                padding: 1rem;
+            }
+            
+            .selected-day-events h3 {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -412,6 +743,30 @@
                 </svg>
                 <input type="text" id="program-search" placeholder="Search programs..." oninput="filterPrograms()">
             </div>
+            
+            <!-- View Toggle -->
+            <div class="view-toggle">
+                <button class="view-btn active" id="list-view-btn" onclick="setView('list')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    List
+                </button>
+                <button class="view-btn" id="monthly-view-btn" onclick="setView('monthly')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Monthly
+                </button>
+            </div>
         </div>
     </section>
     
@@ -428,8 +783,8 @@
         </div>
     </section>
     
-    <!-- Programs Grid -->
-    <section class="programs-section">
+    <!-- Programs Grid (List View) -->
+    <section class="programs-section" id="list-view">
         <div class="container">
             <div class="programs-grid" id="programs-grid">
                 <!-- Programs will be rendered by JavaScript -->
@@ -441,6 +796,53 @@
                 </svg>
                 <h3>No programs found</h3>
                 <p>Try adjusting your search or filter</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Monthly Calendar View -->
+    <section class="programs-section monthly-view" id="monthly-view">
+        <div class="container">
+            <div class="month-nav">
+                <button class="month-nav-btn" onclick="changeMonth(-1)" aria-label="Previous month">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <h2 id="current-month">February 2026</h2>
+                <button class="month-nav-btn" onclick="changeMonth(1)" aria-label="Next month">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="calendar-grid">
+                <div class="calendar-header">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div class="calendar-body" id="calendar-body">
+                    <!-- Calendar days rendered by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="calendar-legend">
+                <div class="legend-item"><span class="legend-dot festival"></span> Festival</div>
+                <div class="legend-item"><span class="legend-dot retreat"></span> Retreat</div>
+                <div class="legend-item"><span class="legend-dot special"></span> Special Event</div>
+            </div>
+            
+            <div class="selected-day-events" id="selected-day-events">
+                <h3 id="selected-day-title">Events on February 15</h3>
+                <div id="selected-day-content">
+                    <!-- Events for selected day -->
+                </div>
             </div>
         </div>
     </section>
@@ -704,8 +1106,178 @@
             renderPrograms();
         }
         
+        // View switching
+        let currentView = 'list';
+        let currentMonthDate = new Date(2026, 1, 1); // February 2026
+        let selectedDate = null;
+        
+        function setView(view) {
+            currentView = view;
+            
+            // Toggle button states
+            document.getElementById('list-view-btn').classList.toggle('active', view === 'list');
+            document.getElementById('monthly-view-btn').classList.toggle('active', view === 'monthly');
+            
+            // Toggle sections
+            document.getElementById('list-view').classList.toggle('hidden', view === 'monthly');
+            document.querySelector('.filter-section').classList.toggle('hidden', view === 'monthly');
+            document.getElementById('monthly-view').classList.toggle('active', view === 'monthly');
+            
+            if (view === 'monthly') {
+                renderCalendar();
+            }
+        }
+        
+        function changeMonth(delta) {
+            currentMonthDate.setMonth(currentMonthDate.getMonth() + delta);
+            renderCalendar();
+            // Hide selected day events when changing month
+            document.getElementById('selected-day-events').classList.remove('active');
+            selectedDate = null;
+        }
+        
+        function renderCalendar() {
+            const year = currentMonthDate.getFullYear();
+            const month = currentMonthDate.getMonth();
+            
+            // Update header
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            document.getElementById('current-month').textContent = `${monthNames[month]} ${year}`;
+            
+            // Get first day of month and total days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+            
+            // Get today
+            const today = new Date();
+            const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+            
+            // Build calendar HTML
+            let html = '';
+            let dayCount = 1;
+            let nextMonthDay = 1;
+            
+            // Calculate total cells needed (6 rows max)
+            const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+            
+            for (let i = 0; i < totalCells; i++) {
+                let dayNum, isOtherMonth = false, dateStr;
+                
+                if (i < firstDay) {
+                    // Previous month days
+                    dayNum = daysInPrevMonth - firstDay + i + 1;
+                    isOtherMonth = true;
+                    const prevMonth = month === 0 ? 11 : month - 1;
+                    const prevYear = month === 0 ? year - 1 : year;
+                    dateStr = `${prevYear}-${String(prevMonth + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+                } else if (dayCount > daysInMonth) {
+                    // Next month days
+                    dayNum = nextMonthDay++;
+                    isOtherMonth = true;
+                    const nextMonth = month === 11 ? 0 : month + 1;
+                    const nextYear = month === 11 ? year + 1 : year;
+                    dateStr = `${nextYear}-${String(nextMonth + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+                } else {
+                    dayNum = dayCount++;
+                    dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+                }
+                
+                // Check for events on this day
+                const dayEvents = programs.filter(p => {
+                    const eventDate = p.date;
+                    // Handle date ranges (e.g., "2026-03-27" to "2026-03-29")
+                    if (eventDate === dateStr) return true;
+                    // Check if date falls within multi-day events
+                    if (p.dateDisplay.day.includes('-')) {
+                        const startDay = parseInt(p.dateDisplay.day.split('-')[0]);
+                        const endDay = parseInt(p.dateDisplay.day.split('-')[1]);
+                        const eventMonth = p.date.split('-')[1];
+                        const eventYear = p.date.split('-')[0];
+                        if (String(month + 1).padStart(2, '0') === eventMonth && String(year) === eventYear) {
+                            return dayNum >= startDay && dayNum <= endDay && !isOtherMonth;
+                        }
+                    }
+                    return false;
+                });
+                
+                const isToday = isCurrentMonth && dayNum === today.getDate() && !isOtherMonth;
+                const isSelected = selectedDate === dateStr;
+                
+                let classes = 'calendar-day';
+                if (isOtherMonth) classes += ' other-month';
+                if (isToday) classes += ' today';
+                if (isSelected) classes += ' selected';
+                
+                html += `<div class="${classes}" data-date="${dateStr}" onclick="selectDay('${dateStr}')">
+                    <div class="day-number">${dayNum}</div>
+                    <div class="day-events">
+                        ${dayEvents.map(e => `<span class="event-dot ${e.category}" title="${e.title}"></span>`).join('')}
+                    </div>
+                </div>`;
+            }
+            
+            document.getElementById('calendar-body').innerHTML = html;
+        }
+        
+        function selectDay(dateStr) {
+            selectedDate = dateStr;
+            
+            // Update selected state
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.toggle('selected', day.dataset.date === dateStr);
+            });
+            
+            // Get events for this day
+            const dayEvents = programs.filter(p => {
+                if (p.date === dateStr) return true;
+                // Handle multi-day events
+                if (p.dateDisplay.day.includes('-')) {
+                    const [startDay, endDay] = p.dateDisplay.day.split('-').map(d => parseInt(d));
+                    const [eventYear, eventMonth] = p.date.split('-');
+                    const [selYear, selMonth, selDay] = dateStr.split('-');
+                    if (eventYear === selYear && eventMonth === selMonth) {
+                        return parseInt(selDay) >= startDay && parseInt(selDay) <= endDay;
+                    }
+                }
+                return false;
+            });
+            
+            const eventsContainer = document.getElementById('selected-day-events');
+            const titleEl = document.getElementById('selected-day-title');
+            const contentEl = document.getElementById('selected-day-content');
+            
+            if (dayEvents.length === 0) {
+                eventsContainer.classList.remove('active');
+                return;
+            }
+            
+            // Format date for title
+            const d = new Date(dateStr);
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            titleEl.textContent = `Events on ${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+            
+            contentEl.innerHTML = dayEvents.map(e => `
+                <div class="selected-day-event" style="border-left-color: ${
+                    e.category === 'festival' ? '#9a4a9a' : 
+                    e.category === 'retreat' ? '#3a6a9a' : '#cc6600'
+                }">
+                    <h4>${e.title}</h4>
+                    <div class="event-time">${e.time}</div>
+                    <p>${e.description}</p>
+                    ${e.zoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
+                </div>
+            `).join('');
+            
+            eventsContainer.classList.add('active');
+        }
+        
         // Initialize
-        document.addEventListener('DOMContentLoaded', renderPrograms);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPrograms();
+        });
     </script>
 </body>
 </html>
