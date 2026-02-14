@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DFW Vedanta - Visual Editor</title>
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/super-build/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
@@ -104,31 +104,11 @@
             }
         }
         
-        // Initialize CKEditor
-        CKEDITOR.ClassicEditor.create(document.getElementById('editor'), {
-            toolbar: {
-                items: [
-                    'heading', '|',
-                    'bold', 'italic', 'underline', 'strikethrough', '|',
-                    'fontSize', 'fontColor', 'fontBackgroundColor', '|',
-                    'alignment', '|',
-                    'bulletedList', 'numberedList', '|',
-                    'link', 'insertImage', 'insertTable', '|',
-                    'outdent', 'indent', '|',
-                    'blockQuote', 'horizontalLine', '|',
-                    'sourceEditing', '|',
-                    'undo', 'redo'
-                ],
-                shouldNotGroupWhenFull: true
-            },
-            htmlSupport: {
-                allow: [
-                    { name: /.*/, attributes: true, classes: true, styles: true }
-                ]
-            },
-            removePlugins: ['MediaEmbedToolbar'],
+        // Initialize CKEditor Classic
+        ClassicEditor.create(document.getElementById('editor'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'imageUpload', 'blockQuote', 'insertTable', 'undo', 'redo'],
             image: {
-                toolbar: ['imageTextAlternative', 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side']
+                toolbar: ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side']
             }
         }).then(editor => {
             editorInstance = editor;
