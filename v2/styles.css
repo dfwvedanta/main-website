@@ -1071,7 +1071,7 @@ body {
     width: 100%;
     max-width: 600px;
     height: 60px;
-    margin: 1.5rem auto 0;
+    margin: 0.5rem auto 0;
     display: block;
     cursor: pointer;
 }
@@ -1091,6 +1091,7 @@ body {
     overflow: hidden;
     position: relative;
     border-radius: 12px;
+    margin-top: -0.5rem;
 }
 
 .carousel-track {
