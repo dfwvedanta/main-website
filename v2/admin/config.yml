@@ -28,6 +28,100 @@ slug:
 
 collections:
   # =====================
+  # HTML PAGES (Direct Edit)
+  # =====================
+  - name: "html-pages"
+    label: "📄 HTML Pages"
+    files:
+      - name: "index"
+        label: "Home Page"
+        file: "v2/index.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "aboutus"
+        label: "About Us"
+        file: "v2/aboutus.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "calendar"
+        label: "Calendar"
+        file: "v2/calendar.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "ramakrishna"
+        label: "Sri Ramakrishna"
+        file: "v2/ramakrishna.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "sarada-devi"
+        label: "Sri Sarada Devi"
+        file: "v2/sarada-devi.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "vivekananda"
+        label: "Swami Vivekananda"
+        file: "v2/vivekananda.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "vedanta"
+        label: "Vedanta Philosophy"
+        file: "v2/vedanta.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "meditation"
+        label: "Meditation"
+        file: "v2/meditation.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "programs"
+        label: "Programs"
+        file: "v2/programs.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "leadership"
+        label: "Leadership"
+        file: "v2/leadership.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "contactus"
+        label: "Contact Us"
+        file: "v2/contactus.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "donate"
+        label: "Donate"
+        file: "v2/donate.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "newsletter"
+        label: "Newsletter"
+        file: "v2/newsletter.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+      - name: "social-services"
+        label: "Social Services"
+        file: "v2/social-services.html"
+        fields:
+          - {label: "Content", name: "body", widget: "code", default_language: "html", output_code_only: true}
+
+  # =====================
+  # CSS/JS FILES
+  # =====================
+  - name: "styles"
+    label: "🎨 Styles & Scripts"
+    files:
+      - name: "styles"
+        label: "Main CSS"
+        file: "v2/styles.css"
+        fields:
+          - {label: "CSS", name: "body", widget: "code", default_language: "css", output_code_only: true}
+      - name: "script"
+        label: "Main JavaScript"
+        file: "v2/script.js"
+        fields:
+          - {label: "JavaScript", name: "body", widget: "code", default_language: "javascript", output_code_only: true}
+
+  # =====================
   # SITE SETTINGS
   # =====================
   - name: "settings"
