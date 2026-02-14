@@ -1096,7 +1096,7 @@ body {
 .carousel-track {
     display: flex;
     gap: 10px;
-    transition: transform 0.6s ease-in-out;
+    transition: transform 1s ease-in-out;
     width: calc((100% + 10px) * 4 / 3); /* 4 images, show 3 at a time */
 }
 
