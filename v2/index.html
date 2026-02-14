@@ -287,18 +287,81 @@
             })();
             </script>
             
-            <!-- Hero Gallery -->
-            <div class="hero-gallery-grid">
-                <button class="gallery-thumb" data-index="0" aria-label="View image 1">
-                    <img src="images/hero-gallery/center-sign.jpg" alt="Vedanta Society entrance with flowers">
-                </button>
-                <button class="gallery-thumb" data-index="1" aria-label="View image 2">
-                    <img src="images/hero-gallery/congregation.jpg" alt="Our vibrant community">
-                </button>
-                <button class="gallery-thumb" data-index="2" aria-label="View image 3">
-                    <img src="images/hero-gallery/swami-discourse.jpg" alt="Spiritual discourse">
-                </button>
+            <!-- Hero Gallery Carousel -->
+            <div class="hero-gallery-carousel" id="heroCarousel">
+                <div class="carousel-track">
+                    <button class="gallery-thumb" data-index="0" aria-label="View image 1">
+                        <img src="images/hero-gallery/center-sign.jpg" alt="Vedanta Society entrance with flowers">
+                    </button>
+                    <button class="gallery-thumb" data-index="1" aria-label="View image 2">
+                        <img src="images/hero-gallery/congregation.jpg" alt="Our vibrant community">
+                    </button>
+                    <button class="gallery-thumb" data-index="2" aria-label="View image 3">
+                        <img src="images/hero-gallery/swami-discourse.jpg" alt="Spiritual discourse">
+                    </button>
+                    <button class="gallery-thumb" data-index="3" aria-label="View image 4">
+                        <img src="images/hero-gallery/main-shrine.jpg" alt="Main shrine">
+                    </button>
+                </div>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" data-slide="0" aria-label="View slide 1"></button>
+                    <button class="carousel-dot" data-slide="1" aria-label="View slide 2"></button>
+                </div>
             </div>
+            
+            <script>
+            // Hero Gallery Auto-Carousel
+            (function() {
+                const carousel = document.getElementById('heroCarousel');
+                if (!carousel) return;
+                
+                const track = carousel.querySelector('.carousel-track');
+                const dots = carousel.querySelectorAll('.carousel-dot');
+                const thumbs = carousel.querySelectorAll('.gallery-thumb');
+                
+                let currentSlide = 0;
+                let autoPlayInterval;
+                let isPaused = false;
+                
+                const totalSlides = 2; // 4 images, 3 visible at a time = 2 positions
+                const slideWidth = 33.333; // Each slide moves by 1/3
+                
+                function goToSlide(index) {
+                    currentSlide = index;
+                    track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+                    
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentSlide);
+                    });
+                }
+                
+                function nextSlide() {
+                    goToSlide((currentSlide + 1) % totalSlides);
+                }
+                
+                function startAutoPlay() {
+                    autoPlayInterval = setInterval(() => {
+                        if (!isPaused) nextSlide();
+                    }, 5000);
+                }
+                
+                function stopAutoPlay() {
+                    clearInterval(autoPlayInterval);
+                }
+                
+                // Dot navigation
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => goToSlide(i));
+                });
+                
+                // Pause on hover
+                carousel.addEventListener('mouseenter', () => isPaused = true);
+                carousel.addEventListener('mouseleave', () => isPaused = false);
+                
+                // Start auto-play
+                startAutoPlay();
+            })();
+            </script>
             
             <!-- Gallery Lightbox -->
             <div id="gallery-lightbox" class="gallery-lightbox">
