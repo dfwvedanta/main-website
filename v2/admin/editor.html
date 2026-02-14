@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFW Vedanta - Visual Editor</title>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .header { background: #FF9933; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { font-size: 1.5rem; }
+        .header-actions { display: flex; gap: 1rem; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
+        .btn-primary { background: white; color: #FF9933; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .container { display: flex; height: calc(100vh - 60px); }
+        .sidebar { width: 250px; background: white; border-right: 1px solid #ddd; padding: 1rem; overflow-y: auto; }
+        .sidebar h3 { margin-bottom: 1rem; color: #333; font-size: 0.9rem; text-transform: uppercase; }
+        .page-list { list-style: none; }
+        .page-list li { padding: 0.75rem; margin: 0.25rem 0; border-radius: 4px; cursor: pointer; }
+        .page-list li:hover { background: #f0f0f0; }
+        .page-list li.active { background: #FF9933; color: white; }
+        .editor-area { flex: 1; padding: 1rem; overflow: auto; }
+        .status { padding: 0.5rem 1rem; background: #e9ecef; font-size: 0.85rem; color: #666; }
+        .loading { text-align: center; padding: 2rem; color: #666; }
+        #preview-frame { width: 100%; height: 100%; border: none; background: white; }
+        .tab-bar { display: flex; gap: 0; background: #e9ecef; padding: 0.5rem 1rem 0; }
+        .tab { padding: 0.5rem 1rem; cursor: pointer; background: #ddd; border-radius: 4px 4px 0 0; }
+        .tab.active { background: white; }
+        .editor-content { background: white; min-height: 500px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🕉️ DFW Vedanta Editor</h1>
+        <div class="header-actions">
+            <button class="btn btn-secondary" onclick="previewPage()">👁️ Preview</button>
+            <button class="btn btn-success" onclick="savePage()">💾 Save & Publish</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h3>Pages</h3>
+            <ul class="page-list" id="pageList">
+                <li data-page="index.html">🏠 Home</li>
+                <li data-page="aboutus.html">ℹ️ About Us</li>
+                <li data-page="calendar.html">📅 Calendar</li>
+                <li data-page="programs.html">📋 Programs</li>
+                <li data-page="ramakrishna.html">🙏 Sri Ramakrishna</li>
+                <li data-page="sarada-devi.html">🙏 Sri Sarada Devi</li>
+                <li data-page="vivekananda.html">🙏 Swami Vivekananda</li>
+                <li data-page="vedanta.html">📖 Vedanta</li>
+                <li data-page="meditation.html">🧘 Meditation</li>
+                <li data-page="leadership.html">👥 Leadership</li>
+                <li data-page="newsletter.html">📰 Newsletter</li>
+                <li data-page="social-services.html">🤝 Social Services</li>
+                <li data-page="contactus.html">📞 Contact Us</li>
+                <li data-page="donate.html">💝 Donate</li>
+            </ul>
+        </div>
+        
+        <div class="editor-area">
+            <div class="tab-bar">
+                <div class="tab active" data-tab="visual">Visual Editor</div>
+                <div class="tab" data-tab="code">HTML Code</div>
+                <div class="tab" data-tab="preview">Live Preview</div>
+            </div>
+            <div id="visual-editor" class="editor-content">
+                <div class="loading">Select a page from the sidebar to start editing</div>
+            </div>
+            <div id="code-editor" class="editor-content" style="display:none;">
+                <textarea id="htmlCode" style="width:100%; height:500px; font-family:monospace; padding:1rem;"></textarea>
+            </div>
+            <div id="preview-tab" class="editor-content" style="display:none;">
+                <iframe id="preview-frame"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <div class="status" id="status">Ready. Select a page to edit.</div>
+
+    <script>
+        let currentPage = null;
+        let githubToken = localStorage.getItem('github_token');
+        const REPO = 'vinaysolapurkar/vedantadfw';
+        const BRANCH = 'master';
+        
+        // Check auth
+        if (!githubToken) {
+            const token = prompt('Enter your GitHub Personal Access Token (with repo scope):');
+            if (token) {
+                localStorage.setItem('github_token', token);
+                githubToken = token;
+            }
+        }
+        
+        // Initialize TinyMCE
+        tinymce.init({
+            selector: '#visual-editor',
+            height: 500,
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; padding: 1rem; }',
+            setup: function(editor) {
+                editor.on('init', function() {
+                    document.querySelector('.loading')?.remove();
+                });
+            }
+        });
+        
+        // Page list click
+        document.querySelectorAll('.page-list li').forEach(li => {
+            li.addEventListener('click', () => loadPage(li.dataset.page));
+        });
+        
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                document.getElementById('visual-editor').style.display = tab.dataset.tab === 'visual' ? 'block' : 'none';
+                document.getElementById('code-editor').style.display = tab.dataset.tab === 'code' ? 'block' : 'none';
+                document.getElementById('preview-tab').style.display = tab.dataset.tab === 'preview' ? 'block' : 'none';
+                
+                if (tab.dataset.tab === 'code') {
+                    document.getElementById('htmlCode').value = tinymce.activeEditor.getContent();
+                } else if (tab.dataset.tab === 'visual') {
+                    const code = document.getElementById('htmlCode').value;
+                    if (code) tinymce.activeEditor.setContent(code);
+                } else if (tab.dataset.tab === 'preview') {
+                    previewPage();
+                }
+            });
+        });
+        
+        async function loadPage(pageName) {
+            currentPage = pageName;
+            document.querySelectorAll('.page-list li').forEach(li => {
+                li.classList.toggle('active', li.dataset.page === pageName);
+            });
+            
+            setStatus('Loading ' + pageName + '...');
+            
+            try {
+                const response = await fetch(`https://raw.githubusercontent.com/${REPO}/${BRANCH}/v2/${pageName}`);
+                const html = await response.text();
+                
+                // Extract body content
+                const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+                const bodyContent = bodyMatch ? bodyMatch[1] : html;
+                
+                tinymce.activeEditor.setContent(bodyContent);
+                document.getElementById('htmlCode').value = html;
+                setStatus('Loaded: ' + pageName);
+            } catch (error) {
+                setStatus('Error loading page: ' + error.message);
+            }
+        }
+        
+        async function savePage() {
+            if (!currentPage) {
+                alert('Select a page first');
+                return;
+            }
+            
+            if (!githubToken) {
+                alert('GitHub token required');
+                return;
+            }
+            
+            setStatus('Saving...');
+            
+            try {
+                // Get original file to get SHA
+                const fileResponse = await fetch(`https://api.github.com/repos/${REPO}/contents/v2/${currentPage}?ref=${BRANCH}`, {
+                    headers: { 'Authorization': `token ${githubToken}` }
+                });
+                const fileData = await fileResponse.json();
+                
+                // Get current HTML
+                let fullHtml = document.getElementById('htmlCode').value;
+                
+                // If editing body only, reconstruct full page
+                const bodyContent = tinymce.activeEditor.getContent();
+                if (fullHtml.includes('<body')) {
+                    fullHtml = fullHtml.replace(/<body[^>]*>[\s\S]*<\/body>/i, `<body>\n${bodyContent}\n</body>`);
+                }
+                
+                // Save to GitHub
+                const saveResponse = await fetch(`https://api.github.com/repos/${REPO}/contents/v2/${currentPage}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${githubToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `Update ${currentPage} via visual editor`,
+                        content: btoa(unescape(encodeURIComponent(fullHtml))),
+                        sha: fileData.sha,
+                        branch: BRANCH
+                    })
+                });
+                
+                if (saveResponse.ok) {
+                    setStatus('✅ Saved! Vercel will auto-deploy in ~30 seconds.');
+                } else {
+                    const error = await saveResponse.json();
+                    throw new Error(error.message);
+                }
+            } catch (error) {
+                setStatus('❌ Error: ' + error.message);
+            }
+        }
+        
+        function previewPage() {
+            if (!currentPage) return;
+            const content = tinymce.activeEditor.getContent();
+            const frame = document.getElementById('preview-frame');
+            frame.srcdoc = `
+                <html>
+                <head><link rel="stylesheet" href="https://v2-sigma-two.vercel.app/styles.css"></head>
+                <body>${content}</body>
+                </html>
+            `;
+        }
+        
+        function setStatus(msg) {
+            document.getElementById('status').textContent = msg;
+        }
+    </script>
+</body>
+</html>
