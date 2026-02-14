@@ -4,7 +4,7 @@
 backend:
   name: github
   repo: vinaysolapurkar/vedantadfw
-  branch: main
+  branch: master
   base_url: https://v2-sigma-two.vercel.app
   auth_endpoint: /api/auth
 
