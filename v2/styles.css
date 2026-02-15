@@ -6565,14 +6565,29 @@ section {
     }
 }
 
-/* Top Announcement Banner */
+/* Top Announcement Banner - Refined Ethereal Design */
 .announcement-banner {
-    background: linear-gradient(135deg, #d4a574 0%, #c17b24 50%, #a86523 100%);
-    color: white;
+    background: linear-gradient(180deg, 
+        rgba(255, 250, 245, 0.97) 0%, 
+        rgba(255, 248, 240, 0.95) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: relative;
     z-index: 100;
-    box-shadow: 0 2px 12px rgba(193, 123, 36, 0.25);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    border-bottom: 1px solid rgba(193, 123, 36, 0.15);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.announcement-banner::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c17b24, transparent);
+    opacity: 0.6;
 }
 
 .announcement-inner {
@@ -6584,51 +6599,34 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    padding: 0.65rem 1rem;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .announcement-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.announcement-preview:hover .announcement-glow {
-    opacity: 1;
+    display: none;
 }
 
 .announcement-icon {
-    font-size: 1rem;
-    animation: gentlePulse 3s ease-in-out infinite;
-}
-
-@keyframes gentlePulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.1); }
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
 .announcement-title {
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: #8b5a2b;
+    letter-spacing: 0.01em;
+    font-family: var(--font-body);
 }
 
 .announcement-chevron {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.9;
+    color: #c17b24;
+    opacity: 0.7;
 }
 
 .announcement-banner.expanded .announcement-chevron {
@@ -6636,43 +6634,47 @@ section {
 }
 
 .announcement-dismiss {
-    background: rgba(255,255,255,0.15);
-    border: none;
-    color: white;
-    width: 24px;
-    height: 24px;
+    background: transparent;
+    border: 1px solid rgba(193, 123, 36, 0.25);
+    color: #a67c52;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0.5rem;
-    opacity: 0.7;
-    transition: all 0.2s ease;
+    margin-left: 0.75rem;
+    opacity: 0.6;
+    transition: all 0.25s ease;
 }
 
 .announcement-dismiss:hover {
     opacity: 1;
-    background: rgba(255,255,255,0.25);
-    transform: scale(1.1);
+    background: rgba(193, 123, 36, 0.08);
+    border-color: rgba(193, 123, 36, 0.4);
 }
 
 .announcement-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(0,0,0,0.08);
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(180deg, 
+        rgba(255, 248, 240, 0.5) 0%, 
+        rgba(255, 245, 235, 0.8) 100%);
 }
 
 .announcement-banner.expanded .announcement-details {
-    max-height: 350px;
+    max-height: 400px;
 }
 
 .announcement-content {
-    padding: 1.25rem 1.5rem 1.5rem;
+    padding: 1rem 1.5rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-/* Schedule Grid Inside Announcement */
+/* Schedule Grid - Refined Cards */
 .schedule-grid {
     display: flex;
     flex-direction: column;
@@ -6680,94 +6682,140 @@ section {
 }
 
 .schedule-intro {
-    font-size: 0.95rem;
-    opacity: 0.95;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    color: #5c4a3a;
+    line-height: 1.6;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(193, 123, 36, 0.12);
+    margin-bottom: 0.5rem;
 }
 
 .schedule-intro strong {
-    color: #fff5e6;
+    color: #c17b24;
+    font-weight: 600;
 }
 
 .schedule-items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .schedule-item {
-    background: rgba(255,255,255,0.12);
-    border-radius: 8px;
-    padding: 1rem;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.2s ease, background 0.2s ease;
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(193, 123, 36, 0.12);
+    box-shadow: 0 2px 8px rgba(139, 90, 43, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.schedule-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #c17b24, #e8a54b);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .schedule-item:hover {
     transform: translateY(-2px);
-    background: rgba(255,255,255,0.18);
+    box-shadow: 0 4px 16px rgba(139, 90, 43, 0.12);
+    border-color: rgba(193, 123, 36, 0.25);
+}
+
+.schedule-item:hover::before {
+    opacity: 1;
 }
 
 .schedule-item.online {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 252, 248, 0.8);
     border-style: dashed;
 }
 
+.schedule-item.online::before {
+    background: linear-gradient(90deg, #9a8478, #b8a090);
+}
+
 .schedule-day {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 0.95rem;
-    margin-bottom: 0.25rem;
+    color: #4a3728;
+    margin-bottom: 0.3rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .online-badge {
-    font-size: 0.65rem;
-    background: rgba(255,255,255,0.2);
-    padding: 0.15rem 0.4rem;
+    font-size: 0.6rem;
+    background: linear-gradient(135deg, #a08070, #8a7060);
+    color: white;
+    padding: 0.15rem 0.45rem;
     border-radius: 3px;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
 }
 
 .schedule-time {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #fff5e6;
-    margin-bottom: 0.35rem;
+    color: #c17b24;
+    margin-bottom: 0.4rem;
 }
 
 .schedule-desc {
-    font-size: 0.8rem;
-    opacity: 0.85;
-    line-height: 1.4;
+    font-size: 0.78rem;
+    color: #6b5a4a;
+    line-height: 1.45;
 }
 
 @media (max-width: 900px) {
     .schedule-items {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0.6rem;
+    }
+    
+    .schedule-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0 1rem;
+        align-items: start;
+    }
+    
+    .schedule-day {
+        grid-column: 1 / -1;
     }
 }
 
 @media (max-width: 768px) {
     .announcement-title {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
     }
     
     .announcement-preview {
-        padding: 0.55rem 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .schedule-intro {
+        font-size: 0.85rem;
+        text-align: left;
     }
     
     .schedule-item {
-        padding: 0.75rem;
+        padding: 0.85rem;
     }
     
     .schedule-day {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
     
     .schedule-time {
@@ -6779,6 +6827,6 @@ section {
     }
     
     .announcement-content {
-        padding: 1rem;
+        padding: 0.75rem 1rem 1.25rem;
     }
 }
