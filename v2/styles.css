@@ -2195,6 +2195,11 @@ section {
     margin-bottom: var(--spacing-sm);
 }
 
+.footer-col h4 .footer-subtitle {
+    font-weight: 400;
+    opacity: 0.9;
+}
+
 .footer-col p {
     font-size: 0.95rem;
     line-height: 1.6;
