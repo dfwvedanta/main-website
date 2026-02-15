@@ -6605,11 +6605,10 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
-    min-height: 44px;
 }
 
 .announcement-glow {
@@ -6643,18 +6642,21 @@ section {
     background: rgba(255,255,255,0.4);
     border: 2px solid rgba(255,255,255,0.6);
     color: white;
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
     border-radius: 50%;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0.5rem;
+    margin: 0 0 0 0.5rem;
+    padding: 0;
     opacity: 1;
     transition: all 0.25s ease;
     flex-shrink: 0;
-    align-self: center;
+    vertical-align: middle;
 }
 
 .announcement-dismiss:hover {
@@ -6791,19 +6793,19 @@ section {
     }
     
     .announcement-preview {
-        padding: 0.5rem 0.75rem;
-        min-height: 48px;
+        padding: 0.6rem 0.75rem;
     }
     
     .announcement-dismiss {
-        width: 32px;
-        height: 32px;
-        margin-left: 0.5rem;
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
     }
     
     .announcement-dismiss svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
     }
     
     .schedule-intro {
