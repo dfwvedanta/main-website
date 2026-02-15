@@ -134,7 +134,7 @@
             
             <!-- Tagline -->
             <div class="hero-tagline">
-                <p class="tagline-text"><span class="tagline-sanskrit">Shiva Jnane Jiva Seva:</span><br class="mobile-break"><span class="tagline-english">Serving living beings knowing them to be Divinity.</span></p>
+                <p class="tagline-text"><span class="tagline-sanskrit">Shiva Jnane Jiva Seva:</span> <br class="mobile-break"><span class="tagline-english">Serving living beings knowing them to be Divinity.</span></p>
                 
                 <!-- Golden Line with Sparks -->
                 <canvas id="golden-line-canvas" class="golden-line-canvas"></canvas>
@@ -362,8 +362,8 @@
                 let autoPlayInterval;
                 let isPaused = false;
                 
-                const totalSlides = 2; // 4 images, 3 visible at a time = 2 positions
-                const slideWidth = 33.333; // Each slide moves by 1/3
+                const totalSlides = 3; // 9 images, 3 visible at a time = 3 slides
+                const slideWidth = 33.333; // Each slide moves by 1/3 of total (shows next 3)
                 
                 function goToSlide(index) {
                     currentSlide = index;
