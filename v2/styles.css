@@ -1063,10 +1063,29 @@ body {
     font-weight: 400;
 }
 
-.tagline-text em {
-    font-style: italic;
+.tagline-text .tagline-sanskrit {
+    font-style: normal;
     font-weight: 500;
     color: var(--color-primary);
+}
+
+.tagline-text .tagline-english {
+    color: var(--color-text);
+}
+
+.tagline-text .mobile-break {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .tagline-text .mobile-break {
+        display: block;
+    }
+    
+    .tagline-text .tagline-sanskrit {
+        display: block;
+        margin-bottom: 0.25rem;
+    }
 }
 
 /* Golden Line Canvas */
