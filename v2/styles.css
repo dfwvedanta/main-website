@@ -1158,11 +1158,11 @@ body {
     display: flex;
     gap: 10px;
     transition: transform 1s ease-in-out;
-    width: calc((100% + 10px) * 4 / 3); /* 4 images, show 3 at a time */
+    width: calc((100% + 10px) * 9 / 3); /* 9 images, show 3 at a time */
 }
 
 .carousel-track .gallery-thumb {
-    flex: 0 0 calc((100% - 30px) / 4); /* Each thumb is 1/4 of track */
+    flex: 0 0 calc((100% - 80px) / 9); /* Each thumb is 1/9 of track */
 }
 
 .carousel-dots {
