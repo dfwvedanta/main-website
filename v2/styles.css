@@ -6639,11 +6639,11 @@ section {
 }
 
 .announcement-dismiss {
-    background: rgba(255,255,255,0.35);
-    border: 2px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.6);
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -6652,10 +6652,11 @@ section {
     margin-left: 0.75rem;
     opacity: 1;
     transition: all 0.25s ease;
+    flex-shrink: 0;
 }
 
 .announcement-dismiss:hover {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.55);
     transform: scale(1.1);
 }
 
