@@ -498,7 +498,7 @@
             const start = new Date(announcementConfig.startDate);
             const end = new Date(announcementConfig.endDate + "T23:59:59");
             
-            if (localStorage.getItem('announcementClosed') === 'true') {
+            if (sessionStorage.getItem('announcementClosed') === 'true') {
                 return;
             }
             
@@ -520,7 +520,7 @@
             setTimeout(() => {
                 banner.style.display = 'none';
             }, 300);
-            localStorage.setItem('announcementClosed', 'true');
+            sessionStorage.setItem('announcementClosed', 'true');
         }
         
         // Show announcement when page loads
