@@ -6683,10 +6683,11 @@ section {
 }
 
 .schedule-item {
-    background: rgba(255,255,255,0.12);
+    background: white;
     border-radius: 8px;
     padding: 1rem;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -6698,18 +6699,18 @@ section {
 
 .schedule-item:hover {
     transform: translateY(-2px);
-    background: rgba(255,255,255,0.18);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .schedule-item.online {
-    background: rgba(255,255,255,0.08);
-    border-style: dashed;
+    background: #fff9f5;
+    border: 1px dashed rgba(193, 123, 36, 0.3);
 }
 
 .schedule-day {
     font-weight: 700;
     font-size: 0.95rem;
-    color: white;
+    color: #4a3728;
     margin-bottom: 0.3rem;
     display: flex;
     align-items: center;
@@ -6718,7 +6719,7 @@ section {
 
 .online-badge {
     font-size: 0.6rem;
-    background: rgba(255,255,255,0.2);
+    background: #c17b24;
     color: white;
     padding: 0.15rem 0.45rem;
     border-radius: 3px;
@@ -6730,13 +6731,13 @@ section {
 .schedule-time {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #fff5e6;
+    color: #c17b24;
     margin-bottom: 0.4rem;
 }
 
 .schedule-desc {
     font-size: 0.78rem;
-    color: rgba(255,255,255,0.85);
+    color: #5a4a3a;
     line-height: 1.45;
 }
 
