@@ -93,6 +93,15 @@
     <!-- Header loaded from includes/header.html -->
     <div id="header-placeholder"></div>
 
+    <!-- Announcement Bar -->
+    <div id="announcement-bar" class="announcement-bar" style="display: none;">
+        <div class="container">
+            <span id="announcement-text"></span>
+            <a id="announcement-link" href="#" style="display: none;"></a>
+            <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">&times;</button>
+        </div>
+    </div>
+
     <!-- Hero Section - Holy Trio -->
     <section class="hero-section hero-holy-trio">
         <div class="container">
@@ -509,7 +518,6 @@
             <div class="section-header-center">
                 <span class="section-eyebrow">🪔 Programs & Celebrations</span>
                 <h2 class="section-title">Upcoming Events</h2>
-                <p class="section-subtitle">Experience the living tradition through our special programs</p>
             </div>
 
             <!-- Event Tabs -->

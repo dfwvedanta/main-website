@@ -6497,3 +6497,79 @@ section {
         right: 8px;
     }
 }
+
+/* Announcement Bar */
+.announcement-bar {
+    background: linear-gradient(135deg, #c17b24 0%, #e67e22 100%);
+    color: white;
+    padding: 0.75rem 1rem;
+    position: relative;
+    z-index: 100;
+}
+
+.announcement-bar .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.announcement-bar #announcement-text {
+    flex: 1;
+    text-align: center;
+}
+
+.announcement-bar .schedule-announcement {
+    text-align: left;
+}
+
+.announcement-bar .schedule-title {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.announcement-bar .schedule-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.announcement-bar .schedule-list li {
+    margin-bottom: 0.25rem;
+}
+
+.announcement-bar #announcement-link {
+    background: white;
+    color: #c17b24;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.announcement-bar .announcement-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    opacity: 0.8;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.announcement-bar .announcement-close:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .announcement-bar .schedule-list {
+        font-size: 0.8rem;
+    }
+}
+
