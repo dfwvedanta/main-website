@@ -1034,15 +1034,19 @@ body {
         height: 40px;
     }
     .logo-text {
-        font-size: 0.7rem;
-        max-width: 160px;
-        white-space: normal;
-        line-height: 1.2;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        line-height: 1.25;
+    }
+    .logo-text .logo-line1 {
+        display: block;
+    }
+    .logo-text .logo-line2 {
+        display: block;
     }
     .logo-address {
         font-size: 0.55rem;
         white-space: nowrap;
-        max-width: 160px;
     }
 }
 
@@ -1051,11 +1055,10 @@ body {
         height: 35px;
     }
     .logo-text {
-        font-size: 0.65rem;
-        max-width: 140px;
+        font-size: 0.68rem;
     }
     .logo-address {
-        font-size: 0.5rem;
+        font-size: 0.52rem;
     }
 }
 
@@ -6631,11 +6634,11 @@ section {
 }
 
 .announcement-dismiss {
-    background: rgba(255,255,255,0.3);
-    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.35);
+    border: 2px solid rgba(255,255,255,0.5);
     color: white;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -6647,7 +6650,7 @@ section {
 }
 
 .announcement-dismiss:hover {
-    background: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.5);
     transform: scale(1.1);
 }
 
