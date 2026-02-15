@@ -6605,10 +6605,11 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
+    min-height: 44px;
 }
 
 .announcement-glow {
@@ -6642,17 +6643,18 @@ section {
     background: rgba(255,255,255,0.4);
     border: 2px solid rgba(255,255,255,0.6);
     color: white;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0.75rem;
+    margin-left: 0.5rem;
     opacity: 1;
     transition: all 0.25s ease;
     flex-shrink: 0;
+    align-self: center;
 }
 
 .announcement-dismiss:hover {
