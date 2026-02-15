@@ -6559,29 +6559,17 @@ section {
     }
 }
 
-/* Top Announcement Banner - Refined Ethereal Design */
+/* Top Announcement Banner - Warm Saffron with Contrast */
 .announcement-banner {
-    background: linear-gradient(180deg, 
-        rgba(255, 250, 245, 0.97) 0%, 
-        rgba(255, 248, 240, 0.95) 100%);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: linear-gradient(135deg, #c17b24 0%, #d4893a 100%);
     position: relative;
     z-index: 100;
-    border-bottom: 1px solid rgba(193, 123, 36, 0.15);
+    box-shadow: 0 2px 8px rgba(139, 90, 43, 0.2);
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .announcement-banner::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #c17b24, transparent);
-    opacity: 0.6;
+    display: none;
 }
 
 .announcement-inner {
@@ -6610,17 +6598,17 @@ section {
 }
 
 .announcement-title {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.88rem;
-    color: #8b5a2b;
+    color: white;
     letter-spacing: 0.01em;
     font-family: var(--font-body);
 }
 
 .announcement-chevron {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #c17b24;
-    opacity: 0.7;
+    color: white;
+    opacity: 0.85;
 }
 
 .announcement-banner.expanded .announcement-chevron {
@@ -6628,9 +6616,9 @@ section {
 }
 
 .announcement-dismiss {
-    background: transparent;
-    border: 1px solid rgba(193, 123, 36, 0.25);
-    color: #a67c52;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
     width: 22px;
     height: 22px;
     border-radius: 50%;
@@ -6639,23 +6627,20 @@ section {
     align-items: center;
     justify-content: center;
     margin-left: 0.75rem;
-    opacity: 0.6;
+    opacity: 0.7;
     transition: all 0.25s ease;
 }
 
 .announcement-dismiss:hover {
     opacity: 1;
-    background: rgba(193, 123, 36, 0.08);
-    border-color: rgba(193, 123, 36, 0.4);
+    background: rgba(255,255,255,0.25);
 }
 
 .announcement-details {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    background: linear-gradient(180deg, 
-        rgba(255, 248, 240, 0.5) 0%, 
-        rgba(255, 245, 235, 0.8) 100%);
+    background: rgba(0,0,0,0.08);
 }
 
 .announcement-banner.expanded .announcement-details {
@@ -6668,25 +6653,26 @@ section {
     margin: 0 auto;
 }
 
-/* Schedule Grid - Refined Cards */
+/* Schedule Grid - Cards on Saffron */
 .schedule-grid {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    color: white;
 }
 
 .schedule-intro {
     font-size: 0.9rem;
-    color: #5c4a3a;
+    color: rgba(255,255,255,0.95);
     line-height: 1.6;
     text-align: center;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(193, 123, 36, 0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
     margin-bottom: 0.5rem;
 }
 
 .schedule-intro strong {
-    color: #c17b24;
+    color: #fff5e6;
     font-weight: 600;
 }
 
@@ -6697,51 +6683,33 @@ section {
 }
 
 .schedule-item {
-    background: white;
-    border-radius: 10px;
-    padding: 1rem 1.1rem;
-    border: 1px solid rgba(193, 123, 36, 0.12);
-    box-shadow: 0 2px 8px rgba(139, 90, 43, 0.06);
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
 .schedule-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #c17b24, #e8a54b);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    display: none;
 }
 
 .schedule-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(139, 90, 43, 0.12);
-    border-color: rgba(193, 123, 36, 0.25);
-}
-
-.schedule-item:hover::before {
-    opacity: 1;
+    background: rgba(255,255,255,0.18);
 }
 
 .schedule-item.online {
-    background: rgba(255, 252, 248, 0.8);
+    background: rgba(255,255,255,0.08);
     border-style: dashed;
 }
 
-.schedule-item.online::before {
-    background: linear-gradient(90deg, #9a8478, #b8a090);
-}
-
 .schedule-day {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.95rem;
-    color: #4a3728;
+    color: white;
     margin-bottom: 0.3rem;
     display: flex;
     align-items: center;
@@ -6750,7 +6718,7 @@ section {
 
 .online-badge {
     font-size: 0.6rem;
-    background: linear-gradient(135deg, #a08070, #8a7060);
+    background: rgba(255,255,255,0.2);
     color: white;
     padding: 0.15rem 0.45rem;
     border-radius: 3px;
@@ -6762,13 +6730,13 @@ section {
 .schedule-time {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #c17b24;
+    color: #fff5e6;
     margin-bottom: 0.4rem;
 }
 
 .schedule-desc {
     font-size: 0.78rem;
-    color: #6b5a4a;
+    color: rgba(255,255,255,0.85);
     line-height: 1.45;
 }
 
