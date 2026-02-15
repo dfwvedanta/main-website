@@ -6565,78 +6565,109 @@ section {
     }
 }
 
-/* Announcement Bar */
-.announcement-bar {
+/* Bottom Notification Bar */
+.notification-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background: linear-gradient(135deg, #c17b24 0%, #e67e22 100%);
     color: white;
-    padding: 0.75rem 1rem;
-    position: relative;
-    z-index: 100;
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.announcement-bar .container {
+.notification-preview {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-.announcement-bar #announcement-text {
-    flex: 1;
-    text-align: center;
+.notification-preview:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
-.announcement-bar .schedule-announcement {
-    text-align: left;
-}
-
-.announcement-bar .schedule-title {
-    margin-bottom: 0.5rem;
+.notification-badge {
     font-size: 1rem;
 }
 
-.announcement-bar .schedule-list {
-    margin: 0;
-    padding-left: 1.5rem;
-    font-size: 0.9rem;
+.notification-title {
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
-.announcement-bar .schedule-list li {
-    margin-bottom: 0.25rem;
+.notification-chevron {
+    transition: transform 0.3s ease;
 }
 
-.announcement-bar #announcement-link {
-    background: white;
-    color: #c17b24;
-    padding: 0.4rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    white-space: nowrap;
+.notification-bar.expanded .notification-chevron {
+    transform: rotate(180deg);
 }
 
-.announcement-bar .announcement-close {
+.notification-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    position: relative;
+}
+
+.notification-bar.expanded .notification-content {
+    max-height: 400px;
+    padding: 1rem 1.5rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.notification-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
     background: none;
     border: none;
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 0 0.5rem;
     opacity: 0.8;
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
+    line-height: 1;
 }
 
-.announcement-bar .announcement-close:hover {
+.notification-close:hover {
     opacity: 1;
 }
 
-@media (max-width: 768px) {
-    .announcement-bar .schedule-list {
-        font-size: 0.8rem;
-    }
+.notification-bar .schedule-announcement {
+    text-align: left;
 }
 
+.notification-bar .schedule-title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.notification-bar .schedule-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.notification-bar .schedule-list li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .notification-title {
+        font-size: 0.85rem;
+    }
+    
+    .notification-bar .schedule-list {
+        font-size: 0.8rem;
+        padding-left: 1rem;
+    }
+    
+    .notification-bar.expanded .notification-content {
+        max-height: 500px;
+    }
+}

@@ -93,12 +93,18 @@
     <!-- Header loaded from includes/header.html -->
     <div id="header-placeholder"></div>
 
-    <!-- Announcement Bar -->
-    <div id="announcement-bar" class="announcement-bar" style="display: none;">
-        <div class="container">
-            <span id="announcement-text"></span>
-            <a id="announcement-link" href="#" style="display: none;"></a>
-            <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">&times;</button>
+    <!-- Bottom Notification Bar -->
+    <div id="notification-bar" class="notification-bar" style="display: none;">
+        <div class="notification-preview" onclick="toggleNotification()">
+            <span class="notification-badge">📢</span>
+            <span class="notification-title">Schedule Change — March 1</span>
+            <svg class="notification-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </div>
+        <div class="notification-content" id="notification-content">
+            <button class="notification-close" onclick="closeNotification()" aria-label="Close">&times;</button>
+            <div id="notification-text"></div>
         </div>
     </div>
 
@@ -448,13 +454,11 @@
             
         </div>
     </section>
-    <!-- Announcement Bar Configuration
-         To show an announcement, set enabled: true and fill in the details.
-         The bar will automatically hide after the endDate.
-    -->
+    <!-- Bottom Notification Bar Configuration -->
     <script>
-        const announcementConfig = {
-            enabled: true,  // Set to true to show announcement
+        const notificationConfig = {
+            enabled: true,
+            title: "Schedule Change — March 1",
             html: `<div class="schedule-announcement">
                 <p class="schedule-title">Dear Friends and Devotees, <strong>Effective March 1, the Center schedule will be:</strong></p>
                 <ul class="schedule-list">
@@ -463,53 +467,37 @@
                     <li><strong>Saturday (Online only): 10:00 AM–11:30 AM</strong> — Tattvabodha study (facilitated by devotees)</li>
                 </ul>
             </div>`,
-            link: "",  // Optional: leave empty for no link
-            linkText: "",
-            startDate: "2026-02-13",  // When to start showing (YYYY-MM-DD)
-            endDate: "2026-03-31",    // When to stop showing (YYYY-MM-DD)
-            dismissible: true         // Allow users to close it
+            startDate: "2026-02-13",
+            endDate: "2026-03-31"
         };
         
-        function showAnnouncement() {
+        function showNotification() {
             const now = new Date();
-            const start = new Date(announcementConfig.startDate);
-            const end = new Date(announcementConfig.endDate + "T23:59:59");
+            const start = new Date(notificationConfig.startDate);
+            const end = new Date(notificationConfig.endDate + "T23:59:59");
             
-            // Check if dismissed in this session
-            if (sessionStorage.getItem('announcementDismissed') === 'true') {
+            if (localStorage.getItem('notificationClosed') === 'true') {
                 return;
             }
             
-            if (announcementConfig.enabled && now >= start && now <= end) {
-                // Support HTML content
-                if (announcementConfig.html) {
-                    document.getElementById('announcement-text').innerHTML = announcementConfig.html;
-                } else {
-                    document.getElementById('announcement-text').textContent = announcementConfig.text || '';
-                }
-                
-                if (announcementConfig.link) {
-                    const linkEl = document.getElementById('announcement-link');
-                    linkEl.href = announcementConfig.link;
-                    linkEl.textContent = announcementConfig.linkText || 'Learn More →';
-                    linkEl.style.display = 'inline';
-                }
-                
-                if (!announcementConfig.dismissible) {
-                    document.querySelector('.announcement-close').style.display = 'none';
-                }
-                
-                document.getElementById('announcement-bar').style.display = 'block';
+            if (notificationConfig.enabled && now >= start && now <= end) {
+                document.getElementById('notification-text').innerHTML = notificationConfig.html;
+                document.getElementById('notification-bar').style.display = 'block';
             }
         }
         
-        function closeAnnouncement() {
-            document.getElementById('announcement-bar').style.display = 'none';
-            sessionStorage.setItem('announcementDismissed', 'true');
+        function toggleNotification() {
+            const bar = document.getElementById('notification-bar');
+            bar.classList.toggle('expanded');
         }
         
-        // Show announcement when page loads
-        document.addEventListener('DOMContentLoaded', showAnnouncement);
+        function closeNotification() {
+            document.getElementById('notification-bar').style.display = 'none';
+            localStorage.setItem('notificationClosed', 'true');
+        }
+        
+        // Show notification when page loads
+        document.addEventListener('DOMContentLoaded', showNotification);
     </script>
 
     <!-- Events Section with Tabs -->
