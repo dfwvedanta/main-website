@@ -6792,6 +6792,18 @@ section {
     
     .announcement-preview {
         padding: 0.5rem 0.75rem;
+        min-height: 48px;
+    }
+    
+    .announcement-dismiss {
+        width: 32px;
+        height: 32px;
+        margin-left: 0.5rem;
+    }
+    
+    .announcement-dismiss svg {
+        width: 18px;
+        height: 18px;
     }
     
     .schedule-intro {
