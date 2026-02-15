@@ -93,18 +93,26 @@
     <!-- Header loaded from includes/header.html -->
     <div id="header-placeholder"></div>
 
-    <!-- Bottom Notification Bar -->
-    <div id="notification-bar" class="notification-bar" style="display: none;">
-        <div class="notification-preview" onclick="toggleNotification()">
-            <span class="notification-badge">📢</span>
-            <span class="notification-title">Schedule Change — March 1</span>
-            <svg class="notification-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-        </div>
-        <div class="notification-content" id="notification-content">
-            <button class="notification-close" onclick="closeNotification()" aria-label="Close">&times;</button>
-            <div id="notification-text"></div>
+    <!-- Top Announcement Banner -->
+    <div id="announcement-banner" class="announcement-banner" style="display: none;">
+        <div class="announcement-inner">
+            <div class="announcement-preview" onclick="toggleAnnouncement()">
+                <div class="announcement-glow"></div>
+                <span class="announcement-icon">🪔</span>
+                <span class="announcement-title">Schedule Change — March 1</span>
+                <svg class="announcement-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+                <button class="announcement-dismiss" onclick="event.stopPropagation(); closeAnnouncement();" aria-label="Dismiss">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="announcement-details" id="announcement-details">
+                <div class="announcement-content" id="announcement-content"></div>
+            </div>
         </div>
     </div>
 
@@ -454,50 +462,69 @@
             
         </div>
     </section>
-    <!-- Bottom Notification Bar Configuration -->
+    <!-- Top Announcement Banner Configuration -->
     <script>
-        const notificationConfig = {
+        const announcementConfig = {
             enabled: true,
             title: "Schedule Change — March 1",
-            html: `<div class="schedule-announcement">
-                <p class="schedule-title">Dear Friends and Devotees, <strong>Effective March 1, the Center schedule will be:</strong></p>
-                <ul class="schedule-list">
-                    <li><strong>Sunday (In person): 10:00 AM–2:00 PM</strong> — Sunday Service (11:00 AM–12:00 Noon) followed by Ārati and Prasad; Children's Sunday School (11:00 AM–12:00 Noon)</li>
-                    <li><strong>Saturday (In person): 5:00 PM–7:00 PM</strong> — Ārati, meditation, and Gospel readings</li>
-                    <li><strong>Saturday (Online only): 10:00 AM–11:30 AM</strong> — Tattvabodha study (facilitated by devotees)</li>
-                </ul>
+            html: `<div class="schedule-grid">
+                <div class="schedule-intro">
+                    <p>Dear Friends and Devotees, <strong>effective March 1</strong>, the Center schedule will be:</p>
+                </div>
+                <div class="schedule-items">
+                    <div class="schedule-item">
+                        <div class="schedule-day">Sunday</div>
+                        <div class="schedule-time">10:00 AM – 2:00 PM</div>
+                        <div class="schedule-desc">Sunday Service (11 AM–12 Noon) followed by Ārati & Prasad<br>Children's Sunday School (11 AM–12 Noon)</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-day">Saturday</div>
+                        <div class="schedule-time">5:00 PM – 7:00 PM</div>
+                        <div class="schedule-desc">Ārati, meditation, and Gospel readings</div>
+                    </div>
+                    <div class="schedule-item online">
+                        <div class="schedule-day">Saturday <span class="online-badge">Online</span></div>
+                        <div class="schedule-time">10:00 AM – 11:30 AM</div>
+                        <div class="schedule-desc">Tattvabodha study (facilitated by devotees)</div>
+                    </div>
+                </div>
             </div>`,
             startDate: "2026-02-13",
             endDate: "2026-03-31"
         };
         
-        function showNotification() {
+        function showAnnouncement() {
             const now = new Date();
-            const start = new Date(notificationConfig.startDate);
-            const end = new Date(notificationConfig.endDate + "T23:59:59");
+            const start = new Date(announcementConfig.startDate);
+            const end = new Date(announcementConfig.endDate + "T23:59:59");
             
-            if (localStorage.getItem('notificationClosed') === 'true') {
+            if (localStorage.getItem('announcementClosed') === 'true') {
                 return;
             }
             
-            if (notificationConfig.enabled && now >= start && now <= end) {
-                document.getElementById('notification-text').innerHTML = notificationConfig.html;
-                document.getElementById('notification-bar').style.display = 'block';
+            if (announcementConfig.enabled && now >= start && now <= end) {
+                document.getElementById('announcement-content').innerHTML = announcementConfig.html;
+                document.getElementById('announcement-banner').style.display = 'block';
             }
         }
         
-        function toggleNotification() {
-            const bar = document.getElementById('notification-bar');
-            bar.classList.toggle('expanded');
+        function toggleAnnouncement() {
+            const banner = document.getElementById('announcement-banner');
+            banner.classList.toggle('expanded');
         }
         
-        function closeNotification() {
-            document.getElementById('notification-bar').style.display = 'none';
-            localStorage.setItem('notificationClosed', 'true');
+        function closeAnnouncement() {
+            const banner = document.getElementById('announcement-banner');
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 300);
+            localStorage.setItem('announcementClosed', 'true');
         }
         
-        // Show notification when page loads
-        document.addEventListener('DOMContentLoaded', showNotification);
+        // Show announcement when page loads
+        document.addEventListener('DOMContentLoaded', showAnnouncement);
     </script>
 
     <!-- Events Section with Tabs -->
