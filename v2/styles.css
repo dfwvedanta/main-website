@@ -6718,7 +6718,9 @@ section {
 }
 
 .announcement-banner.expanded .announcement-details {
-    max-height: 400px;
+    max-height: 70vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .announcement-content {
@@ -6870,6 +6872,10 @@ section {
         width: 16px;
         height: 16px;
         stroke-width: 2.5;
+    }
+    
+    .announcement-banner.expanded .announcement-details {
+        max-height: 60vh;
     }
     
     .schedule-intro {
