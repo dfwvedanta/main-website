@@ -175,17 +175,28 @@ body {
     height: 80px;
 }
 
+/* Desktop: hide mobile toggle in header-container (it's at start) */
+@media (min-width: 1025px) {
+    .header-container > .mobile-toggle {
+        display: none;
+    }
+}
+
 .logo {
     display: flex;
     align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
 .logo img {
-    height: 58px;
+    height: 50px;
     width: auto;
     display: block;
     transition: transform 0.3s ease;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -208,6 +219,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
+    flex-shrink: 0; /* Prevent nav from being squeezed */
 }
 
 .nav-link {
@@ -335,6 +347,39 @@ body {
 
 .donate-btn:hover {
     color: var(--color-primary-dark);
+}
+
+/* Subscribe to Newsletter button (SF Vedanta style) */
+.subscribe-btn {
+    background: #D77027;
+    color: white;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 10px 18px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.subscribe-btn:hover {
+    background: #C56520;
+}
+
+@media (max-width: 1024px) {
+    .subscribe-btn {
+        font-size: 0.7rem;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .subscribe-btn {
+        font-size: 0.6rem;
+        padding: 6px 10px;
+    }
 }
 
 .mobile-toggle {
@@ -1022,15 +1067,35 @@ body {
 .logo-text-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 2px;
 }
 
 .logo-text {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    color: #9C3F3D;
-    line-height: 1.3;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #2C1810;
+    line-height: 1.15;
     white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.logo-text .logo-line1,
+.logo-text .logo-line2 {
+    display: inline;
+}
+
+.logo-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.2;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
 }
 
 .logo-address {
@@ -1043,22 +1108,30 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .logo-text {
-        font-size: 0.85rem;
+    .logo {
+        gap: 10px;
     }
-    .logo-address {
-        font-size: 0.6rem;
+    .logo img {
+        height: 48px;
+    }
+    .logo-text {
+        font-size: 0.95rem;
+    }
+    .logo-subtitle {
+        font-size: 0.65rem;
     }
 }
 
 @media (max-width: 768px) {
+    .logo {
+        gap: 8px;
+    }
     .logo img {
-        height: 40px;
+        height: 44px;
     }
     .logo-text {
-        font-size: 0.75rem;
-        white-space: nowrap;
-        line-height: 1.25;
+        font-size: 0.82rem;
+        line-height: 1.2;
     }
     .logo-text .logo-line1 {
         display: block;
@@ -1066,21 +1139,23 @@ body {
     .logo-text .logo-line2 {
         display: block;
     }
-    .logo-address {
-        font-size: 0.55rem;
-        white-space: nowrap;
+    .logo-subtitle {
+        font-size: 0.6rem;
     }
 }
 
 @media (max-width: 480px) {
+    .logo {
+        gap: 6px;
+    }
     .logo img {
-        height: 35px;
+        height: 40px;
     }
     .logo-text {
-        font-size: 0.68rem;
+        font-size: 0.72rem;
     }
-    .logo-address {
-        font-size: 0.52rem;
+    .logo-subtitle {
+        font-size: 0.55rem;
     }
 }
 
@@ -3204,12 +3279,16 @@ section {
     }
 
     .hero-buttons {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
     }
 
-    .btn {
-        width: 100%;
-        justify-content: center;
+    .hero-buttons .btn {
+        width: auto;
+        min-width: 120px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
     }
 
     .page-hero-title {

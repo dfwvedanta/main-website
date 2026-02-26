@@ -1,5 +1,17 @@
 [
   {
+    "id": "7",
+    "title": "Sri Ramakrishna's Birth Observance",
+    "startDate": "2026-02-22",
+    "endDate": "2026-02-22",
+    "startTime": "10:30",
+    "endTime": "13:30",
+    "eventType": "Special",
+    "location": "Hybrid",
+    "zoomLink": "https://us02web.zoom.us/j/87900497480",
+    "description": "Celebration with special puja, devotional singing, talks on his life and teachings, refreshments, and lunch prasad."
+  },
+  {
     "id": "1",
     "title": "Swami Ishtananda's Retreat",
     "startDate": "2026-01-16",
