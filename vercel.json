@@ -1,5 +1,4 @@
 {
-  "buildCommand": "python3 sync_cms.py || python sync_cms.py || true",
-  "installCommand": "pip install pyyaml beautifulsoup4 || pip3 install pyyaml beautifulsoup4 || true",
+  "buildCommand": "",
   "outputDirectory": "."
 }

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+<!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q0YDB1HWQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3Q0YDB1HWQ');
+    </script>
+
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
@@ -10,6 +19,67 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+  <style>
+    .video-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-lg);
+    }
+    .video-card {
+        background: var(--color-white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .video-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .video-thumbnail {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        background: #000;
+    }
+    .video-thumbnail iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .video-info {
+        padding: var(--spacing-md);
+    }
+    .video-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--color-text);
+        margin-bottom: var(--spacing-xs);
+        line-height: 1.4;
+    }
+    .video-description {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-sm);
+    }
+    .video-category-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        background: var(--color-accent);
+        color: white;
+        border-radius: 16px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    @media (max-width: 768px) {
+        .video-gallery { grid-template-columns: 1fr; }
+    }
+  </style>
  </head>
  <body>
   <!-- Header loaded from includes/header.html -->
@@ -50,6 +120,113 @@
     </div>
    </div>
   </section>
+
+  <!-- Video Gallery: Selected Popular Lectures -->
+  <section class="content-section">
+   <div class="container">
+    <h2 class="section-title">Selected Popular Lectures</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
+     Watch selected highlights from our Sunday lectures featuring profound spiritual insights and practical wisdom.
+    </p>
+    <div class="video-gallery">
+     <div class="video-card">
+      <div class="video-thumbnail">
+       <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" title="Sunday Lecture" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+       <h4 class="video-title">The Path of Devotion</h4>
+       <p class="video-description">Exploring Bhakti Yoga and its relevance in modern spiritual practice.</p>
+       <span class="video-category-badge">Sunday Lecture</span>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail">
+       <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" title="Sunday Lecture" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+       <h4 class="video-title">Understanding the Self</h4>
+       <p class="video-description">A profound exploration of the Atman according to Vedanta philosophy.</p>
+       <span class="video-category-badge">Sunday Lecture</span>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail">
+       <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" title="Sunday Lecture" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+       <h4 class="video-title">Meditation for Inner Peace</h4>
+       <p class="video-description">Practical guidance on establishing a regular meditation practice.</p>
+       <span class="video-category-badge">Sunday Lecture</span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- Video Gallery: Retreats -->
+  <section class="content-section alt-bg">
+   <div class="container">
+    <h2 class="section-title">Popular Retreats</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
+     Recordings from our spiritual retreats featuring intensive teachings and meditation sessions.
+    </p>
+    <div class="video-gallery">
+     <div class="video-card">
+      <div class="video-thumbnail">
+       <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_4" title="Retreat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+       <h4 class="video-title">Spring Retreat 2025 - Opening Session</h4>
+       <p class="video-description">Opening talk from our annual spring retreat with Swami Ishtananda.</p>
+       <span class="video-category-badge" style="background: #28a745;">Retreat</span>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail">
+       <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_5" title="Retreat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+       <h4 class="video-title">Bhagavad Gita Retreat</h4>
+       <p class="video-description">Deep dive into the Gita's teachings with practical applications for daily life.</p>
+       <span class="video-category-badge" style="background: #28a745;">Retreat</span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- Video Gallery: Classes -->
+  <section class="content-section">
+   <div class="container">
+    <h2 class="section-title">Educational Classes</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
+     Systematic study classes on Vedantic texts and spiritual topics.
+    </p>
+    <div class="video-gallery">
+     <div class="video-card">
+      <div class="video-thumbnail">
+       <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_6" title="Class" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+       <h4 class="video-title">Introduction to Vedanta - Part 1</h4>
+       <p class="video-description">Foundational concepts of Vedanta philosophy for beginners.</p>
+       <span class="video-category-badge" style="background: #6c757d;">Class</span>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail">
+       <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_7" title="Class" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+       <h4 class="video-title">Gospel of Sri Ramakrishna Study</h4>
+       <p class="video-description">Weekly study class on the teachings and life of Sri Ramakrishna.</p>
+       <span class="video-category-badge" style="background: #6c757d;">Class</span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+
   <!-- Topics Section -->
   <section class="content-section alt-bg">
    <div class="container">

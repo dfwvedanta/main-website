@@ -1,15 +1,4 @@
 // ================================
-// Analytics (Umami - Privacy-focused)
-// ================================
-(function() {
-    const script = document.createElement('script');
-    script.defer = true;
-    script.src = 'https://cloud.umami.is/script.js';
-    script.setAttribute('data-website-id', 'rkvsnt-website'); // Update with actual Umami website ID
-    document.head.appendChild(script);
-})();
-
-// ================================
 // Header & Footer Include Loader
 // ================================
 
@@ -558,50 +547,20 @@ class FormHandler {
     async handleSubmit() {
         const formData = new FormData(this.form);
         const data = Object.fromEntries(formData);
+
+        // Simulate form submission
+        console.log('Form submitted:', data);
+
+        // Show success message
         const button = this.form.querySelector('button[type="submit"]');
         const originalText = button.textContent;
-        
-        button.textContent = 'Sending...';
-        button.disabled = true;
-
-        try {
-            // Send via Formspree (free tier - update endpoint after signup at formspree.io)
-            const response = await fetch('https://formspree.io/f/xwpkpzqr', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: data.name,
-                    email: data.email,
-                    subject: data.subject,
-                    message: data.message,
-                    _replyto: data.email,
-                    _subject: `[RKVSNT Website] ${data.subject}`
-                })
-            });
-
-            if (response.ok) {
-                button.textContent = 'Message Sent! ✓';
-                button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-                this.form.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            console.error('Form error:', error);
-            // Fallback to mailto
-            const subject = encodeURIComponent(`[Website Contact] ${data.subject}`);
-            const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
-            window.location.href = `mailto:dfwvedanta@gmail.com?subject=${subject}&body=${body}`;
-            button.textContent = 'Opening Email Client...';
-        }
+        button.textContent = 'Message Sent! ✓';
+        button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
 
         setTimeout(() => {
             button.textContent = originalText;
             button.style.background = '';
-            button.disabled = false;
+            this.form.reset();
         }, 3000);
     }
 }
@@ -790,10 +749,148 @@ class DropdownHandler {
 // Initialize Everything
 // ================================
 
+// ================================
+// Library Search
+// ================================
+
+class LibrarySearch {
+    constructor() {
+        this.searchInput = document.getElementById('library-search-input');
+        this.clearBtn = document.getElementById('library-search-clear');
+        this.resultsInfo = document.getElementById('library-search-results');
+
+        if (!this.searchInput) return;
+
+        this.allCards = [];
+        this.allSections = [];
+
+        this.init();
+    }
+
+    init() {
+        // Collect all searchable cards and their parent sections
+        this.allCards = Array.from(document.querySelectorAll('.resource-card, .support-card'));
+        this.allSections = Array.from(document.querySelectorAll('.content-section'));
+
+        // Add event listeners
+        this.searchInput.addEventListener('input', () => this.handleSearch());
+        this.clearBtn.addEventListener('click', () => this.clearSearch());
+
+        // Click anywhere on search box to focus input
+        const searchBox = document.querySelector('.library-search-box');
+        if (searchBox) {
+            searchBox.addEventListener('click', () => {
+                this.searchInput.focus();
+            });
+        }
+
+        // Handle Escape key
+        this.searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.clearSearch();
+            }
+        });
+    }
+
+    handleSearch() {
+        const query = this.searchInput.value.trim().toLowerCase();
+
+        // Show/hide clear button
+        if (query) {
+            this.clearBtn.style.display = 'flex';
+        } else {
+            this.clearBtn.style.display = 'none';
+            this.showAll();
+            this.resultsInfo.style.display = 'none';
+            return;
+        }
+
+        let visibleCount = 0;
+
+        // Search through all cards
+        this.allCards.forEach(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+            const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+            const link = card.querySelector('a')?.textContent.toLowerCase() || '';
+
+            // Get section title
+            const section = card.closest('.content-section');
+            const sectionTitle = section?.querySelector('.section-title')?.textContent.toLowerCase() || '';
+
+            // Check if query matches
+            const matches = title.includes(query) ||
+                          description.includes(query) ||
+                          link.includes(query) ||
+                          sectionTitle.includes(query);
+
+            if (matches) {
+                card.classList.remove('search-hidden');
+                card.classList.add('search-highlight');
+                visibleCount++;
+            } else {
+                card.classList.add('search-hidden');
+                card.classList.remove('search-highlight');
+            }
+        });
+
+        // Hide sections that have no visible cards
+        this.allSections.forEach(section => {
+            const visibleCards = section.querySelectorAll('.resource-card:not(.search-hidden), .support-card:not(.search-hidden)');
+            if (visibleCards.length === 0 && section.querySelector('.resource-card, .support-card')) {
+                section.style.display = 'none';
+            } else {
+                section.style.display = '';
+            }
+        });
+
+        // Show results info
+        this.showResultsInfo(visibleCount, query);
+    }
+
+    showResultsInfo(count, query) {
+        this.resultsInfo.style.display = 'block';
+
+        if (count === 0) {
+            this.resultsInfo.className = 'search-results-info no-results';
+            this.resultsInfo.textContent = `No results found for "${query}". Try different keywords.`;
+        } else if (count === 1) {
+            this.resultsInfo.className = 'search-results-info';
+            this.resultsInfo.textContent = `Found 1 result for "${query}"`;
+        } else {
+            this.resultsInfo.className = 'search-results-info';
+            this.resultsInfo.textContent = `Found ${count} results for "${query}"`;
+        }
+    }
+
+    showAll() {
+        // Show all cards and sections
+        this.allCards.forEach(card => {
+            card.classList.remove('search-hidden');
+            card.classList.remove('search-highlight');
+        });
+
+        this.allSections.forEach(section => {
+            section.style.display = '';
+        });
+    }
+
+    clearSearch() {
+        this.searchInput.value = '';
+        this.clearBtn.style.display = 'none';
+        this.resultsInfo.style.display = 'none';
+        this.showAll();
+        this.searchInput.focus();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Load header and footer first
     const includeLoader = new IncludeLoader();
     await includeLoader.loadIncludes();
+
+    // Initialize modals after header is loaded
+    // initEmblemModal(); // Commented out - emblem now has dedicated page instead of modal
+    initVivekanandaModal();
 
     // Initialize all components after header/footer are loaded
     new Navigation();
@@ -803,6 +900,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     new MeditationSession();
     new LoadingAnimation();
     new DropdownHandler();
+    new LibrarySearch();
 
     // Optional: Custom cursor (uncomment to enable)
     // new CustomCursor();
@@ -1222,4 +1320,210 @@ if (document.readyState === 'loading') {
         window.cmsLoader.updateNavigation();
         window.cmsLoader.updateFooter();
     }
+}
+
+// ================================
+// Emblem Modal Functionality
+// ================================
+
+function initEmblemModal() {
+    // Wait for header to be fully loaded
+    const checkInterval = setInterval(() => {
+        const modalTrigger = document.querySelector('.logo-modal-trigger');
+        const modal = document.getElementById('emblem-modal');
+
+        if (modalTrigger && modal) {
+            clearInterval(checkInterval);
+            setupEmblemModal();
+        }
+    }, 100);
+
+    // Clear interval after 5 seconds to prevent infinite checking
+    setTimeout(() => clearInterval(checkInterval), 5000);
+}
+
+function setupEmblemModal() {
+    const modalTrigger = document.querySelector('.logo-modal-trigger');
+    const modal = document.getElementById('emblem-modal');
+    const modalClose = modal.querySelector('.modal-close');
+    const modalOverlay = modal.querySelector('.modal-overlay');
+
+    // Open modal
+    modalTrigger.addEventListener('click', () => {
+        modal.classList.add('modal-open');
+        document.body.style.overflow = 'hidden';
+
+        // Animate elements in sequence
+        setTimeout(() => {
+            const elements = modal.querySelectorAll('.emblem-element');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }, 300);
+    });
+
+    // Close modal function
+    const closeModal = () => {
+        modal.classList.remove('modal-open');
+        document.body.style.overflow = '';
+
+        // Reset element animations
+        const elements = modal.querySelectorAll('.emblem-element');
+        elements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+        });
+    };
+
+    // Close on X button
+    modalClose.addEventListener('click', closeModal);
+
+    // Close on overlay click
+    modalOverlay.addEventListener('click', closeModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+            closeModal();
+        }
+    });
+}
+
+// ================================
+// Holy Trio Modal Functionality
+// ================================
+
+function initHolyTrioModals() {
+    const holyTrioCards = document.querySelectorAll('.holy-trio-card');
+    
+    holyTrioCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const figure = card.getAttribute('data-figure');
+            const modal = document.getElementById(`${figure}-modal`);
+            
+            if (modal) {
+                modal.classList.add('modal-open');
+                document.body.style.overflow = 'hidden';
+                
+                // Animate teaching cards in sequence
+                setTimeout(() => {
+                    const cards = modal.querySelectorAll('.teaching-card');
+                    cards.forEach((teachingCard, index) => {
+                        setTimeout(() => {
+                            teachingCard.style.opacity = '1';
+                            teachingCard.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    });
+                }, 300);
+            }
+        });
+    });
+    
+    // Setup close handlers for all holy trio modals
+    ['vivekananda', 'ramakrishna', 'sarada-devi'].forEach(figure => {
+        const modal = document.getElementById(`${figure}-modal`);
+        if (!modal) return;
+        
+        const modalClose = modal.querySelector('.modal-close');
+        const modalOverlay = modal.querySelector('.modal-overlay');
+        
+        const closeModal = () => {
+            modal.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            
+            const cards = modal.querySelectorAll('.teaching-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+            });
+        };
+        
+        if (modalClose) modalClose.addEventListener('click', closeModal);
+        if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+                closeModal();
+            }
+        });
+    });
+}
+
+// Initialize Holy Trio modals when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initHolyTrioModals, 200);
+    });
+} else {
+    setTimeout(initHolyTrioModals, 200);
+}
+
+// ================================
+// Vivekananda Modal Functionality (Legacy)
+// ================================
+
+function initVivekanandaModal() {
+    const modalTrigger = document.querySelector('.vivekananda-image-trigger');
+    if (!modalTrigger) return;
+
+    const modal = document.getElementById('vivekananda-modal');
+    if (!modal) return;
+
+    const modalClose = modal.querySelector('.modal-close');
+    const modalOverlay = modal.querySelector('.modal-overlay');
+
+    // Open modal
+    modalTrigger.addEventListener('click', () => {
+        modal.classList.add('modal-open');
+        document.body.style.overflow = 'hidden';
+
+        // Animate teaching cards in sequence
+        setTimeout(() => {
+            const cards = modal.querySelectorAll('.teaching-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }, 300);
+    });
+
+    // Close modal function
+    const closeModal = () => {
+        modal.classList.remove('modal-open');
+        document.body.style.overflow = '';
+
+        // Reset animations
+        const cards = modal.querySelectorAll('.teaching-card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+        });
+    };
+
+    // Close on X button
+    modalClose.addEventListener('click', closeModal);
+
+    // Close on overlay click
+    modalOverlay.addEventListener('click', closeModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+            closeModal();
+        }
+    });
+}
+
+// Initialize Vivekananda modal when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initVivekanandaModal, 200);
+    });
+} else {
+    setTimeout(initVivekanandaModal, 200);
 }

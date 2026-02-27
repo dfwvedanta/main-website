@@ -1,0 +1,86 @@
+[
+  {
+    "id": "7",
+    "title": "Sri Ramakrishna's Birth Observance",
+    "startDate": "2026-02-22",
+    "endDate": "2026-02-22",
+    "startTime": "10:30",
+    "endTime": "13:30",
+    "eventType": "Special",
+    "location": "Hybrid",
+    "zoomLink": "https://us02web.zoom.us/j/87900497480",
+    "description": "Celebration with special puja, devotional singing, talks on his life and teachings, refreshments, and lunch prasad."
+  },
+  {
+    "id": "1",
+    "title": "Swami Ishtananda's Retreat",
+    "startDate": "2026-01-16",
+    "endDate": "2026-01-17",
+    "startTime": "19:00",
+    "endTime": "20:00",
+    "eventType": "Retreat",
+    "location": "In Person",
+    "zoomLink": "",
+    "description": "Join us for a transformative weekend retreat with inspiring talks on Vedantic philosophy, guided meditation sessions, and opportunities for personal spiritual guidance."
+  },
+  {
+    "id": "2",
+    "title": "Vivekananda Food Drive 2026",
+    "startDate": "2026-01-18",
+    "endDate": "2026-01-25",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "eventType": "Service",
+    "location": "In Person",
+    "zoomLink": "",
+    "description": "Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week."
+  },
+  {
+    "id": "3",
+    "title": "Shivaratri Puja",
+    "startDate": "2026-02-15",
+    "endDate": "2026-02-15",
+    "startTime": "18:30",
+    "endTime": "20:30",
+    "eventType": "Puja",
+    "location": "Hybrid",
+    "zoomLink": "https://us02web.zoom.us/j/87900497480",
+    "description": "Worship of Lord Shiva accompanied by devotional songs & readings (6:30-8 PM), Arati & Flower Offering (8 PM), Supper Prasad (8:15 PM). In person & online via Zoom. Meeting ID: 879 0049 7480"
+  },
+  {
+    "id": "4",
+    "title": "Christmas Eve Service",
+    "startDate": "2025-12-25",
+    "endDate": "2025-12-25",
+    "startTime": "18:00",
+    "endTime": "20:00",
+    "eventType": "Special",
+    "location": "In Person",
+    "zoomLink": "",
+    "description": "Special Christmas Eve service celebrating the birth of Jesus Christ with readings from the Gospel and reflections on the universal message of love and compassion."
+  },
+  {
+    "id": "5",
+    "title": "Fall Retreat with Swami Tyagananda",
+    "startDate": "2025-11-15",
+    "endDate": "2025-11-17",
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "eventType": "Retreat",
+    "location": "In Person",
+    "zoomLink": "",
+    "description": "Three-day spiritual retreat featuring talks on the Bhagavad Gita, meditation sessions, and question-answer sessions with Swami Tyagananda from the Vedanta Society of Boston."
+  },
+  {
+    "id": "6",
+    "title": "Durga Puja Celebration",
+    "startDate": "2025-10-12",
+    "endDate": "2025-10-12",
+    "startTime": "17:00",
+    "endTime": "21:00",
+    "eventType": "Puja",
+    "location": "In Person",
+    "zoomLink": "",
+    "description": "Traditional Durga Puja celebration with puja rituals, devotional music, spiritual discourse on the Divine Mother, and prasad distribution."
+  }
+]

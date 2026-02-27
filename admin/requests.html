@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFW Vedanta - Submit Change Request</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #fff5eb 0%, #fff 100%); min-height: 100vh; }
+        .header { background: #FF9933; color: white; padding: 1.5rem 2rem; text-align: center; }
+        .header h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+        .header p { opacity: 0.9; font-size: 0.9rem; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 2rem; margin-bottom: 2rem; }
+        .card h2 { color: #333; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #444; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.875rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: border-color 0.2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #FF9933; }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-group small { color: #888; font-size: 0.8rem; margin-top: 0.25rem; display: block; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .btn { padding: 1rem 2rem; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; width: 100%; }
+        .btn-primary { background: #FF9933; color: white; }
+        .btn-primary:hover { background: #e68a2e; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .file-input { border: 2px dashed #ddd; padding: 2rem; text-align: center; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .file-input:hover { border-color: #FF9933; background: #fff9f5; }
+        .file-input input { display: none; }
+        .file-input p { color: #666; margin-bottom: 0.5rem; }
+        .file-preview { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .file-preview img { width: 80px; height: 80px; object-fit: cover; border-radius: 4px; }
+        .status { padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center; }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.info { background: #cce5ff; color: #004085; }
+        .request-list { margin-top: 1rem; }
+        .request-item { background: #f8f9fa; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; border-left: 4px solid #FF9933; }
+        .request-item.pending { border-left-color: #ffc107; }
+        .request-item.completed { border-left-color: #28a745; }
+        .request-item h4 { margin-bottom: 0.5rem; color: #333; }
+        .request-item p { font-size: 0.9rem; color: #666; margin-bottom: 0.25rem; }
+        .request-meta { display: flex; gap: 1rem; font-size: 0.8rem; color: #888; margin-top: 0.5rem; }
+        .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .badge-pending { background: #fff3cd; color: #856404; }
+        .badge-completed { background: #d4edda; color: #155724; }
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .tab { padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; background: #f0f0f0; font-weight: 500; }
+        .tab.active { background: #FF9933; color: white; }
+        .empty-state { text-align: center; padding: 3rem; color: #888; }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🕉️ DFW Vedanta - Website Updates</h1>
+        <p>Submit a request to update the website</p>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h2>📝 Submit a Request</h2>
+            <form id="requestForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" id="name" required placeholder="e.g., John Smith">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Email *</label>
+                        <input type="email" id="email" required placeholder="e.g., john@example.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Request Type *</label>
+                    <select id="requestType" required>
+                        <option value="">Select type...</option>
+                        <option value="new-event">➕ Add New Event</option>
+                        <option value="update-event">📝 Update Existing Event</option>
+                        <option value="add-content">📄 Add New Content/Page</option>
+                        <option value="update-content">✏️ Update Existing Content</option>
+                        <option value="add-photos">📷 Add Photos</option>
+                        <option value="fix-issue">🔧 Fix an Issue</option>
+                        <option value="other">💬 Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Title/Summary *</label>
+                    <input type="text" id="title" required placeholder="Brief description of your request">
+                </div>
+                
+                <div class="form-group">
+                    <label>Details *</label>
+                    <textarea id="details" required placeholder="Please provide all relevant details:&#10;&#10;For events: Date, time, description, Zoom link if any&#10;For content: What page, what changes&#10;For photos: Where to add them"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Attach Images (optional)</label>
+                    <div class="file-input" onclick="document.getElementById('images').click()">
+                        <input type="file" id="images" multiple accept="image/*" onchange="handleFiles(this.files)">
+                        <p>📁 Click to upload images</p>
+                        <small>JPG, PNG up to 5MB each</small>
+                    </div>
+                    <div id="filePreview" class="file-preview"></div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">📤 Submit Request</button>
+            </form>
+            <div id="formStatus" class="status" style="display:none;"></div>
+        </div>
+        
+        <div class="card">
+            <h2>📋 Request Queue</h2>
+            <div class="tabs">
+                <div class="tab active" onclick="showTab('pending')">Pending</div>
+                <div class="tab" onclick="showTab('completed')">Completed</div>
+            </div>
+            <div id="requestList" class="request-list">
+                <div class="empty-state">Loading requests...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let requests = [];
+        let uploadedImages = [];
+        const API_URL = '/api/requests';
+        
+        // Load requests on page load
+        loadRequests();
+        
+        // Form submit
+        document.getElementById('requestForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await submitRequest();
+        });
+        
+        function handleFiles(files) {
+            const preview = document.getElementById('filePreview');
+            preview.innerHTML = '';
+            uploadedImages = [];
+            
+            Array.from(files).forEach(file => {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File too large: ' + file.name);
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadedImages.push({
+                        name: file.name,
+                        data: e.target.result
+                    });
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        async function loadRequests() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                requests = data.requests || [];
+                renderRequests('pending');
+            } catch (error) {
+                document.getElementById('requestList').innerHTML = `<div class="empty-state">Could not load requests</div>`;
+            }
+        }
+        
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            renderRequests(tab);
+        }
+        
+        function renderRequests(filter) {
+            const list = document.getElementById('requestList');
+            const filtered = requests.filter(r => filter === 'pending' ? r.status === 'pending' : r.status === 'completed');
+            
+            if (filtered.length === 0) {
+                list.innerHTML = `<div class="empty-state">No ${filter} requests</div>`;
+                return;
+            }
+            
+            list.innerHTML = filtered.map(r => `
+                <div class="request-item ${r.status}">
+                    <span class="badge badge-${r.status}">${r.status === 'pending' ? '⏳ Pending' : '✅ Completed'}</span>
+                    <h4>${r.title}</h4>
+                    <p>${r.details.substring(0, 150)}${r.details.length > 150 ? '...' : ''}</p>
+                    <div class="request-meta">
+                        <span>👤 ${r.name}</span>
+                        <span>📅 ${new Date(r.submittedAt).toLocaleDateString()}</span>
+                        <span>📁 ${r.requestType}</span>
+                        ${r.images?.length ? `<span>🖼️ ${r.images.length} image(s)</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        async function submitRequest() {
+            const status = document.getElementById('formStatus');
+            status.style.display = 'block';
+            status.className = 'status info';
+            status.textContent = 'Submitting...';
+            
+            const newRequest = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                requestType: document.getElementById('requestType').value,
+                title: document.getElementById('title').value,
+                details: document.getElementById('details').value,
+                images: uploadedImages.map(img => img.name)
+            };
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newRequest)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    status.className = 'status success';
+                    status.textContent = '✅ Request submitted! We will process it soon.';
+                    document.getElementById('requestForm').reset();
+                    document.getElementById('filePreview').innerHTML = '';
+                    uploadedImages = [];
+                    loadRequests();
+                } else {
+                    throw new Error(data.error || 'Failed to submit');
+                }
+            } catch (error) {
+                status.className = 'status error';
+                status.textContent = '❌ Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

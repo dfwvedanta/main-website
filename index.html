@@ -1,71 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q0YDB1HWQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3Q0YDB1HWQ');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramakrishna Vedanta Society of North Texas</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body>
+    <!-- Modern Divine Loading Screen -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-backdrop"></div>
+        <div class="loader-content">
+            <!-- Sacred Geometry Rings -->
+            <div class="sacred-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+                <div class="ring ring-4"></div>
+            </div>
+            
+            <!-- Animated Lotus -->
+            <div class="lotus-loader">
+                <svg viewBox="0 0 200 200" class="lotus-svg">
+                    <!-- Outer Petals -->
+                    <g class="lotus-outer-petals">
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" />
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" style="transform: rotate(45deg); transform-origin: 100px 100px;" />
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" style="transform: rotate(90deg); transform-origin: 100px 100px;" />
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" style="transform: rotate(135deg); transform-origin: 100px 100px;" />
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" style="transform: rotate(180deg); transform-origin: 100px 100px;" />
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" style="transform: rotate(225deg); transform-origin: 100px 100px;" />
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" style="transform: rotate(270deg); transform-origin: 100px 100px;" />
+                        <path class="petal" d="M100 30 Q130 60 100 100 Q70 60 100 30" style="transform: rotate(315deg); transform-origin: 100px 100px;" />
+                    </g>
+                    <!-- Inner Petals -->
+                    <g class="lotus-inner-petals">
+                        <path class="petal inner" d="M100 50 Q120 70 100 100 Q80 70 100 50" />
+                        <path class="petal inner" d="M100 50 Q120 70 100 100 Q80 70 100 50" style="transform: rotate(60deg); transform-origin: 100px 100px;" />
+                        <path class="petal inner" d="M100 50 Q120 70 100 100 Q80 70 100 50" style="transform: rotate(120deg); transform-origin: 100px 100px;" />
+                        <path class="petal inner" d="M100 50 Q120 70 100 100 Q80 70 100 50" style="transform: rotate(180deg); transform-origin: 100px 100px;" />
+                        <path class="petal inner" d="M100 50 Q120 70 100 100 Q80 70 100 50" style="transform: rotate(240deg); transform-origin: 100px 100px;" />
+                        <path class="petal inner" d="M100 50 Q120 70 100 100 Q80 70 100 50" style="transform: rotate(300deg); transform-origin: 100px 100px;" />
+                    </g>
+                    <!-- Center -->
+                    <circle class="lotus-center" cx="100" cy="100" r="12" />
+                </svg>
+            </div>
+            
+            <!-- Om Symbol -->
+            <div class="loader-om-symbol">
+                <svg viewBox="0 0 100 100" class="om-svg">
+                    <path class="om-path" d="M25,70 C15,70 10,60 15,50 C20,40 30,40 35,45 C40,50 35,60 30,65 C25,70 25,70 25,70 M35,45 C40,35 50,35 55,40 C60,45 60,55 50,55 C45,55 45,50 50,45 M55,35 L55,70 M60,40 C65,30 80,30 85,45 C90,60 75,75 60,70 M75,25 C75,20 80,18 82,23 C84,28 80,30 75,28" 
+                          fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            
+            <!-- Loading Text -->
+            <div class="loader-text-modern">
+                <span class="loader-word">Awakening</span>
+                <span class="loader-ellipsis">
+                    <span>.</span><span>.</span><span>.</span>
+                </span>
+            </div>
+            
+            <!-- Subtle Particles -->
+            <div class="loader-particles">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
     <!-- Header loaded from includes/header.html -->
     <div id="header-placeholder"></div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <p class="hero-subtitle">Ramakrishna Vedanta Society of North Texas</p>
-                    <h1 class="hero-title">
-                        Arise, Awake,<br>
-                        <span class="hero-title-italic">And Stop Not Till The Goal Is Reached</span>
-                    </h1>
-                    <p class="hero-description">
-                        Experience the living tradition of Vedanta as brought to America by Swami Vivekananda.
-                    </p>
-                    <p class="hero-description">
-                        Discover your true divine nature through meditation, study, and service to humanity.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="aboutus.html" class="btn btn-primary">Our Story</a>
-                        <a href="calendar.html" class="btn btn-secondary">Join Us Sunday</a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <div class="stat-number">1893</div>
-                            <div class="stat-label">Vedanta in America</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">2007</div>
-                            <div class="stat-label">Serving North Texas</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">130+</div>
-                            <div class="stat-label">Years of Tradition</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="images/vivekananda-standing.png" alt="Swami Vivekananda">
-                </div>
+    <!-- Top Announcement Banner -->
+    <div id="announcement-banner" class="announcement-banner" style="display: none;">
+        <div class="announcement-inner">
+            <div class="announcement-preview" onclick="toggleAnnouncement()">
+                <div class="announcement-glow"></div>
+                <span class="announcement-icon">🪔</span>
+                <span class="announcement-title">Schedule Change — March 1</span>
+                <svg class="announcement-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+                <button class="announcement-dismiss" onclick="event.stopPropagation(); closeAnnouncement();" aria-label="Dismiss">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="announcement-details" id="announcement-details">
+                <div class="announcement-content" id="announcement-content"></div>
             </div>
         </div>
+    </div>
+
+    <!-- Hero Section - Holy Trio -->
+    <section class="hero-section hero-holy-trio">
+        <div class="container">
+            <!-- Holy Trio Cards -->
+            <div class="holy-trio-cards">
+                <button class="holy-trio-card" data-figure="vivekananda" aria-label="Learn about Swami Vivekananda">
+                    <img src="images/holy-trio/vivekananda.png" alt="Swami Vivekananda on lotus">
+                </button>
+                <button class="holy-trio-card" data-figure="ramakrishna" aria-label="Learn about Sri Ramakrishna">
+                    <img src="images/holy-trio/ramakrishna.png" alt="Sri Ramakrishna on lotus">
+                </button>
+                <button class="holy-trio-card" data-figure="sarada-devi" aria-label="Learn about Sri Sarada Devi">
+                    <img src="images/holy-trio/sarada-devi.png" alt="Sri Sarada Devi on lotus">
+                </button>
+            </div>
+            
+            <!-- Tagline -->
+            <div class="hero-tagline">
+                <p class="tagline-text"><span class="tagline-sanskrit">Shiva Jnane Jiva Seva:</span> <br class="mobile-break"><span class="tagline-english">Serving living beings knowing them to be Divinity.</span></p>
+                
+                <!-- Golden Line with Sparks -->
+                <canvas id="golden-line-canvas" class="golden-line-canvas"></canvas>
+            </div>
+            
+            <script>
+            // Golden Line with Sparks on Hover
+            (function() {
+                const canvas = document.getElementById('golden-line-canvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                
+                let width, height, dpr;
+                let mouseX = -100, mouseY = -100;
+                let isMouseOver = false;
+                const sparks = [];
+                
+                function resize() {
+                    dpr = window.devicePixelRatio || 1;
+                    const rect = canvas.getBoundingClientRect();
+                    width = rect.width;
+                    height = rect.height;
+                    canvas.width = width * dpr;
+                    canvas.height = height * dpr;
+                    ctx.scale(dpr, dpr);
+                }
+                
+                function createSpark(x, y) {
+                    sparks.push({
+                        x: x,
+                        y: y,
+                        vx: (Math.random() - 0.5) * 4,
+                        vy: (Math.random() - 0.5) * 4 - 2,
+                        size: 2 + Math.random() * 3,
+                        life: 1,
+                        decay: 0.02 + Math.random() * 0.03
+                    });
+                }
+                
+                function drawGoldenLine(time) {
+                    const y = height / 2;
+                    const breath = Math.sin(time * 2) * 0.1 + 0.9;
+                    
+                    // Main golden line
+                    const gradient = ctx.createLinearGradient(0, y, width, y);
+                    gradient.addColorStop(0, 'rgba(201, 162, 39, 0)');
+                    gradient.addColorStop(0.15, `rgba(201, 162, 39, ${0.4 * breath})`);
+                    gradient.addColorStop(0.5, `rgba(218, 165, 32, ${0.8 * breath})`);
+                    gradient.addColorStop(0.85, `rgba(201, 162, 39, ${0.4 * breath})`);
+                    gradient.addColorStop(1, 'rgba(201, 162, 39, 0)');
+                    
+                    ctx.strokeStyle = gradient;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(width * 0.05, y);
+                    ctx.lineTo(width * 0.95, y);
+                    ctx.stroke();
+                    
+                    // Subtle glow under the line
+                    const glowGradient = ctx.createLinearGradient(0, y, width, y);
+                    glowGradient.addColorStop(0, 'rgba(255, 215, 0, 0)');
+                    glowGradient.addColorStop(0.5, `rgba(255, 215, 0, ${0.15 * breath})`);
+                    glowGradient.addColorStop(1, 'rgba(255, 215, 0, 0)');
+                    
+                    ctx.strokeStyle = glowGradient;
+                    ctx.lineWidth = 8;
+                    ctx.globalAlpha = 0.3;
+                    ctx.beginPath();
+                    ctx.moveTo(width * 0.1, y);
+                    ctx.lineTo(width * 0.9, y);
+                    ctx.stroke();
+                    ctx.globalAlpha = 1;
+                }
+                
+                function drawSparks() {
+                    for (let i = sparks.length - 1; i >= 0; i--) {
+                        const s = sparks[i];
+                        
+                        // Update
+                        s.x += s.vx;
+                        s.y += s.vy;
+                        s.vy += 0.1; // gravity
+                        s.life -= s.decay;
+                        
+                        if (s.life <= 0) {
+                            sparks.splice(i, 1);
+                            continue;
+                        }
+                        
+                        // Draw spark with glow
+                        const gradient = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.size * 2);
+                        gradient.addColorStop(0, `rgba(255, 223, 100, ${s.life})`);
+                        gradient.addColorStop(0.5, `rgba(255, 200, 50, ${s.life * 0.5})`);
+                        gradient.addColorStop(1, 'rgba(255, 180, 0, 0)');
+                        
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        ctx.arc(s.x, s.y, s.size * 2, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        // Bright center
+                        ctx.fillStyle = `rgba(255, 255, 200, ${s.life})`;
+                        ctx.beginPath();
+                        ctx.arc(s.x, s.y, s.size * 0.5, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+                
+                function drawHoverGlow() {
+                    if (!isMouseOver) return;
+                    
+                    // Glow at mouse position
+                    const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 40);
+                    gradient.addColorStop(0, 'rgba(255, 215, 0, 0.3)');
+                    gradient.addColorStop(0.5, 'rgba(255, 200, 50, 0.1)');
+                    gradient.addColorStop(1, 'rgba(255, 180, 0, 0)');
+                    
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(mouseX, mouseY, 40, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                let time = 0;
+                let lastSparkTime = 0;
+                
+                function animate() {
+                    time += 0.016;
+                    ctx.clearRect(0, 0, width, height);
+                    
+                    drawGoldenLine(time);
+                    drawHoverGlow();
+                    drawSparks();
+                    
+                    // Create sparks on hover
+                    if (isMouseOver && time - lastSparkTime > 0.05) {
+                        createSpark(mouseX, mouseY);
+                        lastSparkTime = time;
+                    }
+                    
+                    requestAnimationFrame(animate);
+                }
+                
+                // Mouse events
+                canvas.addEventListener('mousemove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    mouseX = e.clientX - rect.left;
+                    mouseY = e.clientY - rect.top;
+                    isMouseOver = true;
+                });
+                
+                canvas.addEventListener('mouseleave', () => {
+                    isMouseOver = false;
+                });
+                
+                // Touch events  
+                canvas.addEventListener('touchmove', (e) => {
+                    e.preventDefault();
+                    const rect = canvas.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    mouseX = touch.clientX - rect.left;
+                    mouseY = touch.clientY - rect.top;
+                    isMouseOver = true;
+                }, { passive: false });
+                
+                canvas.addEventListener('touchend', () => {
+                    isMouseOver = false;
+                });
+                
+                resize();
+                window.addEventListener('resize', resize);
+                animate();
+            })();
+            </script>
+            
+            <!-- Hero Gallery Carousel -->
+            <div class="hero-gallery-carousel" id="heroCarousel">
+                <div class="carousel-track">
+                    <button class="gallery-thumb" data-index="0" aria-label="View image 1">
+                        <img src="images/hero-gallery/center-sign.jpg" alt="Vedanta Society entrance with flowers">
+                    </button>
+                    <button class="gallery-thumb" data-index="1" aria-label="View image 2">
+                        <img src="images/hero-gallery/congregation.jpg" alt="Our vibrant community">
+                    </button>
+                    <button class="gallery-thumb" data-index="2" aria-label="View image 3">
+                        <img src="images/hero-gallery/swami-discourse.jpg" alt="Spiritual discourse">
+                    </button>
+                    <button class="gallery-thumb" data-index="3" aria-label="View image 4">
+                        <img src="images/hero-gallery/main-shrine.jpg" alt="Main shrine">
+                    </button>
+                    <button class="gallery-thumb" data-index="4" aria-label="View image 5">
+                        <img src="images/hero-gallery/hero-5.jpg" alt="Swami performing aarti">
+                    </button>
+                    <button class="gallery-thumb" data-index="5" aria-label="View image 6">
+                        <img src="images/hero-gallery/hero-6.jpg" alt="Community gathering outdoors">
+                    </button>
+                    <button class="gallery-thumb" data-index="6" aria-label="View image 7">
+                        <img src="images/hero-gallery/hero-7.jpg" alt="Prayer session">
+                    </button>
+                    <button class="gallery-thumb" data-index="7" aria-label="View image 8">
+                        <img src="images/hero-gallery/hero-8.jpg" alt="Group with Holy Trio shrine">
+                    </button>
+                    <button class="gallery-thumb" data-index="8" aria-label="View image 9">
+                        <img src="images/hero-gallery/hero-9.jpg" alt="Pravrajika teaching">
+                    </button>
+                </div>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" data-slide="0" aria-label="View slide 1"></button>
+                    <button class="carousel-dot" data-slide="1" aria-label="View slide 2"></button>
+                    <button class="carousel-dot" data-slide="2" aria-label="View slide 3"></button>
+                </div>
+            </div>
+            
+            <script>
+            // Hero Gallery Auto-Carousel
+            (function() {
+                const carousel = document.getElementById('heroCarousel');
+                if (!carousel) return;
+                
+                const track = carousel.querySelector('.carousel-track');
+                const dots = carousel.querySelectorAll('.carousel-dot');
+                const thumbs = carousel.querySelectorAll('.gallery-thumb');
+                
+                let currentSlide = 0;
+                let autoPlayInterval;
+                let isPaused = false;
+                
+                const totalSlides = 3; // 9 images, 3 visible at a time = 3 slides
+                const slideWidth = 33.333; // Each slide moves by 1/3 of total (shows next 3)
+                
+                function goToSlide(index) {
+                    currentSlide = index;
+                    track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+                    
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentSlide);
+                    });
+                }
+                
+                function nextSlide() {
+                    goToSlide((currentSlide + 1) % totalSlides);
+                }
+                
+                function startAutoPlay() {
+                    autoPlayInterval = setInterval(() => {
+                        if (!isPaused) nextSlide();
+                    }, 7000); // 7 seconds between slides
+                }
+                
+                function stopAutoPlay() {
+                    clearInterval(autoPlayInterval);
+                }
+                
+                // Dot navigation
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => goToSlide(i));
+                });
+                
+                // Pause on hover
+                carousel.addEventListener('mouseenter', () => isPaused = true);
+                carousel.addEventListener('mouseleave', () => isPaused = false);
+                
+                // Start auto-play
+                startAutoPlay();
+            })();
+            </script>
+            
+            <!-- Gallery Lightbox -->
+            <div id="gallery-lightbox" class="gallery-lightbox">
+                <div class="lightbox-overlay"></div>
+                <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+                <button class="lightbox-nav lightbox-prev" aria-label="Previous image">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <div class="lightbox-content">
+                    <img src="" alt="" class="lightbox-image">
+                    <p class="lightbox-caption"></p>
+                </div>
+                <button class="lightbox-nav lightbox-next" aria-label="Next image">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                <div class="lightbox-thumbnails">
+                    <button class="lightbox-thumb active" data-index="0">
+                        <img src="images/hero-gallery/center-sign.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="1">
+                        <img src="images/hero-gallery/congregation.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="2">
+                        <img src="images/hero-gallery/swami-discourse.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="3">
+                        <img src="images/hero-gallery/main-shrine.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="4">
+                        <img src="images/hero-gallery/hero-5.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="5">
+                        <img src="images/hero-gallery/hero-6.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="6">
+                        <img src="images/hero-gallery/hero-7.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="7">
+                        <img src="images/hero-gallery/hero-8.jpg" alt="">
+                    </button>
+                    <button class="lightbox-thumb" data-index="8">
+                        <img src="images/hero-gallery/hero-9.jpg" alt="">
+                    </button>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="hero-cta">
+                <p class="hero-cta-text">Experience the living tradition of Vedanta as brought to America by Swami Vivekananda.</p>
+                <div class="hero-buttons">
+                    <a href="aboutus.html" class="btn btn-primary">About Us</a>
+                    <a href="calendar.html" class="btn btn-secondary">Join Us</a>
+                </div>
+            </div>
+            
+        </div>
     </section>
+    <!-- Top Announcement Banner Configuration -->
+    <script>
+        const announcementConfig = {
+            enabled: true,
+            title: "Schedule Change — March 1",
+            html: `<div class="schedule-grid">
+                <div class="schedule-intro">
+                    <p>Dear Friends and Devotees, <strong>effective March 1</strong>, the Center schedule will be:</p>
+                </div>
+                <div class="schedule-items">
+                    <div class="schedule-item">
+                        <div class="schedule-day">Sunday</div>
+                        <div class="schedule-time">10:00 AM – 2:00 PM</div>
+                        <div class="schedule-desc">Sunday Service (11 AM–12 Noon) followed by Ārati & Prasad<br>Children's Sunday School (11 AM–12 Noon)</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-day">Saturday</div>
+                        <div class="schedule-time">5:00 PM – 7:00 PM</div>
+                        <div class="schedule-desc">Ārati, meditation, and Gospel readings</div>
+                    </div>
+                    <div class="schedule-item online">
+                        <div class="schedule-day">Saturday <span class="online-badge">Online</span></div>
+                        <div class="schedule-time">10:00 AM – 11:30 AM</div>
+                        <div class="schedule-desc">Tattvabodha study (facilitated by devotees)</div>
+                    </div>
+                </div>
+            </div>`,
+            startDate: "2026-02-13",
+            endDate: "2026-03-31"
+        };
+        
+        function showAnnouncement() {
+            const now = new Date();
+            const start = new Date(announcementConfig.startDate);
+            const end = new Date(announcementConfig.endDate + "T23:59:59");
+            
+            if (announcementConfig.enabled && now >= start && now <= end) {
+                document.getElementById('announcement-content').innerHTML = announcementConfig.html;
+                document.getElementById('announcement-banner').style.display = 'block';
+            }
+        }
+        
+        function toggleAnnouncement() {
+            const banner = document.getElementById('announcement-banner');
+            banner.classList.toggle('expanded');
+        }
+        
+        function closeAnnouncement() {
+            const banner = document.getElementById('announcement-banner');
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 300);
+            // No longer persists - banner will show again on page refresh
+        }
+        
+        // Show announcement when page loads
+        document.addEventListener('DOMContentLoaded', showAnnouncement);
+    </script>
 
     <!-- Events Section with Tabs -->
     <section class="home-events-section">
         <div class="container">
             <div class="section-header-center">
-                <h2 class="section-title">Events</h2>
-                <p class="section-subtitle">Join us for these special programs and celebrations</p>
+                <span class="section-eyebrow">🪔 Programs & Celebrations</span>
+                <h2 class="section-title">Upcoming Events</h2>
             </div>
 
             <!-- Event Tabs -->
             <div class="event-tabs">
-                <button class="event-tab active" data-tab="upcoming">Upcoming Events</button>
+                <button class="event-tab active" data-tab="upcoming">Upcoming</button>
                 <button class="event-tab" data-tab="past">Past Events</button>
             </div>
 
@@ -84,7 +552,7 @@
                             Join us for a transformative weekend retreat with inspiring talks on Vedantic philosophy, guided meditation sessions, and opportunities for personal spiritual guidance.
                         </p>
                         <div class="event-card-actions">
-                            <a href="event-swami-ishtananda-retreat.html" class="text-link">More Details →</a>
+                            <a href="calendar.html" class="text-link">View Calendar →</a>
                             <div class="event-calendar-placeholder"></div>
                         </div>
                     </div>
@@ -103,26 +571,51 @@
                             Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week.
                         </p>
                         <div class="event-card-actions">
-                            <a href="event-vivekananda-food-drive.html" class="text-link">More Details →</a>
+                            <a href="calendar.html" class="text-link">View Calendar →</a>
                             <div class="event-calendar-placeholder"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="event-card" data-end-date="2026-02-26T21:00:00">
+                <div class="event-card" data-end-date="2026-02-22T13:30:00">
                     <div class="event-card-date">
                         <span class="month">Feb</span>
-                        <span class="day">26</span>
+                        <span class="day">22</span>
                         <span class="year">2026</span>
                     </div>
                     <div class="event-card-content">
-                        <h3>Shiva Ratri Puja Program</h3>
-                        <p class="event-card-time">6:00 PM - 9:00 PM</p>
+                        <h3>Sri Ramakrishna's Birth Observance</h3>
+                        <p class="event-card-time">Sunday 10:30 AM - 1:30 PM • In Person & Online</p>
                         <p class="event-card-description">
-                            Special worship program celebrating Maha Shivaratri with traditional rituals, meditation, and spiritual discourse on Lord Shiva's significance in Vedanta.
+                            Celebration with special puja, devotional singing, talks on his life and teachings, refreshments, and lunch prasad.
+                        </p>
+                        <p class="event-card-zoom">
+                            <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/87900497480" target="_blank">Join Online</a> (ID: 879 0049 7480)
                         </p>
                         <div class="event-card-actions">
-                            <a href="event-shiva-ratri-puja.html" class="text-link">More Details →</a>
+                            <a href="calendar.html" class="text-link">View Calendar →</a>
+                            <div class="event-calendar-placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card" data-end-date="2026-02-15T20:30:00">
+                    <div class="event-card-date">
+                        <span class="month">Feb</span>
+                        <span class="day">15</span>
+                        <span class="year">2026</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Shivaratri Puja</h3>
+                        <p class="event-card-time">Sunday 6:30 PM - 8:00 PM • In Person & Online</p>
+                        <p class="event-card-description">
+                            Worship of Lord Shiva accompanied by devotional songs & readings, followed by Arati & Flower Offering at 8 PM, and Supper Prasad at 8:15 PM.
+                        </p>
+                        <p class="event-card-zoom">
+                            <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/87900497480" target="_blank">Join Online</a> (ID: 879 0049 7480)
+                        </p>
+                        <div class="event-card-actions">
+                            <a href="calendar.html" class="text-link">View Calendar →</a>
                             <div class="event-calendar-placeholder"></div>
                         </div>
                     </div>
@@ -141,7 +634,7 @@
                             Special Christmas Eve service celebrating the birth of Jesus Christ with readings from the Gospel and reflections on the universal message of love and compassion.
                         </p>
                         <div class="event-card-actions">
-                            <a href="event-christmas-eve-service.html" class="text-link">More Details →</a>
+                            <a href="calendar.html" class="text-link">View Calendar →</a>
                         </div>
                     </div>
                 </div>
@@ -159,7 +652,7 @@
                             Three-day spiritual retreat featuring talks on the Bhagavad Gita, meditation sessions, and question-answer sessions with Swami Tyagananda from the Vedanta Society of Boston.
                         </p>
                         <div class="event-card-actions">
-                            <a href="event-fall-retreat.html" class="text-link">More Details →</a>
+                            <a href="calendar.html" class="text-link">View Calendar →</a>
                         </div>
                     </div>
                 </div>
@@ -177,7 +670,7 @@
                             Traditional Durga Puja celebration with puja rituals, devotional music, spiritual discourse on the Divine Mother, and prasad distribution.
                         </p>
                         <div class="event-card-actions">
-                            <a href="event-durga-puja.html" class="text-link">More Details →</a>
+                            <a href="calendar.html" class="text-link">View Calendar →</a>
                         </div>
                     </div>
                 </div>
@@ -201,226 +694,43 @@
         </div>
     </section>
 
-    <!-- Introduction Section -->
+    <!-- Introduction Section - Redesigned -->
     <section class="intro-section">
+        <div class="intro-bg-pattern"></div>
         <div class="container">
-            <div class="intro-content">
-                <h2 class="section-title">A Living Spiritual Tradition</h2>
-                <p class="section-subtitle">From 19th Century India to 21st Century North Texas</p>
-                <p class="intro-text">
-                    In 1893, Swami Vivekananda introduced Vedanta to America at the Parliament of World Religions in Chicago, proclaiming the universal message: "As the different streams having their sources in different places all mingle their water in the sea, so the different paths which people take lead to the same God."
-                </p>
-                <p class="intro-text">
-                    This center continues that sacred mission, offering the timeless teachings of Sri Ramakrishna, Holy Mother Sarada Devi, and Swami Vivekananda. Here, spiritual seekers of all backgrounds discover their divine nature through meditation, study, and selfless service—transforming ancient wisdom into practical spirituality for modern life.
-                </p>
+            <div class="intro-header">
+                <span class="intro-eyebrow">Our Heritage</span>
+                <h2 class="intro-title">A Living Spiritual Tradition</h2>
+                <p class="intro-subtitle">From 19th Century India to 21st Century North Texas</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Guidelines Section -->
-    <section class="guidelines-section">
-        <div class="container">
-            <h2 class="section-title">Guidelines for Visitors</h2>
-            <div class="guidelines-grid">
-                <div class="guideline-card">
-                    <h3>Arrive Early</h3>
-                    <p>Please arrive 5-10 minutes before the scheduled time for seating and settling in.</p>
-                </div>
-                <div class="guideline-card">
-                    <h3>Respectful Attire</h3>
-                    <p>Modest and comfortable clothing is recommended. Please remove shoes before entering the chapel.</p>
-                </div>
-                <div class="guideline-card">
-                    <h3>Silence Phones</h3>
-                    <p>Please silence all electronic devices to maintain a peaceful atmosphere.</p>
-                </div>
-                <div class="guideline-card">
-                    <h3>Children Welcome</h3>
-                    <p>Families with young children are welcome. We have a separate children's program available.</p>
-                </div>
-                <div class="guideline-card">
-                    <h3>Accessible Parking</h3>
-                    <p>Ample parking is available. Accessible parking spots are located near the entrance.</p>
-                </div>
-                <div class="guideline-card">
-                    <h3>Questions Welcome</h3>
-                    <p>Feel free to ask questions after the program. Our community is here to support your journey.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Activities Section -->
-    <section class="activities-section">
-        <div class="container">
-            <h2 class="section-title">Activities & Services</h2>
-            <p class="section-description">All programs are free and open to the public</p>
-            <div class="activities-grid">
-                <div class="activity-card">
-                    <h3>Sunday Service</h3>
-                    <p>Weekly spiritual discourse and meditation every Sunday morning. Join us for inspiring talks and community fellowship.</p>
-                    <a href="calendar.html" class="card-link">Learn more →</a>
-                </div>
-                <div class="activity-card">
-                    <h3>Meditation Classes</h3>
-                    <p>Guided meditation sessions to help you develop a regular practice and experience inner peace.</p>
-                    <a href="meditation.html" class="card-link">Learn more →</a>
-                </div>
-                <div class="activity-card">
-                    <h3>Study Circles</h3>
-                    <p>In-depth study of spiritual texts including Bhagavad Gita, Upanishads, and the teachings of Ramakrishna.</p>
-                    <a href="readings.html" class="card-link">Learn more →</a>
-                </div>
-                <div class="activity-card">
-                    <h3>Special Retreats</h3>
-                    <p>Intensive spiritual retreats with visiting swamis throughout the year for deeper practice.</p>
-                    <a href="calendar.html" class="card-link">Learn more →</a>
-                </div>
-                <div class="activity-card">
-                    <h3>Children's Program</h3>
-                    <p>Engaging spiritual and cultural education for children to develop character and values.</p>
-                    <a href="childrensprogram.html" class="card-link">Learn more →</a>
-                </div>
-                <div class="activity-card">
-                    <h3>Library</h3>
-                    <p>Extensive collection of spiritual books and resources available for study and borrowing.</p>
-                    <a href="readings.html" class="card-link">Learn more →</a>
-                </div>
-                <div class="activity-card">
-                    <h3>Online Lectures</h3>
-                    <p>Access recorded talks and lectures from our visiting monastics and teachers.</p>
-                    <a href="lectures.html" class="card-link">Learn more →</a>
-                </div>
-                <div class="activity-card">
-                    <h3>Counseling</h3>
-                    <p>Private spiritual counseling and guidance available by appointment with our resident minister.</p>
-                    <a href="contactus.html" class="card-link">Learn more →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section class="resources-section">
-        <div class="container">
-            <h2 class="section-title">Resources & Learning</h2>
-            <p class="section-description">Explore additional ways to deepen your spiritual practice</p>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                        </svg>
-                    </div>
-                    <h3>YouTube Channel</h3>
-                    <p>Watch spiritual lectures, talks, and discourses from our Sunday services and special events.</p>
-                    <a href="https://www.youtube.com/channel/UCHEVy53o_mseCT6s75GWNlg" target="_blank" class="resource-link">Visit Channel →</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
-                    </div>
-                    <h3>Monastic Student Program</h3>
-                    <p>Learn about the residential student program at Vedanta Society monasteries for intensive spiritual training.</p>
-                    <a href="http://vedanta.org/vedanta-overview/monasticism/student-program/" target="_blank" class="resource-link">Learn More →</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>
-                    </div>
-                    <h3>Yoga Classes</h3>
-                    <p>Classical Hatha and Raja Yoga classes integrating physical postures with meditation and spiritual practice.</p>
-                    <a href="yogaclasses.html" class="resource-link">Learn More →</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Weekly Schedule</h3>
-                    <p>Sunday services, meditation classes, study circles, and special programs throughout the week.</p>
-                    <a href="calendar.html" class="resource-link">View Calendar →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section class="leadership-section">
-        <div class="container">
-            <h2 class="section-title">Spiritual Leadership</h2>
-            <div class="leaders-grid">
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="images/SwamiIshtananda.jpg" alt="Swami Ishtananda">
-                    </div>
-                    <h3>Swami Ishtananda</h3>
-                    <p class="leader-title">Minister In-Charge</p>
-                    <p>Vedanta Society of Sacramento</p>
-                </div>
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="images/SwamiSarvadevananda.jpg" alt="Swami Sarvadevananda">
-                    </div>
-                    <h3>Swami Sarvadevananda</h3>
-                    <p class="leader-title">Senior Minister</p>
-                    <p>Vedanta Society of Southern California</p>
-                </div>
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="images/PravrajikaBrahmaprana.jpg" alt="Pravrajika Brahmaprana">
-                    </div>
-                    <h3>Pravrajika Brahmaprana</h3>
-                    <p class="leader-title">Minister</p>
-                    <p>Vedanta Society of Sacramento</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Daily Quote Section -->
-    <section class="quote-section">
-        <div class="container">
-            <div class="quote-container">
-                <div class="quote-icon">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 7.5C10 5.567 8.433 4 6.5 4C4.567 4 3 5.567 3 7.5C3 9.433 4.567 11 6.5 11C6.72 11 6.933 10.973 7.137 10.922C6.97 12.595 6.104 14.094 4.663 15.104C4.309 15.341 4.217 15.832 4.454 16.186C4.621 16.439 4.903 16.582 5.193 16.582C5.344 16.582 5.497 16.539 5.631 16.447C7.689 15.057 9 12.624 9 10V7.5H10ZM21 7.5C21 5.567 19.433 4 17.5 4C15.567 4 14 5.567 14 7.5C14 9.433 15.567 11 17.5 11C17.72 11 17.933 10.973 18.137 10.922C17.97 12.595 17.104 14.094 15.663 15.104C15.309 15.341 15.217 15.832 15.454 16.186C15.621 16.439 15.903 16.582 16.193 16.582C16.344 16.582 16.497 16.539 16.631 16.447C18.689 15.057 20 12.624 20 10V7.5H21Z" fill="currentColor" opacity="0.2"/>
-                    </svg>
-                </div>
-                <h2 class="quote-section-title">Wisdom of Swami Vivekananda</h2>
-                <p class="quote-section-subtitle">Daily inspiration from the teachings of Vedanta</p>
-                <div class="quote-content">
-                    <blockquote id="daily-quote" class="daily-quote">
-                        Loading quote...
+            
+            <div class="intro-content-grid">
+                <!-- Quote Card -->
+                <div class="intro-quote-card">
+                    <div class="quote-icon">❝</div>
+                    <blockquote class="intro-quote">
+                        As the different streams having their sources in different places all mingle their water in the sea, so the different paths which people take lead to the same God.
                     </blockquote>
-                    <div class="quote-author">— Swami Vivekananda</div>
+                    <cite class="quote-attribution">
+                        <strong>Swami Vivekananda</strong>
+                        <span>Parliament of World Religions, Chicago 1893</span>
+                    </cite>
                 </div>
-                <div class="quote-footer">
-                    <button id="prev-quote" class="quote-nav-btn" title="Previous Quote">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <span id="quote-number" class="quote-number">Quote 1 of 100</span>
-                    <button id="next-quote" class="quote-nav-btn" title="Next Quote">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
+                
+                <!-- Story Content -->
+                <div class="intro-story">
+                    <p class="intro-text intro-text-lead">
+                        In 1893, a young monk from India electrified the World's Parliament of Religions in Chicago. His opening words—<em>"Sisters and Brothers of America"</em>—received a standing ovation before he even began his speech.
+                    </p>
+                    <p class="intro-text">
+                        That monk was Swami Vivekananda, and his message of universal harmony forever changed how the West understood spirituality. This center continues his sacred mission.
+                    </p>
+                    <p class="intro-text">
+                        Here, we offer the timeless teachings of <strong>Sri Ramakrishna</strong>, <strong>Holy Mother Sarada Devi</strong>, and <strong>Swami Vivekananda</strong>. Spiritual seekers of all backgrounds discover their divine nature through meditation, study, and selfless service—transforming ancient wisdom into practical spirituality for modern life.
+                    </p>
+                    <div class="intro-cta">
+                        <a href="vivekananda.html" class="btn btn-outline">Learn About Vivekananda →</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -439,75 +749,269 @@
         </div>
     </section>
 
+    <!-- Vivekananda Info Modal -->
+    <div id="vivekananda-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content vivekananda-modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+
+            <div class="vivekananda-modal-inner">
+                <div class="vivekananda-hero-section">
+                    <img src="images/vivekananda-standing.png" alt="Swami Vivekananda" class="vivekananda-modal-image">
+                    <div class="vivekananda-hero-text">
+                        <h2 class="vivekananda-modal-title">Swami Vivekananda</h2>
+                        <p class="vivekananda-modal-subtitle">1863-1902</p>
+                        <p class="vivekananda-modal-tagline">"The monk who brought yoga and meditation to America"</p>
+                    </div>
+                </div>
+
+                <div class="vivekananda-content">
+                    <div class="vivekananda-intro">
+                        <h3>Who Was He?</h3>
+                        <p>
+                            Imagine someone who combined the spiritual depth of a monk with the energy of a motivational speaker and the vision of a social reformer. That was Swami Vivekananda.
+                        </p>
+                        <p>
+                            Born in 1863 in India, he was a wandering monk who came to America in 1893 and completely changed how Westerners understood spirituality. Before him, most Americans had never heard of yoga, meditation, or the idea that you could find God within yourself.
+                        </p>
+                    </div>
+
+                    <div class="vivekananda-section">
+                        <h3>His Big Moment: Chicago, 1893</h3>
+                        <p>
+                            Picture this: The World's Fair in Chicago. Representatives from religions all over the world gathered to speak. When a young Indian monk in orange robes stood up and addressed the crowd as "Sisters and Brothers of America," 7,000 people gave him a standing ovation—before he'd even said anything else.
+                        </p>
+                        <p>
+                            Why? Because in 1893 America, nobody addressed an audience that way. It was revolutionary, warm, and inclusive. His message was simple but powerful: all religions are different paths to the same truth. No single religion has a monopoly on God.
+                        </p>
+                        <p>
+                            American newspapers called him "the greatest figure in the Parliament of Religions." He became an instant celebrity.
+                        </p>
+                    </div>
+
+                    <div class="vivekananda-section">
+                        <h3>What Did He Teach?</h3>
+                        <p>
+                            Vivekananda's message was surprisingly practical for a monk. Here are his main ideas (translated into plain English):
+                        </p>
+
+                        <div class="teaching-cards">
+                            <div class="teaching-card">
+                                <h4>You Are Stronger Than You Think</h4>
+                                <p>He constantly told people: "You are divine. You have infinite power within you." This was radical—especially for people told they were sinful or weak. He wanted people to stand up, be confident, and realize their potential.</p>
+                                <p class="teaching-quote">"Arise, awake, and stop not till the goal is reached."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>Service Is the Highest Religion</h4>
+                                <p>He didn't think religion was about rituals or beliefs alone. For him, helping others—especially the poor and suffering—was the highest form of worship. "They alone live who live for others," he said.</p>
+                                <p class="teaching-quote">"Service to humanity is service to God."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>Meditation + Action = Balance</h4>
+                                <p>He taught that you need both inner spiritual practice (meditation, prayer) and outer action (service, work). Like a bird needs two wings to fly. Don't just sit and meditate—go out and serve. Don't just work without reflection—take time to go within.</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>All Paths Lead to the Same Summit</h4>
+                                <p>He respected all religions—Christianity, Judaism, Islam, Buddhism, Hinduism. He saw them as different paths up the same mountain. This was uncommon thinking in the 1890s (and still is for many today).</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>Build Your Body and Mind</h4>
+                                <p>Surprisingly for a monk, he told people to play sports, exercise, and build strong bodies. "You will be nearer to Heaven through football than through reading the Gita," he once said. He wanted people strong in body, mind, and spirit.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vivekananda-section">
+                        <h3>Why Does This Matter in Texas in 2026?</h3>
+                        <p>
+                            You might wonder: "Why should I care about a 19th-century Indian monk?" Fair question. Here's why he's still relevant:
+                        </p>
+                        <ul class="vivekananda-relevance-list">
+                            <li><strong>Stress and Burnout:</strong> His teachings on meditation and inner peace are exactly what people need in our always-on, always-connected world.</li>
+                            <li><strong>Purpose and Meaning:</strong> In an age of anxiety and searching, he offers a clear path: discover your inner strength and use it to serve others.</li>
+                            <li><strong>Interfaith Understanding:</strong> In our diverse society, his message of religious harmony is more important than ever.</li>
+                            <li><strong>Practical Spirituality:</strong> He wasn't about escaping the world—he was about transforming it. Perfect for people who want spirituality that fits into real life.</li>
+                        </ul>
+                    </div>
+
+                    <div class="vivekananda-section">
+                        <h3>His Legacy</h3>
+                        <p>
+                            Though he died young at 39, his impact was enormous. He founded the Ramakrishna Mission (named after his teacher), which runs hospitals, schools, and disaster relief worldwide. He inspired leaders like Martin Luther King Jr., Nikola Tesla, and countless others.
+                        </p>
+                        <p>
+                            Most importantly, he showed that spirituality isn't about running away from the world—it's about engaging with it fully, serving others, and discovering the extraordinary power within yourself.
+                        </p>
+                        <p>
+                            Our center here in North Texas continues his work: offering meditation, study, community, and service—practical spirituality for modern life.
+                        </p>
+                    </div>
+
+                    <div class="vivekananda-cta">
+                        <h3>Want to Learn More?</h3>
+                        <p>Visit us this Sunday at 11 AM, or explore his teachings through our library and programs.</p>
+                        <div class="vivekananda-modal-buttons">
+                            <a href="vivekananda.html" class="btn btn-primary">Read More About Him</a>
+                            <a href="calendar.html" class="btn btn-secondary">Join Us Sunday</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ramakrishna Info Modal -->
+    <div id="ramakrishna-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content vivekananda-modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+
+            <div class="vivekananda-modal-inner">
+                <div class="vivekananda-hero-section">
+                    <img src="images/holy-trio/ramakrishna.png" alt="Sri Ramakrishna" class="vivekananda-modal-image" style="max-width: 300px;">
+                    <div class="vivekananda-hero-text">
+                        <h2 class="vivekananda-modal-title">Sri Ramakrishna</h2>
+                        <p class="vivekananda-modal-subtitle">1836-1886</p>
+                        <p class="vivekananda-modal-tagline">"As many faiths, so many paths"</p>
+                    </div>
+                </div>
+
+                <div class="vivekananda-content">
+                    <div class="vivekananda-intro">
+                        <h3>The God-Intoxicated Saint</h3>
+                        <p>
+                            Sri Ramakrishna was a mystic whose life was one continuous spiritual experience. Born in a small Bengal village, he became a priest at the Dakshineswar Kali Temple near Kolkata and spent his entire life in the direct pursuit and experience of God.
+                        </p>
+                        <p>
+                            What made him unique? He didn't just believe in religious harmony—he lived it. He practiced Christianity, Islam, and various Hindu paths, achieving spiritual realization through each. His verdict: they all lead to the same divine goal.
+                        </p>
+                    </div>
+
+                    <div class="vivekananda-section">
+                        <h3>His Core Teachings</h3>
+
+                        <div class="teaching-cards">
+                            <div class="teaching-card">
+                                <h4>God Can Be Realized</h4>
+                                <p>Ramakrishna's most revolutionary message was simple: God is not just a concept to believe in—God can be directly experienced in this very life. "The goal of human life is to realize God," he taught.</p>
+                                <p class="teaching-quote">"The winds of grace are always blowing, but you have to raise the sail."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>All Religions Are True</h4>
+                                <p>Having practiced multiple faiths and reached the same divine experience through each, he declared that all religions are valid paths to God. None has a monopoly on truth.</p>
+                                <p class="teaching-quote">"As many faiths, so many paths."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>See God in All</h4>
+                                <p>He taught that the same divine presence exists in every being. When you truly see this, service to others becomes worship, and love for humanity becomes love for God.</p>
+                                <p class="teaching-quote">"Shiva Jnane Jiva Seva — Serve living beings knowing them to be God."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>Longing Is the Key</h4>
+                                <p>He emphasized that intense longing for God is what matters most—more than rituals, more than knowledge. Like a drowning person gasping for air, when you yearn for God with that intensity, realization comes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vivekananda-cta">
+                        <h3>Want to Learn More?</h3>
+                        <p>Discover the life and teachings of Sri Ramakrishna at our Sunday programs.</p>
+                        <div class="vivekananda-modal-buttons">
+                            <a href="ramakrishna.html" class="btn btn-primary">Read More About Him</a>
+                            <a href="calendar.html" class="btn btn-secondary">Join Us Sunday</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sarada Devi Info Modal -->
+    <div id="sarada-devi-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content vivekananda-modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+
+            <div class="vivekananda-modal-inner">
+                <div class="vivekananda-hero-section">
+                    <img src="images/holy-trio/sarada-devi.png" alt="Sri Sarada Devi" class="vivekananda-modal-image" style="max-width: 300px;">
+                    <div class="vivekananda-hero-text">
+                        <h2 class="vivekananda-modal-title">Sri Sarada Devi</h2>
+                        <p class="vivekananda-modal-subtitle">1853-1920</p>
+                        <p class="vivekananda-modal-tagline">"If you want peace, do not find fault with others"</p>
+                    </div>
+                </div>
+
+                <div class="vivekananda-content">
+                    <div class="vivekananda-intro">
+                        <h3>The Embodiment of Motherly Love</h3>
+                        <p>
+                            Sri Sarada Devi, known reverently as "Holy Mother," was the wife and spiritual companion of Sri Ramakrishna. Despite her profound spiritual attainments, she lived a life of extraordinary simplicity, serving others with boundless love and patience.
+                        </p>
+                        <p>
+                            After Sri Ramakrishna's passing, she became the spiritual guide for thousands, treating everyone who came to her as her own child—regardless of caste, religion, or background. Her love was unconditional and her guidance practical.
+                        </p>
+                    </div>
+
+                    <div class="vivekananda-section">
+                        <h3>Her Core Teachings</h3>
+
+                        <div class="teaching-cards">
+                            <div class="teaching-card">
+                                <h4>Universal Motherhood</h4>
+                                <p>She saw all beings as her children. When asked who could be her disciple, she replied, "Everyone." Her love transcended all boundaries of religion, class, and nationality.</p>
+                                <p class="teaching-quote">"I am the mother of the virtuous, and I am also the mother of the wicked."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>Purity of Mind</h4>
+                                <p>She emphasized keeping the mind pure and free from jealousy, hatred, and selfishness. "If you want peace of mind, do not find fault with others," she advised. "Learn to make the whole world your own."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>Work as Worship</h4>
+                                <p>Though revered as a saint, she continued to cook, clean, and serve others throughout her life. She showed that the highest spirituality can be expressed through the humblest daily tasks.</p>
+                                <p class="teaching-quote">"Work helps one to keep off evil thoughts."</p>
+                            </div>
+
+                            <div class="teaching-card">
+                                <h4>Faith and Patience</h4>
+                                <p>She counseled patience in spiritual life. "One must be patient like the earth. What suffering has not the earth to bear! One must have immense patience if one desires to realize God."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vivekananda-cta">
+                        <h3>Want to Learn More?</h3>
+                        <p>Discover the life and teachings of Holy Mother Sri Sarada Devi.</p>
+                        <div class="vivekananda-modal-buttons">
+                            <a href="saradamaa.html" class="btn btn-primary">Read More About Her</a>
+                            <a href="calendar.html" class="btn btn-secondary">Join Us Sunday</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <!-- Footer loaded from includes/footer.html -->
     <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
     <script src="add-to-calendar.js"></script>
     <script>
-        // Load and display daily quote
-        let allQuotes = [];
-        let currentQuoteIndex = 0;
-
-        async function loadQuotes() {
-            try {
-                const response = await fetch('quotes.txt');
-                const text = await response.text();
-                allQuotes = text.split('\n').filter(quote => quote.trim() !== '');
-
-                // Get quote index based on day of year
-                const now = new Date();
-                const start = new Date(now.getFullYear(), 0, 0);
-                const diff = now - start;
-                const oneDay = 1000 * 60 * 60 * 24;
-                const dayOfYear = Math.floor(diff / oneDay);
-
-                // Use day of year to select quote (cycles through 100 quotes)
-                currentQuoteIndex = dayOfYear % allQuotes.length;
-                displayQuote(currentQuoteIndex);
-            } catch (error) {
-                console.error('Error loading quotes:', error);
-                document.getElementById('daily-quote').textContent = 'Arise, awake, and stop not till the goal is reached.';
-            }
-        }
-
-        function displayQuote(index) {
-            if (allQuotes.length === 0) return;
-
-            const quoteElement = document.getElementById('daily-quote');
-            const quoteNumberElement = document.getElementById('quote-number');
-
-            // Add fade out effect
-            quoteElement.style.opacity = '0';
-
-            setTimeout(() => {
-                quoteElement.textContent = allQuotes[index];
-                quoteNumberElement.textContent = `Quote ${index + 1} of ${allQuotes.length}`;
-
-                // Fade in
-                quoteElement.style.opacity = '1';
-            }, 300);
-        }
-
-        // Quote navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            loadQuotes();
-
-            document.getElementById('prev-quote').addEventListener('click', function() {
-                currentQuoteIndex = (currentQuoteIndex - 1 + allQuotes.length) % allQuotes.length;
-                displayQuote(currentQuoteIndex);
-            });
-
-            document.getElementById('next-quote').addEventListener('click', function() {
-                currentQuoteIndex = (currentQuoteIndex + 1) % allQuotes.length;
-                displayQuote(currentQuoteIndex);
-            });
-        });
-
         // Automatically sort events by date
         document.addEventListener('DOMContentLoaded', function() {
-            const currentDate = new Date();
+            // Use UTC date comparison to avoid timezone issues
+            const now = new Date();
+            const currentDate = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59));
             const allEventsContainer = document.querySelector('.all-events-container');
             const upcomingGrid = document.querySelector('#upcoming-events .events-grid');
             const pastGrid = document.querySelector('#past-events .events-grid');
@@ -524,10 +1028,15 @@
                     endDate: new Date('2026-01-25T17:00:00'),
                     description: "Annual food drive to serve our community in the spirit of Swami Vivekananda's teachings of service to humanity. Donations accepted all week."
                 },
-                "Shiva Ratri Puja Program": {
-                    startDate: new Date('2026-02-26T18:00:00'),
-                    endDate: new Date('2026-02-26T21:00:00'),
-                    description: "Special worship program celebrating Maha Shivaratri with traditional rituals, meditation, and spiritual discourse on Lord Shiva's significance in Vedanta."
+                "Shivaratri Puja": {
+                    startDate: new Date('2026-02-15T18:30:00'),
+                    endDate: new Date('2026-02-15T20:30:00'),
+                    description: "Worship of Lord Shiva accompanied by devotional songs & readings (6:30-8 PM), Arati & Flower Offering (8 PM), Supper Prasad (8:15 PM). In person & online via Zoom."
+                },
+                "Sri Ramakrishna's Birth Observance": {
+                    startDate: new Date('2026-02-22T10:30:00'),
+                    endDate: new Date('2026-02-22T13:30:00'),
+                    description: "Celebration with special puja, devotional singing, talks on his life and teachings, refreshments, and lunch prasad. Zoom Meeting ID: 879 0049 7480"
                 }
             };
 
@@ -566,14 +1075,14 @@
                         // Past event
                         clonedCard.classList.add('past-event');
 
-                        // Add completed badge
-                        const actions = clonedCard.querySelector('.event-card-actions');
-                        if (actions) {
-                            const badge = document.createElement('span');
-                            badge.className = 'event-completed-badge';
-                            badge.textContent = 'Completed';
-                            actions.appendChild(badge);
-                        }
+                        // REMOVED: Completed badge (redundant since already in Past Events section)
+                        // const actions = clonedCard.querySelector('.event-card-actions');
+                        // if (actions) {
+                        //     const badge = document.createElement('span');
+                        //     badge.className = 'event-completed-badge';
+                        //     badge.textContent = 'Completed';
+                        //     actions.appendChild(badge);
+                        // }
 
                         // Remove calendar placeholder
                         const calendarPlaceholder = clonedCard.querySelector('.event-calendar-placeholder');
@@ -609,6 +1118,365 @@
                 });
             });
         });
+
+        // Staged Loading - Simple version
+        (function() {
+            const loader = document.getElementById('page-loader');
+            const holyTrioImages = document.querySelectorAll('.holy-trio-card img');
+            const restOfPage = document.querySelectorAll('.hero-tagline, .hero-gallery-grid, .hero-cta, .notice-bar, .home-events-section, .intro-section, .cta-section, #footer-placeholder');
+            
+            // Hide rest of page initially
+            restOfPage.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Track loaded images
+            let loadedCount = 0;
+            const totalImages = holyTrioImages.length;
+            
+            function onImageLoad() {
+                loadedCount++;
+                if (loadedCount >= totalImages) {
+                    setTimeout(() => {
+                        if (loader) loader.classList.add('hidden');
+                        setTimeout(revealRestOfPage, 400);
+                    }, 300);
+                }
+            }
+            
+            holyTrioImages.forEach(img => {
+                if (img.complete) {
+                    onImageLoad();
+                } else {
+                    img.addEventListener('load', onImageLoad);
+                }
+            });
+            
+            // Fallback
+            setTimeout(() => {
+                if (loader && !loader.classList.contains('hidden')) {
+                    loader.classList.add('hidden');
+                    revealRestOfPage();
+                }
+            }, 3000);
+            
+            function revealRestOfPage() {
+                restOfPage.forEach((el, i) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, i * 80);
+                });
+            }
+        })();
+
+        // Gallery Lightbox
+        (function() {
+            const galleryImages = [
+                { src: 'images/hero-gallery/center-sign.jpg', caption: 'Vedanta Society entrance' },
+                { src: 'images/hero-gallery/congregation.jpg', caption: 'Our vibrant community' },
+                { src: 'images/hero-gallery/swami-discourse.jpg', caption: 'Spiritual discourse' },
+                { src: 'images/hero-gallery/main-shrine.jpg', caption: 'The Holy Trio shrine' },
+                { src: 'images/hero-gallery/hero-5.jpg', caption: 'Swami performing aarti' },
+                { src: 'images/hero-gallery/hero-6.jpg', caption: 'Community gathering' },
+                { src: 'images/hero-gallery/hero-7.jpg', caption: 'Prayer session' },
+                { src: 'images/hero-gallery/hero-8.jpg', caption: 'Group with Holy Trio shrine' },
+                { src: 'images/hero-gallery/hero-9.jpg', caption: 'Pravrajika teaching' }
+            ];
+            
+            const lightbox = document.getElementById('gallery-lightbox');
+            if (!lightbox) return;
+            
+            const lightboxImage = lightbox.querySelector('.lightbox-image');
+            const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+            const lightboxOverlay = lightbox.querySelector('.lightbox-overlay');
+            const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+            const lightboxNext = lightbox.querySelector('.lightbox-next');
+            const lightboxThumbs = lightbox.querySelectorAll('.lightbox-thumb');
+            const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+            
+            let currentIndex = 0;
+            
+            function showImage(index) {
+                if (index < 0) index = galleryImages.length - 1;
+                if (index >= galleryImages.length) index = 0;
+                currentIndex = index;
+                
+                lightboxImage.src = galleryImages[index].src;
+                lightboxCaption.textContent = galleryImages[index].caption;
+                
+                lightboxThumbs.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            }
+            
+            function openLightbox(index) {
+                showImage(index);
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Open lightbox on thumbnail click
+            galleryThumbs.forEach((thumb, index) => {
+                thumb.addEventListener('click', () => openLightbox(index));
+            });
+            
+            // Navigation
+            lightboxPrev.addEventListener('click', () => showImage(currentIndex - 1));
+            lightboxNext.addEventListener('click', () => showImage(currentIndex + 1));
+            
+            // Thumbnail navigation
+            lightboxThumbs.forEach((thumb, index) => {
+                thumb.addEventListener('click', () => showImage(index));
+            });
+            
+            // Close handlers
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxOverlay.addEventListener('click', closeLightbox);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+            });
+        })();
+    </script>
+
+    <!-- Unified Info Widget -->
+    <div id="info-widget" class="info-widget">
+        <!-- Single Toggle Button - Diya Icon -->
+        <button class="info-widget-btn" onclick="toggleInfoPanel()" title="Info & Chat" aria-label="Open info panel">
+            <span class="widget-notification">1</span>
+            <!-- Diya (Oil Lamp) Icon -->
+            <svg class="widget-icon-open diya-icon" width="32" height="32" viewBox="0 0 64 64" fill="none">
+                <!-- Flame -->
+                <ellipse class="diya-flame-outer" cx="32" cy="16" rx="8" ry="12" fill="url(#flameGradient)"/>
+                <ellipse class="diya-flame-inner" cx="32" cy="18" rx="4" ry="7" fill="#FFF3E0"/>
+                <!-- Lamp bowl -->
+                <path d="M16 38 C16 32, 22 28, 32 28 C42 28, 48 32, 48 38 L46 48 C44 52, 38 54, 32 54 C26 54, 20 52, 18 48 Z" fill="url(#lampGradient)" stroke="#B8860B" stroke-width="1.5"/>
+                <!-- Oil surface -->
+                <ellipse cx="32" cy="32" rx="13" ry="4" fill="#8B4513" opacity="0.6"/>
+                <!-- Wick -->
+                <rect x="30" y="24" width="4" height="8" rx="2" fill="#4A3728"/>
+                <!-- Decorative dots on lamp -->
+                <circle cx="24" cy="44" r="1.5" fill="#FFD700"/>
+                <circle cx="32" cy="46" r="1.5" fill="#FFD700"/>
+                <circle cx="40" cy="44" r="1.5" fill="#FFD700"/>
+                <!-- Gradients -->
+                <defs>
+                    <linearGradient id="flameGradient" x1="32" y1="28" x2="32" y2="4" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#FF6B00"/>
+                        <stop offset="50%" stop-color="#FFA500"/>
+                        <stop offset="100%" stop-color="#FFD700"/>
+                    </linearGradient>
+                    <linearGradient id="lampGradient" x1="32" y1="28" x2="32" y2="54" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#CD853F"/>
+                        <stop offset="100%" stop-color="#8B4513"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <svg class="widget-icon-close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        
+        <!-- Unified Panel -->
+        <div id="info-panel" class="info-panel">
+            <!-- Announcement Section (collapsible) - HIDDEN -->
+            <div class="announcement-section" id="announcement-section" style="display: none;">
+                <div class="announcement-header" onclick="toggleAnnouncementExpand()">
+                    <div class="announcement-badge">New</div>
+                    <span class="announcement-title">Schedule Change — March 1</span>
+                    <svg class="announcement-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="announcement-body" id="announcement-body">
+                    <div class="schedule-grid">
+                        <div class="schedule-day">
+                            <div class="schedule-day-name">Sunday</div>
+                            <div class="schedule-time">10 AM – 2 PM</div>
+                            <div class="schedule-detail">Service 11–12, then Ārati & Prasad</div>
+                        </div>
+                        <div class="schedule-day">
+                            <div class="schedule-day-name">Saturday</div>
+                            <div class="schedule-time">5 – 7 PM</div>
+                            <div class="schedule-detail">Ārati, meditation, Gospel</div>
+                        </div>
+                        <div class="schedule-day online">
+                            <div class="schedule-day-name">Saturday <span class="online-tag">Online</span></div>
+                            <div class="schedule-time">10 – 11:30 AM</div>
+                            <div class="schedule-detail">Tattvabodha study</div>
+                        </div>
+                    </div>
+                    <button class="announcement-dismiss" onclick="dismissAnnouncement()">Got it</button>
+                </div>
+            </div>
+            
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <div class="chat-header">
+                    <span>Ask about Vedanta</span>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-message assistant">
+                        <div class="chat-avatar">🙏</div>
+                        <div class="chat-bubble">
+                            Namaste! Ask me about Vedanta, our teachers, meditation, or center programs.
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Type your question..." onkeypress="if(event.key==='Enter')sendChatMessage()">
+                    <button class="chat-send-btn" onclick="sendChatMessage()" aria-label="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Unified Info Widget
+        let panelOpen = false;
+        let announcementExpanded = true;
+        let announcementDismissed = sessionStorage.getItem('scheduleAnnouncementDismissed') === 'true';
+        
+        function toggleInfoPanel() {
+            const panel = document.getElementById('info-panel');
+            const widget = document.getElementById('info-widget');
+            panelOpen = !panelOpen;
+            
+            if (panelOpen) {
+                panel.classList.add('active');
+                widget.classList.add('open');
+            } else {
+                panel.classList.remove('active');
+                widget.classList.remove('open');
+            }
+        }
+        
+        function toggleAnnouncementExpand() {
+            const body = document.getElementById('announcement-body');
+            const section = document.getElementById('announcement-section');
+            announcementExpanded = !announcementExpanded;
+            
+            if (announcementExpanded) {
+                body.style.maxHeight = body.scrollHeight + 'px';
+                section.classList.remove('collapsed');
+            } else {
+                body.style.maxHeight = '0';
+                section.classList.add('collapsed');
+            }
+        }
+        
+        function dismissAnnouncement() {
+            const section = document.getElementById('announcement-section');
+            const notification = document.querySelector('.widget-notification');
+            section.style.display = 'none';
+            notification.style.display = 'none';
+            sessionStorage.setItem('scheduleAnnouncementDismissed', 'true');
+            announcementDismissed = true;
+        }
+        
+        // Initialize announcement state
+        document.addEventListener('DOMContentLoaded', function() {
+            if (announcementDismissed) {
+                const section = document.getElementById('announcement-section');
+                const notification = document.querySelector('.widget-notification');
+                if (section) section.style.display = 'none';
+                if (notification) notification.style.display = 'none';
+            }
+        });
+        
+        async function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'chat-message user';
+            userDiv.innerHTML = '<div class="chat-bubble">' + escapeHtml(message) + '</div>';
+            messages.appendChild(userDiv);
+            
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+            
+            // Add loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'chat-message assistant';
+            loadingDiv.innerHTML = '<div class="chat-avatar">🙏</div><div class="chat-bubble typing"><span></span><span></span><span></span></div>';
+            messages.appendChild(loadingDiv);
+            messages.scrollTop = messages.scrollHeight;
+            
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                
+                const data = await response.json();
+                loadingDiv.remove();
+                
+                const botDiv = document.createElement('div');
+                botDiv.className = 'chat-message assistant';
+                botDiv.innerHTML = '<div class="chat-avatar">🙏</div><div class="chat-bubble">' + formatResponse(data.reply || data.error || 'Sorry, I could not process that.') + '</div>';
+                messages.appendChild(botDiv);
+            } catch (err) {
+                loadingDiv.remove();
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'chat-message assistant';
+                errorDiv.innerHTML = '<div class="chat-avatar">🙏</div><div class="chat-bubble">Sorry, I\'m temporarily unavailable. Please try again.</div>';
+                messages.appendChild(errorDiv);
+            }
+            
+            messages.scrollTop = messages.scrollHeight;
+        }
+        
+        function formatResponse(text) {
+            // Convert markdown-like formatting to HTML
+            let html = text
+                // Escape HTML first
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                // Bold: **text** or *text*
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.+?)\*/g, '<strong>$1</strong>')
+                // Remove # headers, just make them bold
+                .replace(/^#+\s*(.+)$/gm, '<strong>$1</strong>')
+                // Convert line breaks
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+                // Convert bullet points to proper list items
+                .replace(/(?:^|\n)[-•]\s*(.+)/g, '<br>• $1');
+            
+            return '<p>' + html + '</p>';
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
     </script>
 </body>
 </html>
