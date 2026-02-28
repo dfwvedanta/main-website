@@ -2363,14 +2363,14 @@ section {
     border-bottom: 1px solid var(--color-border);
 }
 
-.page-hero-title-old {
+.page-hero-title {
     font-family: var(--font-display);
     font-size: 3.5rem;
     color: var(--color-text);
     margin-bottom: var(--spacing-xs);
 }
 
-.page-hero-title {
+.page-hero-title-new {
     font-family: var(--font-display);
     font-size: 3.5rem;
     color: var(--color-text);
