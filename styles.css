@@ -2358,7 +2358,7 @@ section {
 /* Page Hero for Content Pages */
 .page-hero-section {
     background: var(--color-white);
-    padding: calc(var(--spacing-lg) + 8px) 0 var(--spacing-md);
+    padding: calc(var(--spacing-lg)) 0 var(--spacing-md);
     text-align: center;
     border-bottom: 1px solid var(--color-border);
 }
