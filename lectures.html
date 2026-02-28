@@ -1,182 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-<!-- Google Analytics 4 -->
+
+<head>
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q0YDB1HWQ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3Q0YDB1HWQ');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-3Q0YDB1HWQ');
     </script>
 
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Online Lectures - Ramakrishna Vedanta Society of North Texas
-  </title>
-  <link href="styles.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
-  <style>
-    .video-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: var(--spacing-lg);
-        margin-top: var(--spacing-lg);
-    }
-    .video-card {
-        background: var(--color-white);
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .video-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-    .video-thumbnail {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        background: #000;
-    }
-    .video-thumbnail iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    .video-info {
-        padding: var(--spacing-md);
-    }
-    .video-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--color-text);
-        margin-bottom: var(--spacing-xs);
-        line-height: 1.4;
-    }
-    .video-description {
-        font-size: 0.9rem;
-        color: var(--color-text-light);
-        line-height: 1.6;
-        margin-bottom: var(--spacing-sm);
-    }
-    .video-category-badge {
-        display: inline-block;
-        padding: 4px 12px;
-        background: var(--color-accent);
-        color: white;
-        border-radius: 16px;
-        font-size: 0.75rem;
-        font-weight: 600;
-    }
-    @media (max-width: 768px) {
-        .video-gallery { grid-template-columns: 1fr; }
-    }
-  </style>
- </head>
- <body>
-  <!-- Header loaded from includes/header.html -->
-  <div id="header-placeholder">
-  </div>
-  <!-- Page Hero -->
-  <section class="page-hero-section">
-   <div class="container">
-    <h1 class="page-hero-title">
-     Online Lectures
-    </h1>
-    <p class="page-hero-subtitle">
-     Watch our spiritual talks and discourses
-    </p>
-   </div>
-  </section>
-  <!-- YouTube Channel Section -->
-  <section class="content-section">
-   <div class="container">
-    <div class="content-card">
-     <h2 class="content-title">
-      Our YouTube Channel
-     </h2>
-     <div class="content-text-full">
-      <p>
-       Watch inspiring lectures, spiritual discourses, and teachings from our Sunday services and special programs. Our YouTube channel features talks on Vedanta philosophy, meditation techniques, and the teachings of Sri Ramakrishna, Holy Mother Sarada Devi, and Swami Vivekananda.
-      </p>
-      <div style="text-align: center; margin: var(--spacing-lg) 0;">
-       <a class="btn btn-primary" href="https://www.youtube.com/channel/UCHEVy53o_mseCT6s75GWNlg" style="display: inline-flex; align-items: center; gap: 10px;" target="_blank">
-        <svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24">
-         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
-         </path>
-        </svg>
-        Visit Our YouTube Channel
-       </a>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Online Lectures - Ramakrishna Vedanta Society of North Texas
+    </title>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
 
-  <!-- Video Gallery: Selected Popular Lectures -->
-  <section class="content-section">
-   <div class="container">
-    <h2 class="section-title">Selected Popular Lectures</h2>
-    <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
-     Watch selected highlights from our Sunday lectures featuring profound spiritual insights and practical wisdom.
-    </p>
-    <div class="video-gallery">
-     <div class="video-card">
-      <div class="video-thumbnail">
-       <kksiframe src="https://www.youtube.com/watch?v=fGmux7lHiqo" title="Sunday Lecture" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></kksiframe>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/fGmux7lHiqo?si=k-ur39hF_jT77iwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+        .video-card {
+            background: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-thumbnail iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            padding: var(--spacing-md);
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+            line-height: 1.4;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .video-category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .video-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header loaded from includes/header.html -->
+    <div id="header-placeholder">
     </div>
-    <div class="video-info">
-        <h4 class="video-title">Breaker of this World's Chain</h4>
-        <p class="video-description">Pravrajika Brahmaprana</p>
-        <span class="video-category-badge">Sunday Lecture</span>
-    </div>
-</div>
-<div class="video-card">
-    <div class="video-thumbnail">
-        <kksiframe src="https://www.youtube.com/watch?v=bPfzgEBwGiE" title="Sunday Lecture" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></kksiframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/bPfzgEBwGiE?si=k-ur39hF_jT77iwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
-    </div>
-    <div class="video-info">
-        <h4 class="video-title">Memories of Great Monks </h4>
-        <p class="video-description">Pravrajika Brahmaprana</p>
-        <span class="video-category-badge">Sunday Lecture</span>
-    </div>
-</div>
-<div class="video-card">
-    <div class="video-thumbnail">
-        <kksiframe src="https://www.youtube.com/watch?v=GbsQ6lDY6DQ" title="Sunday Lecture" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></kksiframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/GbsQ6lDY6DQ?si=k-ur39hF_jT77iwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
-        <div class="video-info">
-            <h4 class="video-title">Sarada Devi's States of Consciousness</h4>
-            <p class="video-description">Pravrajika Brahmaprana</p>
-            <span class="video-category-badge">Sunday Lecture</span>
+    <!-- Page Hero -->
+    <section class="page-hero-section">
+        <div class="container">
+            <h1 class="page-hero-title">
+                Online Lectures
+            </h1>
+            <p class="page-hero-subtitle">
+                Watch our spiritual talks and discourses
+            </p>
         </div>
-    </div>
-</div>
-</div>
-</section>
+    </section>
+    <!-- YouTube Channel Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="content-title">
+                    Our YouTube Channel
+                </h2>
+                <div class="content-text-full">
+                    <p>
+                        Watch inspiring lectures, spiritual discourses, and teachings from our Sunday services and
+                        special programs. Our YouTube channel features talks on Vedanta philosophy, meditation
+                        techniques, and the teachings of Sri Ramakrishna, Holy Mother Sarada Devi, and Swami
+                        Vivekananda.
+                    </p>
+                    <div style="text-align: center; margin: var(--spacing-lg) 0;">
+                        <a class="btn btn-primary" href="https://www.youtube.com/channel/UCHEVy53o_mseCT6s75GWNlg"
+                            style="display: inline-flex; align-items: center; gap: 10px;" target="_blank">
+                            <svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
+                                </path>
+                            </svg>
+                            Visit Our YouTube Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Video Gallery: Retreats -->
-<section class="content-section alt-bg">
-    <div class="container">
-        <h2 class="section-title">Popular Retreats</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
-            Recordings from our spiritual retreats featuring intensive teachings and meditation sessions.
-        </p>
-        <div class="video-gallery">
+    <!-- Video Gallery: Selected Popular Lectures -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Selected Popular Lectures</h2>
+            <p
+                style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
+                Watch selected highlights from our Sunday lectures featuring profound spiritual insights and practical
+                wisdom.
+            </p>
+            <div class="video-gallery">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <kksiframe src="https://www.youtube.com/watch?v=fGmux7lHiqo" title="Sunday Lecture"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></kksiframe>
+                        <iframe src="https://www.youtube.com/embed/fGmux7lHiqo?si=k-ur39hF_jT77iwE"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-title">Breaker of this World's Chain</h4>
+                    <p class="video-description">Pravrajika Brahmaprana</p>
+                    <span class="video-category-badge">Sunday Lecture</span>
+                </div>
+            </div>
             <div class="video-card">
                 <div class="video-thumbnail">
-                    <kksiframe src="https://www.youtube.com/watch?v=PO-vdIdZ-aw&list=PLzdY_FgXPzI1SbkvJ_pjA2qHRNYu9BL9a" title="Retreat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></kksiframe>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PO-vdIdZ-aw?si=k-ur39hF_jT77iwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+                    <kksiframe src="https://www.youtube.com/watch?v=bPfzgEBwGiE" title="Sunday Lecture" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></kksiframe>
+                    <iframe src="https://www.youtube.com/embed/bPfzgEBwGiE?si=k-ur39hF_jT77iwE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-info">
+                <h4 class="video-title">Memories of Great Monks </h4>
+                <p class="video-description">Pravrajika Brahmaprana</p>
+                <span class="video-category-badge">Sunday Lecture</span>
+            </div>
+        </div>
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <kksiframe src="https://www.youtube.com/watch?v=GbsQ6lDY6DQ" title="Sunday Lecture" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></kksiframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GbsQ6lDY6DQ?si=k-ur39hF_jT77iwE"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h4 class="video-title">Sarada Devi's States of Consciousness</h4>
+                <p class="video-description">Pravrajika Brahmaprana</p>
+                <span class="video-category-badge">Sunday Lecture</span>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery: Retreats -->
+    <section class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Popular Retreats</h2>
+            <p
+                style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
+                Recordings from our spiritual retreats featuring intensive teachings and meditation sessions.
+            </p>
+            <div class="video-gallery">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <kksiframe
+                            src="https://www.youtube.com/watch?v=PO-vdIdZ-aw&list=PLzdY_FgXPzI1SbkvJ_pjA2qHRNYu9BL9a"
+                            title="Retreat" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></kksiframe>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/PO-vdIdZ-aw?si=k-ur39hF_jT77iwE"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div class="video-info">
                     <h4 class="video-title">Limitless Serene Radiance - Swami Sarvapriyananda</h4>
@@ -186,160 +237,183 @@
             </div>
             <div class="video-card">
                 <div class="video-thumbnail">
-                    <kksiframe src="https://www.youtube.com/watch?v=eNbT_UNZlTE&list=PLzdY_FgXPzI3YHgLrb8oZL7YO2PihWRtU" title="Retreat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></kksiframe>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/eNbT_UNZlTE?si=k-ur39hF_jT77iwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
-      </div>
-      <div class="video-info">
-       <h4 class="video-title">Holistic Spirituality Workshop</h4>
-       <p class="video-description"></p>
-       <span class="video-category-badge" style="background: #28a745;">Retreat</span>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
+                    <kksiframe src="https://www.youtube.com/watch?v=eNbT_UNZlTE&list=PLzdY_FgXPzI3YHgLrb8oZL7YO2PihWRtU"
+                        title="Retreat" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></kksiframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/eNbT_UNZlTE?si=k-ur39hF_jT77iwE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-info">
+                <h4 class="video-title">Holistic Spirituality Workshop</h4>
+                <p class="video-description"></p>
+                <span class="video-category-badge" style="background: #28a745;">Retreat</span>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
 
-  <!-- Video Gallery: Classes -->
-  <section class="content-section">
-   <div class="container">
-    <h2 class="section-title">Educational Classes</h2>
-    <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
-     Systematic study classes on Vedantic texts and spiritual topics.
-    </p>
-    <div class="video-gallery">
-     <div class="video-card">
-      <div class="video-thumbnail">
-       <kksiframe src="https://www.youtube.com/watch?v=407tzYtx3ho&list=PLzdY_FgXPzI2EXJQf7aTMqwOoPX1taY8_" title="Class" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></kksiframe>
-      </div>
-      <div class="video-info">
-       <h4 class="video-title">Vivekananda's Jnana Yoga</h4>
-       <p class="video-description">Study of the principles and practices of Jnana Yoga as taught by Swami Vivekananda</p>
-       <span class="video-category-badge" style="background: #6c757d;">Class</span>
-      </div>
-     </div>
-     <div class="video-card">
-      <div class="video-thumbnail">
-       <kksiframe src="https://www.youtube.com/watch?v=mEm9X14vlwM&list=PLzdY_FgXPzI2scV2TFYc3GSpsquqLqQes" title="Class" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></kksiframe>
-      </div>
-      <div class="video-info">
-       <h4 class="video-title">Yoga Sutras of Patanjali</h4>
-       <p class="video-description">Systematic study of Patanjali's Yoga Sutras and their practical applications in spiritual life</p>
-       <span class="video-category-badge" style="background: #6c757d;">Class</span>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
+    <!-- Video Gallery: Classes -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Educational Classes</h2>
+            <p
+                style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-md) auto; color: var(--color-text-secondary);">
+                Systematic study classes on Vedantic texts and spiritual topics.
+            </p>
+            <div class="video-gallery">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <kksiframe
+                            src="https://www.youtube.com/watch?v=407tzYtx3ho&list=PLzdY_FgXPzI2EXJQf7aTMqwOoPX1taY8_"
+                            title="Class" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></kksiframe>
+                    </div>
+                    <div class="video-info">
+                        <h4 class="video-title">Vivekananda's Jnana Yoga</h4>
+                        <p class="video-description">Study of the principles and practices of Jnana Yoga as taught by
+                            Swami Vivekananda</p>
+                        <span class="video-category-badge" style="background: #6c757d;">Class</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <kksiframe
+                            src="https://www.youtube.com/watch?v=mEm9X14vlwM&list=PLzdY_FgXPzI2scV2TFYc3GSpsquqLqQes"
+                            title="Class" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></kksiframe>
+                    </div>
+                    <div class="video-info">
+                        <h4 class="video-title">Yoga Sutras of Patanjali</h4>
+                        <p class="video-description">Systematic study of Patanjali's Yoga Sutras and their practical
+                            applications in spiritual life</p>
+                        <span class="video-category-badge" style="background: #6c757d;">Class</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Topics Section -->
-  <section class="content-section alt-bg" style="display: none;">
-   <div class="container">
-    <h2 class="section-title">
-     Lecture Topics
-    </h2>
-    <div class="support-grid">
-     <div class="support-card">
-      <h3>
-       Vedanta Philosophy
-      </h3>
-      <p>
-       Deep dives into the fundamental teachings of Vedanta, exploring the nature of reality, consciousness, and the Self.
-      </p>
-     </div>
-     <div class="support-card">
-      <h3>
-       Meditation &amp; Yoga
-      </h3>
-      <p>
-       Practical guidance on meditation techniques, Raja Yoga, and the path to spiritual realization.
-      </p>
-     </div>
-     <div class="support-card">
-      <h3>
-       Bhagavad Gita
-      </h3>
-      <p>
-       Verse-by-verse study and commentary on the timeless wisdom of the Bhagavad Gita.
-      </p>
-     </div>
-     <div class="support-card">
-      <h3>
-       Upanishads
-      </h3>
-      <p>
-       Exploration of the ancient Upanishadic texts and their relevance to modern spiritual practice.
-      </p>
-     </div>
-     <div class="support-card">
-      <h3>
-       Gospel of Sri Ramakrishna
-      </h3>
-      <p>
-       Readings and reflections on the conversations and teachings of Sri Ramakrishna.
-      </p>
-     </div>
-     <div class="support-card">
-      <h3>
-       Swami Vivekananda
-      </h3>
-      <p>
-       Lectures on the life, teachings, and universal message of Swami Vivekananda.
-      </p>
-     </div>
-    </div>
-   </div>
-  </section>
+    <!-- Topics Section -->
+    <section class="content-section alt-bg" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">
+                Lecture Topics
+            </h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <h3>
+                        Vedanta Philosophy
+                    </h3>
+                    <p>
+                        Deep dives into the fundamental teachings of Vedanta, exploring the nature of reality,
+                        consciousness, and the Self.
+                    </p>
+                </div>
+                <div class="support-card">
+                    <h3>
+                        Meditation &amp; Yoga
+                    </h3>
+                    <p>
+                        Practical guidance on meditation techniques, Raja Yoga, and the path to spiritual realization.
+                    </p>
+                </div>
+                <div class="support-card">
+                    <h3>
+                        Bhagavad Gita
+                    </h3>
+                    <p>
+                        Verse-by-verse study and commentary on the timeless wisdom of the Bhagavad Gita.
+                    </p>
+                </div>
+                <div class="support-card">
+                    <h3>
+                        Upanishads
+                    </h3>
+                    <p>
+                        Exploration of the ancient Upanishadic texts and their relevance to modern spiritual practice.
+                    </p>
+                </div>
+                <div class="support-card">
+                    <h3>
+                        Gospel of Sri Ramakrishna
+                    </h3>
+                    <p>
+                        Readings and reflections on the conversations and teachings of Sri Ramakrishna.
+                    </p>
+                </div>
+                <div class="support-card">
+                    <h3>
+                        Swami Vivekananda
+                    </h3>
+                    <p>
+                        Lectures on the life, teachings, and universal message of Swami Vivekananda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-  <!-- Sunday Services -->
-  <section class="content-section">
-   <div class="container">
-    <div class="content-card">
-     <h2 class="content-title">
-      Join Our Sunday Services
-     </h2>
-     <div class="content-text-full">
-      <p>
-       Many of our lectures are recorded during our Sunday services. We welcome you to join us in person every Sunday at 11:00 AM for meditation and spiritual discourse.
-      </p>
-      <p>
-       Can't attend in person? Selected lectures are uploaded to our YouTube channel so you can watch from anywhere in the world.
-      </p>
-      <div style="text-align: center; margin-top: var(--spacing-md);">
-       <a class="btn btn-secondary" href="calendar.html">
-        View Schedule
-       </a>
-      </div>
-     </div>
+    <!-- Sunday Services -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-card">
+                <h2 class="content-title">
+                    Join Our Sunday Services
+                </h2>
+                <div class="content-text-full">
+                    <p>
+                        Many of our lectures are recorded during our Sunday services. We welcome you to join us in
+                        person every Sunday at 11:00 AM for meditation and spiritual discourse.
+                    </p>
+                    <p>
+                        Can't attend in person? Selected lectures are uploaded to our YouTube channel so you can watch
+                        from anywhere in the world.
+                    </p>
+                    <div style="text-align: center; margin-top: var(--spacing-md);">
+                        <a class="btn btn-secondary" href="calendar.html">
+                            View Schedule
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>
+                    Subscribe to Our Channel
+                </h2>
+                <p>
+                    Get notified when we upload new spiritual talks and lectures
+                </p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary" href="https://www.youtube.com/channel/UCHEVy53o_mseCT6s75GWNlg"
+                        target="_blank">
+                        Subscribe on YouTube
+                    </a>
+                    <a class="btn btn-secondary" href="contactus.html">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <!-- Footer loaded from includes/footer.html -->
+    <div id="footer-placeholder">
     </div>
-   </div>
-  </section>
-  <!-- CTA Section -->
-  <section class="cta-section">
-   <div class="container">
-    <div class="cta-content">
-     <h2>
-      Subscribe to Our Channel
-     </h2>
-     <p>
-      Get notified when we upload new spiritual talks and lectures
-     </p>
-     <div class="cta-buttons">
-      <a class="btn btn-primary" href="https://www.youtube.com/channel/UCHEVy53o_mseCT6s75GWNlg" target="_blank">
-       Subscribe on YouTube
-      </a>
-      <a class="btn btn-secondary" href="contactus.html">
-       Contact Us
-      </a>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- Footer -->
-  <!-- Footer loaded from includes/footer.html -->
-  <div id="footer-placeholder">
-  </div>
-  <script src="script.js">
-  </script>
- </body>
+    <script src="script.js">
+    </script>
+</body>
+
 </html>
