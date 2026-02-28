@@ -923,38 +923,94 @@
     <script src="script.js"></script>
     <script>
         // Program data - single source of truth
+
         const programs = [
             {
-                id: 1,
-                title: "Swami Ishadhyanananda Visit",
-                date: "2026-03-27",
-                dateDisplay: { month: "Mar", day: "27-29", year: "2026" },
-                time: "Friday - Sunday",
-                description: "Weekend retreat and spiritual programs with Swami Ishadhyanananda",
-                category: "retreat",
-                tags: ["retreat"]
+            id: 1,
+            title: "Bhagvad Gita Study Circle",
+            date: "2026-03-01",
+            dateDisplay: { month: "Mar", day: "1", year: "2026" },
+            time: "11:00 AM - 12:00 PM",
+            description: "Weekly study group exploring the teachings of the Bhagavad Gita. Open to all levels of familiarity with the text.",
+            category: "satsang",
+            tags: ["satsang"],
+            featured: true
             },
             {
-                id: 2,
-                title: "Ramnavami Puja",
-                date: "2026-03-29",
-                dateDisplay: { month: "Mar", day: "29", year: "2026" },
-                time: "Sunday",
-                description: "Celebration of Lord Rama's birth anniversary with special puja and devotional programs.",
-                category: "festival",
-                tags: ["festival"]
+            id: 2,
+            title: "Spiritual Reading & Devotional Music Program",
+            date: "2026-03-08",
+            dateDisplay: { month: "Mar", day: "8", year: "2026" },
+            time: "11:00 AM - 12:00 PM",
+            description: "Reading on Swami Yogananda from Swami Chetanananda's book <b><i>God lived with them</i></b>, followed by bhajans(devotional music)",
+            category: "satsang",
+            tags: ["satsang"],
+            featured: true
             },
             {
-                id: 3,
-                title: "Swami Nirakarananda Visit",
-                date: "2026-04-17",
-                dateDisplay: { month: "Apr", day: "17-19", year: "2026" },
-                time: "Friday - Sunday",
-                description: "Weekend retreat and spiritual programs with Swami Nirakarananda",
-                category: "retreat",
-                tags: ["retreat"]
+            id: 3,
+            title: "Devotee forum & Devotional Music Program",
+            date: "2026-03-15",
+            dateDisplay: { month: "Mar", day: "15", year: "2026" },
+            time: "11:00 AM - 12:00 PM",
+            description: "'Devotees speak' event coordinated by Roshni and David. Speakers: Suprateem & Indranil, followed by bhajans by Rubela.",
+            category: "satsang",
+            tags: ["satsang"],
+            featured: true
             },
+            {
+            id: 4,
+            title: "Swami Ishadhyanananda Visit",
+            date: "2026-03-27",
+            dateDisplay: { month: "Mar", day: "27-29", year: "2026" },
+            time: "Friday - Sunday",
+            description: "Weekend retreat and spiritual programs with Swami Ishadhyanananda. Inspiring talks and meditation sessions.",
+            category: "retreat",
+            tags: ["retreat"]
+            },
+            {
+            id: 5,
+            title: "Ramnavami Puja",
+            date: "2026-03-29",
+            dateDisplay: { month: "Mar", day: "29", year: "2026" },
+            time: "Sunday",
+            description: "Celebration of Lord Rama's birth anniversary with special puja and devotional programs.",
+            category: "festival",
+            tags: ["festival"]
+            },
+            {
+            id: 6,
+            title: "Swami Nirakarananda Visit",
+            date: "2026-04-17",
+            dateDisplay: { month: "Apr", day: "17-19", year: "2026" },
+            time: "Friday - Sunday",
+            description: "Weekend retreat and spiritual programs with Swami Nirakarananda",
+            category: "retreat",
+            tags: ["retreat"]
+            },
+            {
+            id: 7,
+            title: "7-1 Swami Nirakarananda Visit",
+            date: "2026-04-17",
+            dateDisplay: { month: "Apr", day: "17-19", year: "2026" },
+            time: "Friday - Sunday",
+            description: "Weekend retreat and spiritual programs with Swami Nirakarananda",
+            category: "retreat",
+            tags: ["retreat"]
+            },
+            {
+            id: 7,
+            title: "7-2 Swami Nirakarananda ji's Visit",
+            date: "2026-04-17",
+            dateDisplay: { month: "Apr", day: "17-19", year: "2026" },
+            time: "Friday - Sunday",
+            description: "Weekend retreat and spiritual programs with Swami Nirakarananda ji.",
+            category: "retreat",
+            tags: ["retreat"]
+            },
+            
         ];
+
         
         const allPrograms = [
             {
