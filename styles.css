@@ -2358,7 +2358,7 @@ section {
 /* Page Hero for Content Pages */
 .page-hero-section {
     background: var(--color-white);
-    padding: calc(var(--spacing-lg)) 0 var(--spacing-md);
+    padding: calc(var(--spacing-lg) + 80px) 0 var(--spacing-md);
     text-align: center;
     border-bottom: 1px solid var(--color-border);
 }
@@ -3324,7 +3324,7 @@ section {
         grid-template-columns: 1fr;
     }
 }
-}
+
 
 /* ================================
    Resources Section
@@ -4394,7 +4394,6 @@ section {
 
 .event-card.past-event:hover {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: auto;
@@ -6518,9 +6517,6 @@ section {
         width: 100%;
         margin-bottom: 4px;
     }
-}
-    font-size: 0.95rem;
-    line-height: 1.4;
 }
 
 .schedule-list li:last-child {
