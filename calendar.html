@@ -1200,7 +1200,12 @@
             
             noResults.style.display = 'none';
             
-            grid.innerHTML = filtered.map(p => `
+            grid.innerHTML = filtered.map(p => {
+                const pastEvent = isPastEvent(p.date);
+                const safeDescription = pastEvent
+                    ? p.description.replace(/<a[^>]*youtube[^>]*>.*?<\/a>/gi, '')
+                    : p.description;
+                return `
                 <div class="program-card" data-category="${p.category}">
                     <div class="program-card-header">
                         <div class="program-date-badge">
@@ -1219,7 +1224,7 @@
                                 </svg>
                                 ${p.time}
                             </span>
-                            ${p.zoom ? `<span>
+                            ${p.zoom && !pastEvent ? `<span>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M15 10l5-3v10l-5-3z"></path>
                                     <rect x="1" y="6" width="14" height="12" rx="2" ry="2"></rect>
@@ -1227,8 +1232,8 @@
                                 Online Available
                             </span>` : ''}
                         </div>
-                        <p class="program-description">${p.description}</p>
-                        ${p.zoom ? `<div class="zoom-info">
+                        <p class="program-description">${safeDescription}</p>
+                        ${p.zoom && !pastEvent ? `<div class="zoom-info">
                             <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${p.zoom.replace(/\s/g, '')}" target="_blank">Meeting ID: ${p.zoom}</a>
                         </div>` : ''}
                     </div>
@@ -1238,7 +1243,8 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
         
         function setFilter(filter) {
