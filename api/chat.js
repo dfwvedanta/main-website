@@ -82,7 +82,7 @@ Silent Meditation: Every Sunday 11:00 AM - 11:30 AM before the lecture
 
 Getting started: Find quiet space, sit comfortably with spine straight, start with 10-15 minutes daily, be patient with wandering mind.
 
-=== WEEKLY SCHEDULE (Effective March 1, 2026) ===
+=== WEEKLY SCHEDULE ===
 
 SUNDAY (In-person): 10:00 AM - 2:00 PM
 - 11:00 AM - 12:00 PM: Sunday Service with silent meditation and spiritual discourse
