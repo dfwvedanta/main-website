@@ -1169,6 +1169,16 @@
         let currentFilter = 'all';
         let searchQuery = '';
         
+        function isPastEvent(dateString) {
+            const eventDate = new Date(dateString);
+            eventDate.setHours(23, 59, 59, 999);
+            return eventDate < new Date();
+        }
+
+        function removeYouTubeLink(description) {
+            return description.replace(/<a[^>]*href=["'][^"']*youtube[^"']*["'][^>]*>.*?<\/a>/gi, '');
+        }
+
         function renderPrograms() {
             const grid = document.getElementById('programs-grid');
             const noResults = document.getElementById('no-results');
@@ -1200,7 +1210,12 @@
             
             noResults.style.display = 'none';
             
-            grid.innerHTML = filtered.map(p => `
+            grid.innerHTML = filtered.map(p => {
+                const pastEvent = isPastEvent(p.date);
+                const description = pastEvent ? removeYouTubeLink(p.description) : p.description;
+                const showZoom = p.zoom && !pastEvent;
+
+                return `
                 <div class="program-card" data-category="${p.category}">
                     <div class="program-card-header">
                         <div class="program-date-badge">
@@ -1219,7 +1234,7 @@
                                 </svg>
                                 ${p.time}
                             </span>
-                            ${p.zoom ? `<span>
+                            ${showZoom ? `<span>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M15 10l5-3v10l-5-3z"></path>
                                     <rect x="1" y="6" width="14" height="12" rx="2" ry="2"></rect>
@@ -1227,8 +1242,8 @@
                                 Online Available
                             </span>` : ''}
                         </div>
-                        <p class="program-description">${p.description}</p>
-                        ${p.zoom ? `<div class="zoom-info">
+                        <p class="program-description">${description}</p>
+                        ${showZoom ? `<div class="zoom-info">
                             <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${p.zoom.replace(/\s/g, '')}" target="_blank">Meeting ID: ${p.zoom}</a>
                         </div>` : ''}
                     </div>
@@ -1238,7 +1253,8 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
         
         function setFilter(filter) {
@@ -1402,17 +1418,22 @@
             if (monthEvents.length === 0) {
                 contentEl.innerHTML = '<p style="color: var(--color-text-light); text-align: center; padding: 2rem;">No events scheduled for this month.</p>';
             } else {
-                contentEl.innerHTML = monthEvents.map(e => `
+                contentEl.innerHTML = monthEvents.map(e => {
+                    const pastEvent = isPastEvent(e.date);
+                    const description = pastEvent ? removeYouTubeLink(e.description) : e.description;
+                    const showZoom = e.zoom && !pastEvent;
+                    return `
                     <div class="selected-day-event" style="border-left-color: ${
                         e.category === 'festival' ? '#9a4a9a' : 
                         e.category === 'retreat' ? '#3a6a9a' : '#cc6600'
                     }">
                         <h4>${e.title}</h4>
                         <div class="event-time">${e.dateDisplay.month} ${e.dateDisplay.day} • ${e.time}</div>
-                        <p>${e.description}</p>
-                        ${e.zoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
+                        <p>${description}</p>
+                        ${showZoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
                     </div>
-                `).join('');
+                `;
+                }).join('');
             }
         }
         
@@ -1453,17 +1474,22 @@
             if (dayEvents.length === 0) {
                 contentEl.innerHTML = '<p style="color: var(--color-text-light); text-align: center; padding: 1rem;">No events on this day.</p>';
             } else {
-                contentEl.innerHTML = dayEvents.map(e => `
+                contentEl.innerHTML = dayEvents.map(e => {
+                    const pastEvent = isPastEvent(e.date);
+                    const description = pastEvent ? removeYouTubeLink(e.description) : e.description;
+                    const showZoom = e.zoom && !pastEvent;
+                    return `
                     <div class="selected-day-event" style="border-left-color: ${
                         e.category === 'festival' ? '#9a4a9a' : 
                         e.category === 'retreat' ? '#3a6a9a' : '#cc6600'
                     }">
                         <h4>${e.title}</h4>
                         <div class="event-time">${e.time}</div>
-                        <p>${e.description}</p>
-                        ${e.zoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
+                        <p>${description}</p>
+                        ${showZoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
                     </div>
-                `).join('');
+                `;
+                }).join('');
             }
         }
         
