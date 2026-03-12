@@ -49,6 +49,297 @@ class IncludeLoader {
     }
 }
 
+// ================================
+// WebGL Particle System
+// ================================
+
+class CosmicParticles {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+
+        if (!this.gl) {
+            console.error('WebGL not supported');
+            return;
+        }
+
+        this.particleCount = 800;
+        this.particles = [];
+        this.mouse = { x: 0, y: 0 };
+        this.time = 0;
+
+        this.init();
+        this.resize();
+        this.animate();
+
+        window.addEventListener('resize', () => this.resize());
+        window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    }
+
+    init() {
+        // Create particles
+        for (let i = 0; i < this.particleCount; i++) {
+            this.particles.push({
+                x: Math.random() * 2 - 1,
+                y: Math.random() * 2 - 1,
+                z: Math.random(),
+                size: Math.random() * 3 + 1,
+                speedX: (Math.random() - 0.5) * 0.0002,
+                speedY: (Math.random() - 0.5) * 0.0002,
+                alpha: Math.random() * 0.5 + 0.3,
+                twinkleSpeed: Math.random() * 0.02 + 0.01
+            });
+        }
+
+        // Set up WebGL
+        this.gl.clearColor(0.02, 0.03, 0.1, 1.0);
+        this.gl.enable(this.gl.BLEND);
+        this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE);
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    onMouseMove(e) {
+        this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    }
+
+    update() {
+        this.time += 0.01;
+
+        this.particles.forEach(particle => {
+            // Move particles
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+
+            // Mouse interaction
+            const dx = this.mouse.x - particle.x;
+            const dy = this.mouse.y - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 0.3) {
+                particle.x -= dx * 0.001;
+                particle.y -= dy * 0.001;
+            }
+
+            // Wrap around screen
+            if (particle.x > 1) particle.x = -1;
+            if (particle.x < -1) particle.x = 1;
+            if (particle.y > 1) particle.y = -1;
+            if (particle.y < -1) particle.y = 1;
+
+            // Twinkle effect
+            particle.alpha = 0.3 + Math.sin(this.time * particle.twinkleSpeed) * 0.3;
+        });
+    }
+
+    draw() {
+        this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+
+        this.particles.forEach(particle => {
+            // Calculate color based on depth
+            const golden = particle.z > 0.7;
+            const r = golden ? 0.83 : 0.9 + particle.z * 0.1;
+            const g = golden ? 0.69 : 0.9 + particle.z * 0.1;
+            const b = golden ? 0.22 : 1.0;
+
+            this.drawParticle(
+                particle.x,
+                particle.y,
+                particle.size,
+                r, g, b,
+                particle.alpha
+            );
+        });
+    }
+
+    drawParticle(x, y, size, r, g, b, alpha) {
+        const pixelSize = (size / this.canvas.width) * 2;
+
+        // Draw point
+        this.gl.begin(this.gl.POINTS);
+        this.gl.pointSize(size);
+
+        // Simple particle rendering using canvas 2D fallback
+        const ctx = this.canvas.getContext('2d', { willReadFrequently: false });
+        if (ctx) {
+            const screenX = (x + 1) * this.canvas.width / 2;
+            const screenY = (-y + 1) * this.canvas.height / 2;
+
+            ctx.fillStyle = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${alpha})`;
+            ctx.beginPath();
+            ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Glow effect
+            const gradient = ctx.createRadialGradient(screenX, screenY, 0, screenX, screenY, size * 2);
+            gradient.addColorStop(0, `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${alpha * 0.5})`);
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(screenX, screenY, size * 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    animate() {
+        this.update();
+        this.draw();
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
+// ================================
+// Canvas-based Particle System (Fallback)
+// ================================
+
+class CanvasParticles {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.particleCount = 400;
+        this.particles = [];
+        this.mouse = { x: 0, y: 0 };
+        this.time = 0;
+        this.connections = [];
+
+        this.init();
+        this.resize();
+        this.animate();
+
+        window.addEventListener('resize', () => this.resize());
+        window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    }
+
+    init() {
+        for (let i = 0; i < this.particleCount; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                z: Math.random(),
+                size: Math.random() * 2.5 + 0.5,
+                speedX: (Math.random() - 0.5) * 0.3,
+                speedY: (Math.random() - 0.5) * 0.3,
+                alpha: Math.random() * 0.5 + 0.3,
+                twinkleSpeed: Math.random() * 0.02 + 0.01,
+                twinkleOffset: Math.random() * Math.PI * 2
+            });
+        }
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
+
+    onMouseMove(e) {
+        this.mouse.x = e.clientX;
+        this.mouse.y = e.clientY;
+    }
+
+    update() {
+        this.time += 0.01;
+
+        this.particles.forEach(particle => {
+            // Move particles
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+
+            // Mouse interaction - gentle repulsion
+            const dx = this.mouse.x - particle.x;
+            const dy = this.mouse.y - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 150) {
+                const force = (150 - distance) / 150;
+                particle.x -= (dx / distance) * force * 2;
+                particle.y -= (dy / distance) * force * 2;
+            }
+
+            // Wrap around screen
+            if (particle.x > this.canvas.width) particle.x = 0;
+            if (particle.x < 0) particle.x = this.canvas.width;
+            if (particle.y > this.canvas.height) particle.y = 0;
+            if (particle.y < 0) particle.y = this.canvas.height;
+
+            // Twinkle effect
+            particle.alpha = 0.3 + Math.sin(this.time * particle.twinkleSpeed + particle.twinkleOffset) * 0.4;
+        });
+
+        // Find connections between nearby particles
+        this.connections = [];
+        for (let i = 0; i < this.particles.length; i++) {
+            for (let j = i + 1; j < this.particles.length; j++) {
+                const dx = this.particles[i].x - this.particles[j].x;
+                const dy = this.particles[i].y - this.particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 100) {
+                    this.connections.push({
+                        from: this.particles[i],
+                        to: this.particles[j],
+                        alpha: (1 - distance / 100) * 0.15
+                    });
+                }
+            }
+        }
+    }
+
+    draw() {
+        // Clear with fade effect for motion blur
+        this.ctx.fillStyle = 'rgba(5, 8, 22, 0.1)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Draw connections
+        this.connections.forEach(conn => {
+            this.ctx.strokeStyle = `rgba(212, 175, 55, ${conn.alpha})`;
+            this.ctx.lineWidth = 0.5;
+            this.ctx.beginPath();
+            this.ctx.moveTo(conn.from.x, conn.from.y);
+            this.ctx.lineTo(conn.to.x, conn.to.y);
+            this.ctx.stroke();
+        });
+
+        // Draw particles
+        this.particles.forEach(particle => {
+            // Determine color based on depth
+            const golden = particle.z > 0.75;
+            const r = golden ? 212 : 230 + particle.z * 25;
+            const g = golden ? 175 : 230 + particle.z * 25;
+            const b = golden ? 55 : 255;
+
+            // Draw glow
+            const gradient = this.ctx.createRadialGradient(
+                particle.x, particle.y, 0,
+                particle.x, particle.y, particle.size * 4
+            );
+            gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${particle.alpha * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${particle.alpha * 0.3})`);
+            gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+            this.ctx.fillStyle = gradient;
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.size * 4, 0, Math.PI * 2);
+            this.ctx.fill();
+
+            // Draw core
+            this.ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${particle.alpha})`;
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            this.ctx.fill();
+        });
+    }
+
+    animate() {
+        this.update();
+        this.draw();
+        requestAnimationFrame(() => this.animate());
+    }
+}
 
 // ================================
 // Navigation
@@ -69,8 +360,7 @@ class Navigation {
     init() {
         // Scroll behavior
         let lastScroll = 0;
-        // Optimized with throttle to reduce execution frequency during scroll
-        window.addEventListener('scroll', throttle(() => {
+        window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
 
             if (currentScroll > 100) {
@@ -80,7 +370,7 @@ class Navigation {
             }
 
             lastScroll = currentScroll;
-        }, 100));
+        });
 
         // Mobile burger menu toggle
         this.mobileToggle?.addEventListener('click', (e) => {
@@ -198,46 +488,40 @@ class ScrollAnimations {
 
 class ParallaxEffects {
     constructor() {
-        // Cache elements to avoid repeated DOM lookups during scroll
-        this.heroContent = document.querySelector('.hero-content');
-        this.mandala = document.querySelector('.mandala');
-        this.geometry = document.querySelector('.sacred-geometry');
-
-        // Only initialize if parallax elements exist
-        if (this.heroContent || this.mandala || this.geometry) {
-            this.init();
-        }
+        this.init();
     }
 
     init() {
-        // Optimized with throttle to reduce layout calculations
-        window.addEventListener('scroll', throttle(() => {
+        window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
 
             // Parallax for hero content
-            if (this.heroContent) {
-                this.heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                this.heroContent.style.opacity = 1 - scrolled / 600;
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+                heroContent.style.opacity = 1 - scrolled / 600;
             }
 
             // Parallax for mandala
-            if (this.mandala) {
-                const mandalaSect = this.mandala.closest('section');
+            const mandala = document.querySelector('.mandala');
+            if (mandala) {
+                const mandalaSect = mandala.closest('section');
                 if (mandalaSect) {
                     const rect = mandalaSect.getBoundingClientRect();
                     const inView = rect.top < window.innerHeight && rect.bottom > 0;
                     if (inView) {
                         const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-                        this.mandala.style.transform = `rotate(${progress * 360}deg) scale(${0.8 + progress * 0.2})`;
+                        mandala.style.transform = `rotate(${progress * 360}deg) scale(${0.8 + progress * 0.2})`;
                     }
                 }
             }
 
             // Parallax for sacred geometry
-            if (this.geometry) {
-                this.geometry.style.transform = `rotate(${scrolled * 0.05}deg)`;
+            const geometry = document.querySelector('.sacred-geometry');
+            if (geometry) {
+                geometry.style.transform = `rotate(${scrolled * 0.05}deg)`;
             }
-        }, 16)); // ~60fps target for smoother parallax, but still throttled
+        });
     }
 }
 
@@ -281,6 +565,122 @@ class FormHandler {
     }
 }
 
+// ================================
+// Meditation Session Button
+// ================================
+
+class MeditationSession {
+    constructor() {
+        this.button = document.querySelector('.session-btn');
+        this.isPlaying = false;
+        this.init();
+    }
+
+    init() {
+        if (!this.button) return;
+
+        this.button.addEventListener('click', () => {
+            this.toggleSession();
+        });
+    }
+
+    toggleSession() {
+        this.isPlaying = !this.isPlaying;
+        const icon = this.button.querySelector('.btn-icon');
+
+        if (this.isPlaying) {
+            icon.textContent = '⏸';
+            this.button.querySelector('span:not(.btn-icon)').textContent = 'Pause Practice';
+            // Here you could integrate actual audio playback
+            console.log('Starting meditation session...');
+        } else {
+            icon.textContent = '▶';
+            this.button.querySelector('span:not(.btn-icon)').textContent = 'Start Practice';
+            console.log('Pausing meditation session...');
+        }
+    }
+}
+
+// ================================
+// Cursor Effect (Optional Enhancement)
+// ================================
+
+class CustomCursor {
+    constructor() {
+        this.cursor = null;
+        this.cursorFollower = null;
+        this.init();
+    }
+
+    init() {
+        // Create cursor elements
+        this.cursor = document.createElement('div');
+        this.cursor.className = 'custom-cursor';
+        this.cursor.style.cssText = `
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease;
+        `;
+
+        this.cursorFollower = document.createElement('div');
+        this.cursorFollower.className = 'custom-cursor-follower';
+        this.cursorFollower.style.cssText = `
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--color-gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.5;
+            transition: transform 0.3s ease;
+        `;
+
+        document.body.appendChild(this.cursor);
+        document.body.appendChild(this.cursorFollower);
+
+        // Track mouse position
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            this.cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+        });
+
+        // Smooth follower animation
+        const animateFollower = () => {
+            followerX += (mouseX - followerX) * 0.1;
+            followerY += (mouseY - followerY) * 0.1;
+
+            this.cursorFollower.style.transform = `translate(${followerX - 15}px, ${followerY - 15}px)`;
+
+            requestAnimationFrame(animateFollower);
+        };
+        animateFollower();
+
+        // Cursor interactions
+        const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                this.cursor.style.transform += ' scale(1.5)';
+                this.cursorFollower.style.transform += ' scale(1.5)';
+            });
+            el.addEventListener('mouseleave', () => {
+                this.cursor.style.transform = this.cursor.style.transform.replace(' scale(1.5)', '');
+                this.cursorFollower.style.transform = this.cursorFollower.style.transform.replace(' scale(1.5)', '');
+            });
+        });
+    }
+}
 
 // ================================
 // Loading Animation
@@ -342,42 +742,6 @@ class DropdownHandler {
                 });
             }
         });
-    }
-}
-
-// ================================
-// Meditation Session Button (Legacy)
-// ================================
-
-class MeditationSession {
-    constructor() {
-        this.button = document.querySelector('.session-btn');
-        this.isPlaying = false;
-        this.init();
-    }
-
-    init() {
-        if (!this.button) return;
-
-        this.button.addEventListener('click', () => {
-            this.toggleSession();
-        });
-    }
-
-    toggleSession() {
-        this.isPlaying = !this.isPlaying;
-        const icon = this.button.querySelector('.btn-icon');
-
-        if (this.isPlaying) {
-            icon.textContent = '⏸';
-            this.button.querySelector('span:not(.btn-icon)').textContent = 'Pause Practice';
-            // Here you could integrate actual audio playback
-            console.log('Starting meditation session...');
-        } else {
-            icon.textContent = '▶';
-            this.button.querySelector('span:not(.btn-icon)').textContent = 'Start Practice';
-            console.log('Pausing meditation session...');
-        }
     }
 }
 
@@ -537,6 +901,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     new LoadingAnimation();
     new DropdownHandler();
     new LibrarySearch();
+
+    // Optional: Custom cursor (uncomment to enable)
+    // new CustomCursor();
 });
 
 // ================================
@@ -579,25 +946,25 @@ class NewsletterArchive {
 
     init() {
         const yearCards = document.querySelectorAll('.newsletter-year-card');
-        
+
         yearCards.forEach((card, index) => {
             const header = card.querySelector('.newsletter-year-header');
             const expandIcon = card.querySelector('.expand-icon');
-            
+
             // Skip if it's the "earlier years" card
             if (!expandIcon) return;
-            
+
             // Open first card by default
             if (index === 0) {
                 card.classList.add('active');
             }
-            
+
             header.addEventListener('click', () => {
                 const isActive = card.classList.contains('active');
-                
+
                 // Close all cards
                 yearCards.forEach(c => c.classList.remove('active'));
-                
+
                 // Toggle clicked card
                 if (!isActive) {
                     card.classList.add('active');
@@ -624,9 +991,9 @@ class NewsletterFilter {
         this.yearFilter = document.getElementById('year-filter');
         this.sortSelect = document.getElementById('sort-select');
         this.yearCards = Array.from(document.querySelectorAll('.newsletter-year-card'));
-        
+
         if (!this.searchInput || !this.yearFilter || !this.sortSelect) return;
-        
+
         this.init();
     }
 
@@ -661,7 +1028,7 @@ class NewsletterFilter {
             newsletterItems.forEach(item => {
                 const text = item.textContent.toLowerCase();
                 const isVisible = text.includes(searchTerm);
-                
+
                 if (isVisible) {
                     item.classList.remove('hidden');
                     cardHasVisible = true;
@@ -689,7 +1056,7 @@ class NewsletterFilter {
     filterByYear(year) {
         this.yearCards.forEach(card => {
             const yearTitle = card.querySelector('.year-title')?.textContent || '';
-            
+
             if (year === 'all' || yearTitle === year) {
                 card.classList.remove('hidden');
             } else {
@@ -706,7 +1073,7 @@ class NewsletterFilter {
         const sortedCards = this.yearCards.sort((a, b) => {
             const yearA = parseInt(a.querySelector('.year-title')?.textContent || '0');
             const yearB = parseInt(b.querySelector('.year-title')?.textContent || '0');
-            
+
             return order === 'newest' ? yearB - yearA : yearA - yearB;
         });
 
@@ -716,7 +1083,7 @@ class NewsletterFilter {
 
     showNoResults(show) {
         let noResultsMsg = document.querySelector('.no-results');
-        
+
         if (show && !noResultsMsg) {
             noResultsMsg = document.createElement('div');
             noResultsMsg.className = 'no-results';
@@ -1031,16 +1398,16 @@ function setupEmblemModal() {
 
 function initHolyTrioModals() {
     const holyTrioCards = document.querySelectorAll('.holy-trio-card');
-    
+
     holyTrioCards.forEach(card => {
         card.addEventListener('click', () => {
             const figure = card.getAttribute('data-figure');
             const modal = document.getElementById(`${figure}-modal`);
-            
+
             if (modal) {
                 modal.classList.add('modal-open');
                 document.body.style.overflow = 'hidden';
-                
+
                 // Animate teaching cards in sequence
                 setTimeout(() => {
                     const cards = modal.querySelectorAll('.teaching-card');
@@ -1054,29 +1421,29 @@ function initHolyTrioModals() {
             }
         });
     });
-    
+
     // Setup close handlers for all holy trio modals
     ['vivekananda', 'ramakrishna', 'sarada-devi'].forEach(figure => {
         const modal = document.getElementById(`${figure}-modal`);
         if (!modal) return;
-        
+
         const modalClose = modal.querySelector('.modal-close');
         const modalOverlay = modal.querySelector('.modal-overlay');
-        
+
         const closeModal = () => {
             modal.classList.remove('modal-open');
             document.body.style.overflow = '';
-            
+
             const cards = modal.querySelectorAll('.teaching-card');
             cards.forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
             });
         };
-        
+
         if (modalClose) modalClose.addEventListener('click', closeModal);
         if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
-        
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
                 closeModal();
