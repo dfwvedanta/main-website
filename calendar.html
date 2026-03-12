@@ -948,9 +948,9 @@
             date: "2026-03-08",
             dateDisplay: { month: "Mar", day: "8", year: "2026" },
             time: "11:00 AM - 12:00 PM",
-            description: 'Reading on Swami Yogananda from Swami Chetanananda\'s book <b><i>God lived with them</i></b>, followed by bhajans (devotional music)</p><a href="https://www.youtube.com/@VedantaSocietyOfNorthTexas/live" target="_blank">Watch live on YouTube -&gt;</a>',
+            description: 'Reading on Swami Yogananda from Swami Chetanananda\'s book <b><i>God lived with them</i></b>, followed by bhajans (devotional music)',
             category: "satsang",
-            tags: ["satsang"],
+            tags: ["satsang", "livestream"],
             featured: true
             },
             {
@@ -959,9 +959,9 @@
             date: "2026-03-15",
             dateDisplay: { month: "Mar", day: "15", year: "2026" },
             time: "11:00 AM - 12:00 PM",
-            description: "'Devotees speak' event coordinated by Roshni and David. Speakers: David, Suprateem & Indranil, followed by bhajans by Rubela</p><a href='https://www.youtube.com/@VedantaSocietyOfNorthTexas/live' target='_blank'>Watch live on YouTube -&gt;</a>",
+            description: "'Devotees speak' event coordinated by Roshni and David. Speakers: David, Suprateem & Indranil, followed by bhajans by Rubela",
             category: "satsang",
-            tags: ["satsang"],
+            tags: ["satsang", "livestream"],
             featured: true
             },
             {
@@ -983,7 +983,7 @@
             time: "Friday - Sunday",
             description: "Weekend retreat and spiritual programs with Swami Ishadhyanananda",
             category: "retreat",
-            tags: ["retreat"]
+            tags: ["retreat", "livestream"]
             },
             {
             id: 6,
@@ -993,7 +993,7 @@
             time: "Sunday",
             description: "Celebration of Lord Rama's birth anniversary with special puja and devotional programs",
             category: "festival",
-            tags: ["festival"]
+            tags: ["festival", "livestream"]
             },
             {
             id: 7,
@@ -1003,7 +1003,7 @@
             time: "Sunday 11:00 AM - 12:00 PM",
             description: "Hanuman Chalisa (singing & its philosophy), Odyssey to Mansarovar & Mt. Kailash (Bunsri), and Kilimanjaro (Payal)",
             category: "satsang",
-            tags: ["satsang"]
+            tags: ["satsang", "livestream"]
             },
             {
             id: 8,
@@ -1023,7 +1023,7 @@
             time: "Friday - Sunday",
             description: "Weekend retreat and spiritual programs with Swami Nirakarananda",
             category: "retreat",
-            tags: ["retreat"]
+            tags: ["retreat", "livestream"]
             },
             {
             id: 10,
@@ -1043,7 +1043,7 @@
             time: "Wednesday - Saturday",
             description: "Spiritual retreat and programs with Swami Sarvadevananda",
             category: "retreat",
-            tags: ["retreat"]
+            tags: ["retreat", "livestream"]
             },            
         ];
 
@@ -1214,6 +1214,8 @@
                 const pastEvent = isPastEvent(p.date);
                 const description = pastEvent ? removeYouTubeLink(p.description) : p.description;
                 const showZoom = p.zoom && !pastEvent;
+                const showLivestream = !pastEvent && p.tags.includes('livestream');
+                const livestreamLink = showLivestream ? `<p style="margin-top: 0.5rem;"><a href="https://www.youtube.com/@VedantaSocietyOfNorthTexas/live" target="_blank">Watch live on YouTube -></a></p>` : '';
 
                 return `
                 <div class="program-card" data-category="${p.category}">
@@ -1243,6 +1245,7 @@
                             </span>` : ''}
                         </div>
                         <p class="program-description">${description}</p>
+                        ${livestreamLink}
                         ${showZoom ? `<div class="zoom-info">
                             <strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${p.zoom.replace(/\s/g, '')}" target="_blank">Meeting ID: ${p.zoom}</a>
                         </div>` : ''}
@@ -1422,6 +1425,8 @@
                     const pastEvent = isPastEvent(e.date);
                     const description = pastEvent ? removeYouTubeLink(e.description) : e.description;
                     const showZoom = e.zoom && !pastEvent;
+                    const showLivestream = !pastEvent && e.tags.includes('livestream');
+                    const livestreamLink = showLivestream ? `<p style="margin-top: 0.5rem;"><a href="https://www.youtube.com/@VedantaSocietyOfNorthTexas/live" target="_blank">Watch live on YouTube -></a></p>` : '';
                     return `
                     <div class="selected-day-event" style="border-left-color: ${
                         e.category === 'festival' ? '#9a4a9a' : 
@@ -1430,6 +1435,7 @@
                         <h4>${e.title}</h4>
                         <div class="event-time">${e.dateDisplay.month} ${e.dateDisplay.day} • ${e.time}</div>
                         <p>${description}</p>
+                        ${livestreamLink}
                         ${showZoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
                     </div>
                 `;
@@ -1478,6 +1484,8 @@
                     const pastEvent = isPastEvent(e.date);
                     const description = pastEvent ? removeYouTubeLink(e.description) : e.description;
                     const showZoom = e.zoom && !pastEvent;
+                    const showLivestream = !pastEvent && e.tags.includes('livestream');
+                    const livestreamLink = showLivestream ? `<p style="margin-top: 0.5rem;"><a href="https://www.youtube.com/@VedantaSocietyOfNorthTexas/live" target="_blank">Watch live on YouTube -></a></p>` : '';
                     return `
                     <div class="selected-day-event" style="border-left-color: ${
                         e.category === 'festival' ? '#9a4a9a' : 
@@ -1486,6 +1494,7 @@
                         <h4>${e.title}</h4>
                         <div class="event-time">${e.time}</div>
                         <p>${description}</p>
+                        ${livestreamLink}
                         ${showZoom ? `<p style="margin-top: 0.5rem;"><strong>Zoom:</strong> <a href="https://us02web.zoom.us/j/${e.zoom.replace(/\s/g, '')}" target="_blank">${e.zoom}</a></p>` : ''}
                     </div>
                 `;
