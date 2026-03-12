@@ -126,16 +126,6 @@ Sunday School for children during the 11 AM Sunday service. Children learn spiri
 
 === UPCOMING EVENTS 2026 ===
 
-FEBRUARY 15: Shivaratri Puja
-- Time: 6:30 PM - 8:15 PM
-- Special worship celebrating Maha Shivaratri with traditional rituals, devotional songs, readings, arati, flower offering, and supper prasad
-- Available in-person and online (Zoom: 879 0049 7480)
-
-FEBRUARY 22: Sri Ramakrishna's Birth Observance  
-- Time: 10:30 AM - 1:30 PM
-- Celebration with special puja, devotional singing, talks on his life, refreshments, and lunch prasad
-- Available in-person and online (Zoom: 879 0049 7480)
-
 MARCH 27-29: Swami Ishadhyanananda ji's Visit
 - Weekend retreat with spiritual talks and meditation
 
