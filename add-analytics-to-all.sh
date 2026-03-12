@@ -5,12 +5,12 @@
 
 ANALYTICS_CODE='
     <!-- Google Analytics 4 - Replace G-XXXXXXXXXX with your Measurement ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEQCC75V0G"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('\''js'\'', new Date());
-        gtag('\''config'\'', '\''G-XXXXXXXXXX'\'');
+        gtag('\''config'\'', '\''G-MEQCC75V0G'\'');
     </script>'
 
 # Find all HTML files and add analytics code before </head> if not already present
