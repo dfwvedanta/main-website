@@ -48,7 +48,9 @@ The site includes Google Analytics 4 tracking code with a placeholder ID:
 
 The site is now configured with Vercel Web Analytics, which provides privacy-friendly analytics without requiring cookie consent banners.
 
-**Setup Steps:**
+**✨ For a comprehensive guide on Vercel Web Analytics, see [VERCEL-WEB-ANALYTICS-GUIDE.md](VERCEL-WEB-ANALYTICS-GUIDE.md)**
+
+**Quick Setup Summary:**
 
 1. **Enable Web Analytics in Vercel**:
    - Go to your project on the [Vercel dashboard](https://vercel.com/dashboard)
@@ -71,6 +73,7 @@ The site is now configured with Vercel Web Analytics, which provides privacy-fri
 3. **Deploy to Vercel**:
    - Deploy your site to Vercel (if not already deployed)
    - After deployment, the analytics will automatically start tracking visitors
+   - Use command: `vercel deploy`
 
 4. **View Your Data**:
    - Go to your [Vercel dashboard](https://vercel.com/dashboard)
@@ -85,7 +88,16 @@ The site is now configured with Vercel Web Analytics, which provides privacy-fri
 - Automatic bot filtering
 - No cookie consent banners needed
 
+**Automated Setup:**
+This project includes a script to add analytics to all HTML files automatically:
+```bash
+chmod +x add-vercel-analytics.sh
+./add-vercel-analytics.sh
+```
+
 **Note**: When properly configured, you should see a fetch request to `/_vercel/insights/view` in your browser's Network tab when visiting any page.
+
+For detailed information about framework-specific implementations, custom events, filtering, and troubleshooting, refer to the [comprehensive guide](VERCEL-WEB-ANALYTICS-GUIDE.md).
 
 ## ZIP Code Note
 
