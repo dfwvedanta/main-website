@@ -192,54 +192,6 @@ class ScrollAnimations {
     }
 }
 
-// ================================
-// Parallax Effects
-// ================================
-
-class ParallaxEffects {
-    constructor() {
-        // Cache elements to avoid repeated DOM lookups during scroll
-        this.heroContent = document.querySelector('.hero-content');
-        this.mandala = document.querySelector('.mandala');
-        this.geometry = document.querySelector('.sacred-geometry');
-
-        // Only initialize if parallax elements exist
-        if (this.heroContent || this.mandala || this.geometry) {
-            this.init();
-        }
-    }
-
-    init() {
-        // Optimized with throttle to reduce layout calculations
-        window.addEventListener('scroll', throttle(() => {
-            const scrolled = window.pageYOffset;
-
-            // Parallax for hero content
-            if (this.heroContent) {
-                this.heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                this.heroContent.style.opacity = 1 - scrolled / 600;
-            }
-
-            // Parallax for mandala
-            if (this.mandala) {
-                const mandalaSect = this.mandala.closest('section');
-                if (mandalaSect) {
-                    const rect = mandalaSect.getBoundingClientRect();
-                    const inView = rect.top < window.innerHeight && rect.bottom > 0;
-                    if (inView) {
-                        const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-                        this.mandala.style.transform = `rotate(${progress * 360}deg) scale(${0.8 + progress * 0.2})`;
-                    }
-                }
-            }
-
-            // Parallax for sacred geometry
-            if (this.geometry) {
-                this.geometry.style.transform = `rotate(${scrolled * 0.05}deg)`;
-            }
-        }, 16)); // ~60fps target for smoother parallax, but still throttled
-    }
-}
 
 // ================================
 // Form Handling
@@ -345,41 +297,6 @@ class DropdownHandler {
     }
 }
 
-// ================================
-// Meditation Session Button (Legacy)
-// ================================
-
-class MeditationSession {
-    constructor() {
-        this.button = document.querySelector('.session-btn');
-        this.isPlaying = false;
-        this.init();
-    }
-
-    init() {
-        if (!this.button) return;
-
-        this.button.addEventListener('click', () => {
-            this.toggleSession();
-        });
-    }
-
-    toggleSession() {
-        this.isPlaying = !this.isPlaying;
-        const icon = this.button.querySelector('.btn-icon');
-
-        if (this.isPlaying) {
-            icon.textContent = '⏸';
-            this.button.querySelector('span:not(.btn-icon)').textContent = 'Pause Practice';
-            // Here you could integrate actual audio playback
-            console.log('Starting meditation session...');
-        } else {
-            icon.textContent = '▶';
-            this.button.querySelector('span:not(.btn-icon)').textContent = 'Start Practice';
-            console.log('Pausing meditation session...');
-        }
-    }
-}
 
 // ================================
 // Initialize Everything
@@ -524,16 +441,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const includeLoader = new IncludeLoader();
     await includeLoader.loadIncludes();
 
-    // Initialize modals after header is loaded
-    // initEmblemModal(); // Commented out - emblem now has dedicated page instead of modal
-    initVivekanandaModal();
-
     // Initialize all components after header/footer are loaded
     new Navigation();
     new ScrollAnimations();
-    new ParallaxEffects();
     new FormHandler();
-    new MeditationSession();
     new LoadingAnimation();
     new DropdownHandler();
     new LibrarySearch();
@@ -955,75 +866,6 @@ if (document.readyState === 'loading') {
     }
 }
 
-// ================================
-// Emblem Modal Functionality
-// ================================
-
-function initEmblemModal() {
-    // Wait for header to be fully loaded
-    const checkInterval = setInterval(() => {
-        const modalTrigger = document.querySelector('.logo-modal-trigger');
-        const modal = document.getElementById('emblem-modal');
-
-        if (modalTrigger && modal) {
-            clearInterval(checkInterval);
-            setupEmblemModal();
-        }
-    }, 100);
-
-    // Clear interval after 5 seconds to prevent infinite checking
-    setTimeout(() => clearInterval(checkInterval), 5000);
-}
-
-function setupEmblemModal() {
-    const modalTrigger = document.querySelector('.logo-modal-trigger');
-    const modal = document.getElementById('emblem-modal');
-    const modalClose = modal.querySelector('.modal-close');
-    const modalOverlay = modal.querySelector('.modal-overlay');
-
-    // Open modal
-    modalTrigger.addEventListener('click', () => {
-        modal.classList.add('modal-open');
-        document.body.style.overflow = 'hidden';
-
-        // Animate elements in sequence
-        setTimeout(() => {
-            const elements = modal.querySelectorAll('.emblem-element');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        }, 300);
-    });
-
-    // Close modal function
-    const closeModal = () => {
-        modal.classList.remove('modal-open');
-        document.body.style.overflow = '';
-
-        // Reset element animations
-        const elements = modal.querySelectorAll('.emblem-element');
-        elements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-        });
-    };
-
-    // Close on X button
-    modalClose.addEventListener('click', closeModal);
-
-    // Close on overlay click
-    modalOverlay.addEventListener('click', closeModal);
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
-            closeModal();
-        }
-    });
-}
 
 // ================================
 // Holy Trio Modal Functionality
@@ -1094,69 +936,3 @@ if (document.readyState === 'loading') {
     setTimeout(initHolyTrioModals, 200);
 }
 
-// ================================
-// Vivekananda Modal Functionality (Legacy)
-// ================================
-
-function initVivekanandaModal() {
-    const modalTrigger = document.querySelector('.vivekananda-image-trigger');
-    if (!modalTrigger) return;
-
-    const modal = document.getElementById('vivekananda-modal');
-    if (!modal) return;
-
-    const modalClose = modal.querySelector('.modal-close');
-    const modalOverlay = modal.querySelector('.modal-overlay');
-
-    // Open modal
-    modalTrigger.addEventListener('click', () => {
-        modal.classList.add('modal-open');
-        document.body.style.overflow = 'hidden';
-
-        // Animate teaching cards in sequence
-        setTimeout(() => {
-            const cards = modal.querySelectorAll('.teaching-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        }, 300);
-    });
-
-    // Close modal function
-    const closeModal = () => {
-        modal.classList.remove('modal-open');
-        document.body.style.overflow = '';
-
-        // Reset animations
-        const cards = modal.querySelectorAll('.teaching-card');
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-        });
-    };
-
-    // Close on X button
-    modalClose.addEventListener('click', closeModal);
-
-    // Close on overlay click
-    modalOverlay.addEventListener('click', closeModal);
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
-            closeModal();
-        }
-    });
-}
-
-// Initialize Vivekananda modal when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(initVivekanandaModal, 200);
-    });
-} else {
-    setTimeout(initVivekanandaModal, 200);
-}
